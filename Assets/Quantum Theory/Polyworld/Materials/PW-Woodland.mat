@@ -47,11 +47,11 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: 0.5
       data:
         first:
           name: _IBLBrightness
-        second: 1.18918908
+        second: 1.1891891
       data:
         first:
           name: _Emission
@@ -59,7 +59,7 @@ Material:
       data:
         first:
           name: _CubeIntensity
-        second: 1.30999994
+        second: 1.31
       data:
         first:
           name: _PowVal
@@ -92,7 +92,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .90196085, g: .90196085, b: .90196085, a: 1}
+        second: {r: 0.90196085, g: 0.90196085, b: 0.90196085, a: 1}
       data:
         first:
           name: _AmbientTint
@@ -100,4 +100,4 @@ Material:
       data:
         first:
           name: _ReflectionTint
-        second: {r: .45588237, g: .45588237, b: .45588237, a: 1}
+        second: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
