@@ -6,13 +6,13 @@ public class NetworkedPlayer : NetworkBehaviour
 {
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpsController;
     public Camera fpsCamera;
-    public AudioListener audioListener;
+    public AudioSource audioSource;
 
     public override void OnStartLocalPlayer()
     {
         fpsController.enabled = true;
         fpsCamera.enabled = true;
-        audioListener.enabled = true;
+        audioSource.enabled = true;
 
         gameObject.name = "LOCAL Player";
         base.OnStartLocalPlayer();
