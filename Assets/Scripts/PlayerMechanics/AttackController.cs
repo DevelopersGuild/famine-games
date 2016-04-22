@@ -44,7 +44,7 @@ public class AttackController : NetworkBehaviour
             }
             else
             { 
-                attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
+                attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
                 attackCollider.damage = currentWeapon.damage;
             }
 

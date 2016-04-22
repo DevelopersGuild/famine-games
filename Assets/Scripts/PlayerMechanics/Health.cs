@@ -7,7 +7,7 @@ public class Health : NetworkBehaviour
 
     public int maxHealth;
 
-    [SyncVar][HideInInspector]
+    [SyncVar]
     public int currentHealth;
 
     // Use this for initialization
