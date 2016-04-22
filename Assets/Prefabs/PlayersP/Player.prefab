@@ -409,11 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
-  damage: 10
-  attackCooldown: 0.2
-  xRange: 1
-  yRange: 1
-  zRange: 1
+  currentWeapon: {fileID: 0}
 --- !u!114 &11471054
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,19 +6,14 @@ public class AttackController : NetworkBehaviour
 {
 
     public AttackCollider attackCollider;
+    public Weapon currentWeapon;
     private bool isAttacking;
-
-    // Weapons
-    public int damage;
-    public float attackCooldown;
-    public float xRange;
-    public float yRange;
-    public float zRange;
 
     // Use this for initialization
     void Start()
     {
         isAttacking = false;
+        currentWeapon = null;
     }
 
     // Update is called once per frame
@@ -40,17 +35,31 @@ public class AttackController : NetworkBehaviour
         if (!isAttacking)
         {
             isAttacking = true;
-            SetAttackStats();
+            AttackCollider attack;
 
-            AttackCollider attack = (AttackCollider)Instantiate(
-                attackCollider,
-                transform.position - transform.forward * -2,
-                transform.rotation);
+            if (currentWeapon == null)
+            {
+                attackCollider.transform.localScale = new Vector3(1, 1, 1);
+                attackCollider.damage = 5;
+            }
+            else
+            { 
+                attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
+                attackCollider.damage = currentWeapon.damage;
+            }
+
+            attack = (AttackCollider)Instantiate(
+                    attackCollider,
+                    transform.position - transform.forward * -2,
+                    transform.rotation);
 
             //attack.transform.parent = transform;
             //RpcSyncAttackPostion(attack.transform.localPosition, attack.transform.localRotation, attack.gameObject, attack.transform.parent.gameObject);
 
-            StartCoroutine(StartAttackCoroutine(attackCooldown));
+            if (currentWeapon == null)
+                StartCoroutine(StartAttackCoroutine(2));
+            else
+                StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
@@ -67,18 +76,6 @@ public class AttackController : NetworkBehaviour
         attackCol.transform.localRotation = localRot;
     }
 
-    void SetAttackStats()
-    {
-        attackCollider.transform.localScale = new Vector3(xRange, yRange, zRange);
-    }
-
-    public void SetAttackStats(int damage, float xRange, float yRange, float zRange, float attackCooldown)
-    {
-        attackCollider.transform.localScale = new Vector3(xRange, yRange, zRange);
-        this.damage = damage;
-        this.attackCooldown = attackCooldown;
-    }
-
     IEnumerator StartAttackCoroutine(float attackCooldown)
     {
         yield return new WaitForSeconds(attackCooldown);
@@ -88,5 +85,15 @@ public class AttackController : NetworkBehaviour
     public void FinishedAttack()
     {
         isAttacking = false;
+    }
+
+    public void PickedUpWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+    }
+
+    public void DropWeapon()
+    {
+        currentWeapon = null;
     }
 }

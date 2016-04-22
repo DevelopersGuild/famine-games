@@ -8,6 +8,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public Camera fpsCamera;
     public AudioSource audioSource;
 
+
     public override void OnStartLocalPlayer()
     {
         fpsController.enabled = true;

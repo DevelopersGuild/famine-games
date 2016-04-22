@@ -3,19 +3,14 @@ using System.Collections;
 
 public class AttackCollider : MonoBehaviour
 {
-    public AttackController ac;
-
-    void Start()
-    {
-        ac = GetComponentInParent<AttackController>();
-    }
+    public int damage;
 
     void OnTriggerEnter(Collider other)
     {
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
-            health.TakeDamage(ac.damage);
+            health.TakeDamage(damage);
         }
     }
 }
