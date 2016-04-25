@@ -6,6 +6,7 @@ public class AttackController : NetworkBehaviour
 {
 
     public AttackCollider attackCollider;
+    [SyncVar]
     public Weapon currentWeapon;
     private bool isAttacking;
 
@@ -52,8 +53,8 @@ public class AttackController : NetworkBehaviour
                     transform.position - transform.forward * -2,
                     transform.rotation);
 
-            //attack.transform.parent = transform;
-            //RpcSyncAttackPostion(attack.transform.localPosition, attack.transform.localRotation, attack.gameObject, attack.transform.parent.gameObject);
+            attack.parentNetId = netId;
+            attack.transform.parent = transform;
 
             if (currentWeapon == null)
                 StartCoroutine(StartAttackCoroutine(2));
@@ -63,16 +64,6 @@ public class AttackController : NetworkBehaviour
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
         }
-    }
-
-    [ClientRpc]
-    public void RpcSyncAttackPostion(Vector3 localPos, Quaternion localRot, GameObject attackCol, GameObject parent)
-    {
-        Transform test = parent.transform;
-
-        attackCol.transform.parent = parent.transform;
-        attackCol.transform.localPosition = localPos;
-        attackCol.transform.localRotation = localRot;
     }
 
     IEnumerator StartAttackCoroutine(float attackCooldown)

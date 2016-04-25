@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
-  currentWeapon: {fileID: 0}
+  currentWeapon: {fileID: 11405624, guid: b86ea78a8de0bfa4aa46e275dce5d3bc, type: 2}
 --- !u!114 &11471054
 MonoBehaviour:
   m_ObjectHideFlags: 1

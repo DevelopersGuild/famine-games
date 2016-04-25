@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class AttackCollider : MonoBehaviour
+public class AttackCollider : NetworkBehaviour
 {
     public Point owner;
     public int damage;
+    [SyncVar]
+    public NetworkInstanceId parentNetId;
 
-    void Start()
+    public override void OnStartClient()
     {
-        owner = GameObject.Find("LOCAL Player").GetComponent<Point>();
+        GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
+        transform.SetParent(parentObject.transform);
+        owner = parentObject.GetComponent<Point>();
     }
 
     void OnTriggerEnter(Collider other)
