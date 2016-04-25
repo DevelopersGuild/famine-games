@@ -16,10 +16,11 @@ public class Health : NetworkBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    // Returns whether the target died
+    public bool TakeDamage(int amount)
     {
         if(!isServer)
-            return;
+            return false;
 
         currentHealth -= amount;
 
@@ -27,10 +28,12 @@ public class Health : NetworkBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = maxHealth;
-
             // called on the server, will be invoked on the clients
             RpcRespawnZero();
+            return true;
         }
+
+        return false;
     }
 
     [ClientRpc]

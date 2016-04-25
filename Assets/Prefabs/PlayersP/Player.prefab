@@ -20,6 +20,7 @@ GameObject:
   - 114: {fileID: 11424144}
   - 114: {fileID: 11416786}
   - 114: {fileID: 11426704}
+  - 114: {fileID: 11484018}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -341,6 +342,8 @@ MonoBehaviour:
   fpsController: {fileID: 11400000}
   fpsCamera: {fileID: 2000000}
   audioSource: {fileID: 8200000}
+  attackController: {fileID: 11426704}
+  points: {fileID: 11484018}
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,7 +406,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afb3f41d2e937774ea50dd49d3f5f7f9, type: 3}
   m_Name: 
@@ -430,6 +433,18 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11484018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f18cc834a8eebe49ab0e1b5d0f3af16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
 --- !u!143 &14300000
 CharacterController:
   m_ObjectHideFlags: 1

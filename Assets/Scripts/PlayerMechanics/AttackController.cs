@@ -13,7 +13,6 @@ public class AttackController : NetworkBehaviour
     void Start()
     {
         isAttacking = false;
-        currentWeapon = null;
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class AttackController : NetworkBehaviour
 
             if (currentWeapon == null)
             {
-                attackCollider.transform.localScale = new Vector3(1, 1, 1);
+                attackCollider.transform.localScale = new Vector3(1,1,1);
                 attackCollider.damage = 5;
             }
             else
@@ -86,6 +85,7 @@ public class AttackController : NetworkBehaviour
     {
         isAttacking = false;
     }
+
 
     public void PickedUpWeapon(Weapon weapon)
     {
