@@ -10,7 +10,7 @@ public class Hub : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
         contacts = rnd.Next(2, 7);
     }
