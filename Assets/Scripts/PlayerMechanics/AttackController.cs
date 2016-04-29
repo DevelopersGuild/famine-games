@@ -6,14 +6,9 @@ public class AttackController : NetworkBehaviour
 {
 
     public AttackCollider attackCollider;
+    [SyncVar]
+    public Weapon currentWeapon;
     private bool isAttacking;
-
-    // Weapons
-    public int damage;
-    public float attackCooldown;
-    public float xRange;
-    public float yRange;
-    public float zRange;
 
     // Use this for initialization
     void Start()
@@ -40,43 +35,35 @@ public class AttackController : NetworkBehaviour
         if (!isAttacking)
         {
             isAttacking = true;
-            SetAttackStats();
+            AttackCollider attack;
 
-            AttackCollider attack = (AttackCollider)Instantiate(
-                attackCollider,
-                transform.position - transform.forward * -2,
-                transform.rotation);
+            if (currentWeapon == null)
+            {
+                attackCollider.transform.localScale = new Vector3(1,1,1);
+                attackCollider.damage = 5;
+            }
+            else
+            { 
+                attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
+                attackCollider.damage = currentWeapon.damage;
+            }
 
-            //attack.transform.parent = transform;
-            //RpcSyncAttackPostion(attack.transform.localPosition, attack.transform.localRotation, attack.gameObject, attack.transform.parent.gameObject);
+            attack = (AttackCollider)Instantiate(
+                    attackCollider,
+                    transform.position - transform.forward * -2,
+                    transform.rotation);
 
-            StartCoroutine(StartAttackCoroutine(attackCooldown));
+            attack.parentNetId = netId;
+            attack.transform.parent = transform;
+
+            if (currentWeapon == null)
+                StartCoroutine(StartAttackCoroutine(2));
+            else
+                StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
         }
-    }
-
-    [ClientRpc]
-    public void RpcSyncAttackPostion(Vector3 localPos, Quaternion localRot, GameObject attackCol, GameObject parent)
-    {
-        Transform test = parent.transform;
-
-        attackCol.transform.parent = parent.transform;
-        attackCol.transform.localPosition = localPos;
-        attackCol.transform.localRotation = localRot;
-    }
-
-    void SetAttackStats()
-    {
-        attackCollider.transform.localScale = new Vector3(xRange, yRange, zRange);
-    }
-
-    public void SetAttackStats(int damage, float xRange, float yRange, float zRange, float attackCooldown)
-    {
-        attackCollider.transform.localScale = new Vector3(xRange, yRange, zRange);
-        this.damage = damage;
-        this.attackCooldown = attackCooldown;
     }
 
     IEnumerator StartAttackCoroutine(float attackCooldown)
@@ -88,5 +75,16 @@ public class AttackController : NetworkBehaviour
     public void FinishedAttack()
     {
         isAttacking = false;
+    }
+
+
+    public void PickedUpWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+    }
+
+    public void DropWeapon()
+    {
+        currentWeapon = null;
     }
 }

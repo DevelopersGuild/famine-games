@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class AttackCollider : MonoBehaviour
+public class AttackCollider : NetworkBehaviour
 {
-    public AttackController ac;
+    public Point owner;
+    public int damage;
+    [SyncVar]
+    public NetworkInstanceId parentNetId;
 
-    void Start()
+    public override void OnStartClient()
     {
-        ac = GetComponentInParent<AttackController>();
+        GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
+        transform.SetParent(parentObject.transform);
+        owner = parentObject.GetComponent<Point>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -15,7 +21,10 @@ public class AttackCollider : MonoBehaviour
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
-            health.TakeDamage(ac.damage);
+            if (health.TakeDamage(damage))
+            { 
+                    owner.AddPoints(10);
+            };
         }
     }
 }
