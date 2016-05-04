@@ -23,6 +23,7 @@ GameObject:
   - 114: {fileID: 11484018}
   - 114: {fileID: 11403882}
   - 114: {fileID: 11479860}
+  - 114: {fileID: 11469244}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -358,6 +359,7 @@ MonoBehaviour:
   audioSource: {fileID: 8200000}
   attackController: {fileID: 11426704}
   points: {fileID: 11484018}
+  bowAndArrow: {fileID: 11469244}
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,6 +429,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: b86ea78a8de0bfa4aa46e275dce5d3bc, type: 2}
+--- !u!114 &11469244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a913af4303086614ab647620e7cb3400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 11455150, guid: b5a97bcdecb1e8f428b6c5b32a57172d, type: 2}
+  arrowSpeed: 100
+  fireRate: 1.5
+  nextFire: 0
+  pullStartTime: 0
+  pullTime: 0.5
+  falsePull: 0
+  maxStrengthPullTime: 1.5
 --- !u!114 &11471054
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public AudioSource audioSource;
     public AttackController attackController;
     public Point points;
+    public BowAndArrow bowAndArrow;
 
 
     public override void OnStartLocalPlayer()
@@ -18,6 +19,7 @@ public class NetworkedPlayer : NetworkBehaviour
         audioSource.enabled = true;
         attackController.enabled = true;
         points.enabled = true;
+        bowAndArrow.enabled = true;
 
         gameObject.name = "LOCAL Player";
         base.OnStartLocalPlayer();

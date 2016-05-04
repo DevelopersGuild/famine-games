@@ -19,5 +19,12 @@ public class Point : NetworkBehaviour
             return;
 
         points += amount;
+        if(points > 200) CmdEndGame();
+    }
+
+    [Command]
+    public void CmdEndGame()
+    {
+        
     }
 }
