@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     {
         DropItem(item);
         item.OnPickup();
-        inventory[(int)item.ItemType()-1] = item;
+        inventory[(int)item.ItemType()] = item;
     }
 
     /// <summary>
