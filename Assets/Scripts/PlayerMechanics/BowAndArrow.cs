@@ -4,23 +4,31 @@ using UnityEngine.Networking;
 
 public class BowAndArrow : NetworkBehaviour
 {
-    public AttackCollider arrowPrefab;
+    public Arrow arrowPrefab;
     public float arrowSpeed = 100.0f;
     public float fireRate = 1.5f;
     public float nextFire = 0.0f;
+    [SyncVar]
     public float pullStartTime = 0.0f;
+    [SyncVar]
     public float pullTime = 0.5f;
+    [SyncVar]
     public bool falsePull;
     public float maxStrengthPullTime = 1.5f; // how long to hold button until max strength reached
+
+    private AttackController ac;
 
     public void Start()
     {
         falsePull = false;
+        ac = GetComponent<AttackController>();
     }
 
     public void Update()
     {
-        if (!isLocalPlayer)
+        if (ac.currentWeapon == null)
+            return;
+        if (!isLocalPlayer || !ac.currentWeapon.CompareTag("Bow"))
             return;
 
         // pull back string
@@ -28,7 +36,6 @@ public class BowAndArrow : NetworkBehaviour
         {
             if (Time.time > nextFire)
             {
-                nextFire = Time.time + fireRate; // this line is unnecessary, since you are going to change it onMouseUp
                 pullStartTime = Time.time; //store the start time
             }
             else
@@ -41,7 +48,23 @@ public class BowAndArrow : NetworkBehaviour
             //your way wouldn't work right, since you just increased nextFire
             if (!falsePull)
             {
-                CmdShoot();
+                nextFire = Time.time + pullTime; // this is the actual fire rate as things stand now
+
+                float timePulledBack = Time.time - pullStartTime; // this is how long the button was held
+                if (timePulledBack > maxStrengthPullTime) // this says max strength is reached 
+                    timePulledBack = maxStrengthPullTime; // max strength is ArrowSpeed * maxStrengthPullTime
+                float currentArrowSpeed = arrowSpeed * timePulledBack; // adjust speed directly using pullback time
+
+                Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
+                arrow.parentNetId = netId;
+                arrow.SetDamage(ac.currentWeapon.damage);
+                Destroy(arrow.gameObject, 10);
+
+
+                Physics.IgnoreCollision(arrow.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
+
+                arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * currentArrowSpeed); // adjusted speed
+                NetworkServer.Spawn(arrow.gameObject);
             }
             else
                 falsePull = false;
@@ -58,12 +81,15 @@ public class BowAndArrow : NetworkBehaviour
             timePulledBack = maxStrengthPullTime; // max strength is ArrowSpeed * maxStrengthPullTime
         float currentArrowSpeed = arrowSpeed * timePulledBack; // adjust speed directly using pullback time
 
-        AttackCollider arrow = (AttackCollider)Instantiate(arrowPrefab, transform.position - transform.forward * -2, transform.rotation);
+        Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
+        arrow.parentNetId = netId;
+        arrow.SetDamage(ac.currentWeapon.damage);
+        Destroy(arrow.gameObject, 10);
 
 
-        Physics.IgnoreCollision(arrowPrefab.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
+        Physics.IgnoreCollision(arrow.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
-        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * currentArrowSpeed); // adjusted speed
+        arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * currentArrowSpeed); // adjusted speed
         NetworkServer.Spawn(arrow.gameObject);
     }
 }

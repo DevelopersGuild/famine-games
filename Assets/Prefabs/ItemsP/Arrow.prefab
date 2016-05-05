@@ -13,8 +13,8 @@ GameObject:
   - 33: {fileID: 3347606}
   - 23: {fileID: 2365018}
   - 114: {fileID: 11440228}
-  - 114: {fileID: 11455150}
   - 114: {fileID: 11480600}
+  - 114: {fileID: 11446538}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -29,8 +29,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.14, y: -34.4513, z: 21.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -16.802181, y: -34.29, z: 31.049042}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158848}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11455150
+--- !u!114 &11446538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,11 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 158848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294dda18b3131d94688c5ceb1bb4785a, type: 3}
+  m_Script: {fileID: 11500000, guid: acd35de579d5a2e4d83ab230573a945f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  damage: 10
 --- !u!114 &11480600
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a913af4303086614ab647620e7cb3400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 11455150, guid: b5a97bcdecb1e8f428b6c5b32a57172d, type: 2}
+  arrowPrefab: {fileID: 11446538, guid: b5a97bcdecb1e8f428b6c5b32a57172d, type: 2}
   arrowSpeed: 100
   fireRate: 1.5
   nextFire: 0

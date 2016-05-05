@@ -19,10 +19,13 @@ public class AttackController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentWeapon != null && currentWeapon.CompareTag("Bow"))
+            return;
+
         if (!isLocalPlayer)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) 
         {
             CmdAttack();
         }
@@ -55,6 +58,7 @@ public class AttackController : NetworkBehaviour
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
+            Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
             if (currentWeapon == null)
                 StartCoroutine(StartAttackCoroutine(2));
