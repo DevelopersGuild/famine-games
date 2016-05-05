@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void UseItemPrimary()
     {
-        selectedItem.PrimaryUse();
+        //selectedItem.PrimaryUse();
     }
 
     /// <summary>
