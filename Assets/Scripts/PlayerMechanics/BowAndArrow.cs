@@ -15,12 +15,14 @@ public class BowAndArrow : NetworkBehaviour
     [SyncVar]
     public bool falsePull;
     public float maxStrengthPullTime = 1.5f; // how long to hold button until max strength reached
+    public bool bowEquipped;
 
     private AttackController ac;
 
     public void Start()
     {
         falsePull = false;
+        bowEquipped = false;
         ac = GetComponent<AttackController>();
     }
 
@@ -28,16 +30,23 @@ public class BowAndArrow : NetworkBehaviour
     {
         if (ac.currentWeapon == null)
             return;
-        if (!isLocalPlayer || !ac.currentWeapon.CompareTag("Bow"))
+        if (!isLocalPlayer)
             return;
 
+        // Check for bow equipment
+        if (ac.currentWeapon.transform.childCount > 0)
+            foreach (Transform t in ac.currentWeapon.transform)
+                bowEquipped = t.CompareTag("Bow");
+        else
+            bowEquipped = false;
+        
+
         // pull back string
+        if (!bowEquipped) return;
         if (Input.GetMouseButtonDown(0))
         {
             if (Time.time > nextFire)
-            {
                 pullStartTime = Time.time; //store the start time
-            }
             else
                 falsePull = true;
         }
@@ -53,9 +62,12 @@ public class BowAndArrow : NetworkBehaviour
                 float timePulledBack = Time.time - pullStartTime; // this is how long the button was held
                 if (timePulledBack > maxStrengthPullTime) // this says max strength is reached 
                     timePulledBack = maxStrengthPullTime; // max strength is ArrowSpeed * maxStrengthPullTime
-                float currentArrowSpeed = arrowSpeed * timePulledBack; // adjust speed directly using pullback time
+                float currentArrowSpeed = arrowSpeed*timePulledBack; // adjust speed directly using pullback time
 
-                Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
+                Arrow arrow =
+                    (Arrow)
+                        Instantiate(arrowPrefab, transform.position - transform.forward*-2,
+                            Camera.main.transform.rotation);
                 arrow.parentNetId = netId;
                 arrow.SetDamage(ac.currentWeapon.damage);
                 Destroy(arrow.gameObject, 10);
@@ -63,7 +75,8 @@ public class BowAndArrow : NetworkBehaviour
 
                 Physics.IgnoreCollision(arrow.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
-                arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * currentArrowSpeed); // adjusted speed
+                arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward*currentArrowSpeed);
+                // adjusted speed
                 NetworkServer.Spawn(arrow.gameObject);
             }
             else

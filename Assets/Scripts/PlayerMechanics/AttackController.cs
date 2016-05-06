@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 using UnityEngine.Networking;
 
 public class AttackController : NetworkBehaviour
@@ -19,9 +20,6 @@ public class AttackController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentWeapon != null && currentWeapon.CompareTag("Bow"))
-            return;
-
         if (!isLocalPlayer)
             return;
 
@@ -34,7 +32,14 @@ public class AttackController : NetworkBehaviour
     [Command]
     void CmdAttack()
     {
-        // create the bullet object from the bullet prefab
+        if (currentWeapon != null) { 
+            if (currentWeapon.transform.Cast<Transform>().Any(t => t.CompareTag("Bow")))
+            {
+                return;
+            }
+         }
+
+          // create the bullet object from the bullet prefab
         if (!isAttacking)
         {
             isAttacking = true;
