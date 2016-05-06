@@ -21,9 +21,9 @@ public class Weapon : MonoBehaviour, IItem
         throw new System.NotImplementedException();
     }
 
-    public void OnPickup()
+    public void OnPickup(GameObject player)
     {
-        AttackController ac = FindObjectOfType<AttackController>();
+        AttackController ac = player.GetComponent<AttackController>();
         ac.PickedUpWeapon(this);
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
