@@ -69,12 +69,12 @@ public class Logic_UNetConfig : MonoBehaviour {
      }
     public void GetHosts()
      {
-         networkMatch.ListMatches(0,9999,"",OnMatchList);
+         networkMatch.ListMatches(0,100,"",OnMatchList);
      }
     public void GetHosts(bool gui)
      {
          GuiMode = gui;
-         networkMatch.ListMatches(0, 9999, "", OnMatchList);
+         networkMatch.ListMatches(0, 100, "", OnMatchList);
      }
 
     public void UnHost()
@@ -129,6 +129,7 @@ public class Logic_UNetConfig : MonoBehaviour {
              minfo = new MatchInfo(matchResponse);
              //AfterJoin();
              GetComponentInParent<NetworkManager>().StartHost(minfo);
+             Globe.errorid = "EHCONQ";
          }
          else
          {
@@ -145,6 +146,7 @@ public class Logic_UNetConfig : MonoBehaviour {
             Utility.SetAccessTokenForNetwork(matchjoin.networkId, new NetworkAccessToken(matchjoin.accessTokenString));
             //AfterJoin();
             GetComponentInParent<NetworkManager>().StartClient(minfo);
+            Globe.errorid = "CONNLST";
             //NetworkClient myClient = new NetworkClient();
             //myClient.RegisterHandler(MsgType.Connect, OnConnected);
             //myClient.Connect(minfo);
@@ -185,7 +187,7 @@ public class Logic_UNetConfig : MonoBehaviour {
                  GameObject root = GameObject.Find("Launcher UI Root");
                  if(root)
                  {
-                     Match_Panel_Control mpc = root.GetComponent<UI_FunctionControl>().MatchPanel.GetComponent<Match_Panel_Control>();
+                     Match_Panel_Control mpc = root.GetComponent<UI_FunctionControl>().MatchPanel.GetComponentInChildren<Match_Panel_Control>();
                      if (mpc)
                          mpc.UpdateRooms(matchList);
                  }

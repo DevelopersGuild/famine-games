@@ -94,7 +94,14 @@ namespace Kroulis.UI.Process
                     }
                     break;
                 case 2:
-
+                    GameObject net2 = GameObject.Find("Logic_Network");   
+                    if (net2)
+                            {
+                                net2.GetComponentInChildren<Logic_MatchOperation>().QuitMathces();
+                                DestroyObject(net2);
+                            }
+                    Globe.roomid = "";
+                    SceneManager.LoadScene("Launcher");
                     break;
                 case 3:
 

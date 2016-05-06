@@ -86,6 +86,7 @@ namespace Kroulis.UI.Launcher
                 return;
             matchlist = md;
             datanum = matchlist.Count;
+            //Debug.Log("Match numbers: "+datanum.ToString());
             current_pages = 0;
             //Debug.Log(datanum);
             if (datanum % 13 == 0)
