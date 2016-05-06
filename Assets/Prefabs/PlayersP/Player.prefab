@@ -21,6 +21,9 @@ GameObject:
   - 114: {fileID: 11416786}
   - 114: {fileID: 11426704}
   - 114: {fileID: 11484018}
+  - 114: {fileID: 11403882}
+  - 114: {fileID: 11479860}
+  - 114: {fileID: 11469244}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -328,6 +331,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+--- !u!114 &11403882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2937ad4f9206ed74a937b2fde0cfee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmReach: 1
 --- !u!114 &11415524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,6 +359,7 @@ MonoBehaviour:
   audioSource: {fileID: 8200000}
   attackController: {fileID: 11426704}
   points: {fileID: 11484018}
+  bowAndArrow: {fileID: 11469244}
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,6 +429,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: b86ea78a8de0bfa4aa46e275dce5d3bc, type: 2}
+--- !u!114 &11469244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a913af4303086614ab647620e7cb3400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 11446538, guid: b5a97bcdecb1e8f428b6c5b32a57172d, type: 2}
+  arrowSpeed: 100
+  fireRate: 1.5
+  nextFire: 0
+  pullStartTime: 0
+  pullTime: 0.5
+  falsePull: 0
+  maxStrengthPullTime: 1.5
 --- !u!114 &11471054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,6 +468,17 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11479860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2344e445f695214abc20d7fad21e463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11484018
 MonoBehaviour:
   m_ObjectHideFlags: 1

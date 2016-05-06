@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 using UnityEngine.Networking;
 
 public class AttackController : NetworkBehaviour
@@ -22,7 +23,7 @@ public class AttackController : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) 
         {
             CmdAttack();
         }
@@ -31,7 +32,14 @@ public class AttackController : NetworkBehaviour
     [Command]
     void CmdAttack()
     {
-        // create the bullet object from the bullet prefab
+        if (currentWeapon != null) { 
+            if (currentWeapon.transform.Cast<Transform>().Any(t => t.CompareTag("Bow")))
+            {
+                return;
+            }
+         }
+
+          // create the bullet object from the bullet prefab
         if (!isAttacking)
         {
             isAttacking = true;
@@ -55,6 +63,7 @@ public class AttackController : NetworkBehaviour
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
+            Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
             if (currentWeapon == null)
                 StartCoroutine(StartAttackCoroutine(2));

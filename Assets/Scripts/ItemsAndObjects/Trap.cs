@@ -27,6 +27,7 @@ public class Trap : MonoBehaviour {
             player.m_WalkSpeed = 2;
             StartCoroutine("playerSpeedDebuffTimer");
         }
+        Destroy(gameObject);
     }
 
     IEnumerator playerSpeedDebuffTimer()

@@ -12,8 +12,8 @@ public class AttackCollider : NetworkBehaviour
     public override void OnStartClient()
     {
         GameObject parentObject = ClientScene.FindLocalObject(parentNetId);
-        transform.SetParent(parentObject.transform);
         owner = parentObject.GetComponent<Point>();
+        transform.SetParent(parentObject.transform);
     }
 
     void OnTriggerEnter(Collider other)
