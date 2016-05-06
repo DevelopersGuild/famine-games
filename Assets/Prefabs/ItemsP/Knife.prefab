@@ -12,9 +12,9 @@ GameObject:
   - 65: {fileID: 6534934}
   - 23: {fileID: 2353182}
   - 114: {fileID: 11405624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
