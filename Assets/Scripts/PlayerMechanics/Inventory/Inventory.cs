@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
     public void PickupItem(IItem item)
     {
         DropItem(item);
-        item.OnPickup();
+        item.OnPickup(gameObject);
         inventory[(int)item.ItemType()] = item;
     }
 
@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void UseItemPrimary()
     {
-        //selectedItem.PrimaryUse();
+        selectedItem.PrimaryUse();
     }
 
     /// <summary>

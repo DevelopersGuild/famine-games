@@ -18,8 +18,9 @@ public class Bandage : MonoBehaviour, IItem
         Debug.Log("No Secondary use");
     }
 
-    public void OnPickup()
+    public void OnPickup(GameObject owner)
     {
+        gameObject.transform.parent = owner.transform;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
