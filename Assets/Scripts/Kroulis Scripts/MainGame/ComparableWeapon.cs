@@ -23,7 +23,7 @@ namespace Kroulis.UI.MainGame
             MainPanelFullControl mpfc = GameObject.Find("Main_UI").GetComponentInChildren<MainPanelFullControl>();
             if (mpfc)
             {
-                mpfc.ShowComparePanel();
+                mpfc.ShowComparePanel(GetComponent<Weapon>());
             }
         }
 

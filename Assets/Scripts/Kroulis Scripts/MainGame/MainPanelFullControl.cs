@@ -29,6 +29,8 @@ namespace Kroulis.UI.MainGame
                 //Timer
                 T_Health.text = health.currentHealth.ToString();
                 T_Sheild.text = "0";
+                T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
+                //T_Ammo
             }
         }
 
@@ -53,9 +55,10 @@ namespace Kroulis.UI.MainGame
             G_PickUpTips.SetActive(false);
         }
 
-        public void ShowComparePanel()
+        public void ShowComparePanel(Weapon weapon)
         {
             G_Compare.SetActive(true);
+            G_Compare.GetComponent<CompareControl>().ChangeData(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon,weapon);
         }
 
         public void HideComparePanel()

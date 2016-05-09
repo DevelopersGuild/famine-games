@@ -5,11 +5,13 @@ public class Weapon : MonoBehaviour, IItem
 {
 
     // Weapons
+    public string name;
     public int damage;
     public float attackCooldown;
     public float xRange;
     public float yRange;
     public float zRange;
+    public Sprite icon;
 
     public void PrimaryUse()
     {

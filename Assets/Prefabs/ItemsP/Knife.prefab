@@ -118,11 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Knife
   damage: 5
   attackCooldown: 0.5
   xRange: 1
   yRange: 1
   zRange: 1
+  icon: {fileID: 0}
 --- !u!114 &11437656
 MonoBehaviour:
   m_ObjectHideFlags: 1
