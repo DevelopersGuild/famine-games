@@ -18,7 +18,7 @@ namespace Kroulis.Components
         {
             if(LockMouse)
             {
-                if (!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl))
+                if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                 }
