@@ -3039,14 +3039,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11405306, guid: 67ee11c9cd9541945b71f0fa8523fc45, type: 2}
-      propertyPath: name
-      value: Axe
-      objectReference: {fileID: 0}
-    - target: {fileID: 13500190, guid: 67ee11c9cd9541945b71f0fa8523fc45, type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67ee11c9cd9541945b71f0fa8523fc45, type: 2}
   m_IsPrefabParent: 0
