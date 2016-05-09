@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kroulis.Components;
 
 namespace Kroulis.UI.MainGame
 {
@@ -63,6 +64,7 @@ namespace Kroulis.UI.MainGame
             if(player)
             {
                 StartGameFlag = true;
+                GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = true;
                 Debug.Log("Found Local Player...");
                 CancelInvoke("StartGameChecker");
             }
