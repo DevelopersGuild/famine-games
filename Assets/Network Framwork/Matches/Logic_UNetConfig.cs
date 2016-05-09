@@ -254,7 +254,7 @@ public class Logic_UNetConfig : MonoBehaviour {
         Logic_LauncherGetInfo info = GetComponent<Logic_LauncherGetInfo>();
         if (matchList.Count == 0)
         {
-            roots.FinishWWWLoading();
+            //roots.FinishWWWLoading();
             CreateRoom(info.GetCharacterNameA() + "'s Room", "AutoMatches Created.");
             return;
         }
@@ -264,11 +264,11 @@ public class Logic_UNetConfig : MonoBehaviour {
                 continue;
             if (md.currentSize >= md.maxSize)
                 continue;
-            roots.FinishWWWLoading();
+            //roots.FinishWWWLoading();
             JoinRoom(md);
             return;
         }
-        roots.FinishWWWLoading();
+        //roots.FinishWWWLoading();
         CreateRoom(info.GetCharacterNameA() + "'s Room", "AutoMatches Created.");
         return;
     }
