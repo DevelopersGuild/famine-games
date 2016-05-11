@@ -204,6 +204,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &138754
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22424398}
+  - 222: {fileID: 22204724}
+  - 114: {fileID: 11482254}
+  m_Layer: 5
+  m_Name: WeaponIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &145602
 GameObject:
   m_ObjectHideFlags: 1
@@ -231,6 +248,7 @@ GameObject:
   - 224: {fileID: 22483654}
   - 222: {fileID: 22241038}
   - 114: {fileID: 11400206}
+  - 114: {fileID: 11467402}
   m_Layer: 5
   m_Name: Compare
   m_TagString: Untagged
@@ -742,7 +760,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 09f1bad7cbdd0ed4f84774d6b992002e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1035,6 +1053,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11467402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c8c5a720ae2e445966a247c79f4f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  T_Name:
+  - {fileID: 11406006}
+  - {fileID: 11437896}
+  T_Range:
+  - {fileID: 11486434}
+  - {fileID: 11499438}
+  T_Ammo:
+  - {fileID: 11426264}
+  - {fileID: 11436858}
+  T_Damage:
+  - {fileID: 11478160}
+  - {fileID: 11437176}
+  T_Special:
+  - {fileID: 11489140}
+  - {fileID: 11472512}
+  T_Cooldown:
+  - {fileID: 11456464}
+  - {fileID: 11489142}
+  I_Icon:
+  - {fileID: 11444484}
+  - {fileID: 11487380}
 --- !u!114 &11467998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1122,6 +1172,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1~5
+--- !u!114 &11482254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11486434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1400,6 +1477,7 @@ MonoBehaviour:
   T_Ammo: {fileID: 11445578}
   T_Bandage: {fileID: 11454258}
   T_Timer: {fileID: 11495894}
+  I_WeaponIcon: {fileID: 11482254}
   G_PickUpTips: {fileID: 195592}
   G_Compare: {fileID: 148926}
 --- !u!222 &22202328
@@ -1408,6 +1486,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166336}
+--- !u!222 &22204724
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138754}
 --- !u!222 &22205254
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1668,6 +1752,23 @@ RectTransform:
   m_AnchoredPosition: {x: -155.9, y: 170}
   m_SizeDelta: {x: 160, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &22424398
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22457862}
+  m_RootOrder: 6
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 915.4, y: -490}
+  m_SizeDelta: {x: 35.6, y: 35.6}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22426516
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1801,7 +1902,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22457862}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1925,6 +2026,7 @@ RectTransform:
   - {fileID: 22452782}
   - {fileID: 22453788}
   - {fileID: 22470580}
+  - {fileID: 22424398}
   - {fileID: 22448728}
   - {fileID: 22483654}
   m_Father: {fileID: 22435804}
@@ -1949,7 +2051,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22464840
 RectTransform:
@@ -2044,7 +2146,7 @@ RectTransform:
   - {fileID: 22414214}
   - {fileID: 22452402}
   m_Father: {fileID: 22457862}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}

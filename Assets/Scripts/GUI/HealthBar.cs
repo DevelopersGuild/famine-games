@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class HealthBar : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class HealthBar : MonoBehaviour
     void OnGUI()
     {
         InitStyles();
+
+        if(GetComponent<NetworkIdentity>() !=null)
+        {
+            if(GetComponent<NetworkIdentity>().isLocalPlayer)
+            {
+                return;
+            }
+        }
 
         // Draw a Health Bar
 

@@ -8,6 +8,7 @@ namespace Kroulis.UI.MainGame
     {
 
         public Text T_Health, T_Sheild, T_WeaponName, T_Ammo, T_Bandage, T_Timer;
+        public Image I_WeaponIcon;
         public GameObject G_PickUpTips, G_Compare;
         private GameObject local_player=null;
 
@@ -30,6 +31,7 @@ namespace Kroulis.UI.MainGame
                 T_Health.text = health.currentHealth.ToString();
                 T_Sheild.text = "0";
                 T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
+                I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
                 //T_Ammo
             }
         }
