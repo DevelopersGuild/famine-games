@@ -509,13 +509,13 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 114122, guid: 6120f4d4187797846b97c7a30f07a33f, type: 2}
+  m_PlayerPrefab: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: Process
-  m_OnlineScene: Town
+  m_OnlineScene: MainScene
   m_SpawnPrefabs:
-  - {fileID: 114122, guid: 6120f4d4187797846b97c7a30f07a33f, type: 2}
+  - {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1119026362}
   m_HandleRect: {fileID: 1119026361}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9999984
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4549,7 +4549,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.99994, y: -246.49997}
+  m_AnchoredPosition: {x: -210.99994, y: -246.49918}
   m_SizeDelta: {x: 422, y: 493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493215768
@@ -10770,8 +10770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testing: 1
   load_from_internet: 1
-  uid: 6665636266303337343861623066633439383434343161336662626230663134
-  character_name: 4b726f756c6973
+  uid: fecbf03748ab0fc4984441a3fbbb0f14
+  character_name: Kroulis
   show_connection_gui: 0
 --- !u!224 &1033982179
 RectTransform:
