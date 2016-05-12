@@ -14,6 +14,8 @@ public class BowAndArrow : NetworkBehaviour
     public float pullTime = 0.5f;
     [SyncVar]
     public bool falsePull;
+    [SyncVar]
+    public int currentAmmo;
     public float maxStrengthPullTime = 1.5f; // how long to hold button until max strength reached
     public bool bowEquipped;
 
@@ -24,6 +26,7 @@ public class BowAndArrow : NetworkBehaviour
         falsePull = false;
         bowEquipped = false;
         ac = GetComponent<AttackController>();
+        currentAmmo = 0;
     }
 
     public void Update()
@@ -51,7 +54,7 @@ public class BowAndArrow : NetworkBehaviour
         }
 
         // fire arrow
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && currentAmmo > 0)
         {
             //your way wouldn't work right, since you just increased nextFire
             if (!falsePull)
@@ -77,6 +80,7 @@ public class BowAndArrow : NetworkBehaviour
                 arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward*currentArrowSpeed);
                 // adjusted speed
                 NetworkServer.Spawn(arrow.gameObject);
+                currentAmmo--;
             }
             else
                 falsePull = false;
@@ -103,5 +107,10 @@ public class BowAndArrow : NetworkBehaviour
 
         arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * currentArrowSpeed); // adjusted speed
         NetworkServer.Spawn(arrow.gameObject);
+    }
+
+    public void pickupAmmo(int amount)
+    {
+        currentAmmo += amount;
     }
 }
