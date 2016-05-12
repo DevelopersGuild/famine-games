@@ -13,24 +13,10 @@ GameObject:
   - 23: {fileID: 2330110}
   - 114: {fileID: 11409816}
   - 114: {fileID: 11437442}
+  - 114: {fileID: 11402808}
   m_Layer: 8
   m_Name: Bow
   m_TagString: Item
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &171348
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 465256}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Bow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +49,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 457386}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &457386
 Transform:
   m_ObjectHideFlags: 1
@@ -74,21 +60,8 @@ Transform:
   m_LocalPosition: {x: -13.150688, y: -35.04, z: 8.312485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 465256}
   - {fileID: 454864}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &465256
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15832043, y: 0, z: 0.0072278976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 457386}
   m_RootOrder: 0
 --- !u!23 &2330110
 MeshRenderer:
@@ -133,8 +106,40 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.33, z: 3.44}
+  m_Center: {x: -0.4, y: 0, z: -0.03}
+--- !u!114 &11402808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 250
+    i1: 215
+    i2: 155
+    i3: 158
+    i4: 26
+    i5: 253
+    i6: 174
+    i7: 100
+    i8: 75
+    i9: 56
+    i10: 42
+    i11: 116
+    i12: 247
+    i13: 67
+    i14: 156
+    i15: 176
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11409816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +158,7 @@ MonoBehaviour:
   yRange: 0
   zRange: 0
   icon: {fileID: 0}
+  currentWeaponType: 1
 --- !u!114 &11437442
 MonoBehaviour:
   m_ObjectHideFlags: 1

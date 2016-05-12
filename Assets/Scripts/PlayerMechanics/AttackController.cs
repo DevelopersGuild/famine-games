@@ -8,7 +8,6 @@ public class AttackController : NetworkBehaviour
 {
 
     public AttackCollider attackCollider;
-    [SyncVar]
     public Weapon currentWeapon;
     private bool isAttacking;
 
@@ -34,12 +33,8 @@ public class AttackController : NetworkBehaviour
     [Command]
     void CmdAttack()
     {
-        if (currentWeapon != null) { 
-            if (currentWeapon.transform.Cast<Transform>().Any(t => t.CompareTag("Bow")))
-            {
-                return;
-            }
-         }
+        if (currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+            return;
 
           // create the bullet object from the bullet prefab
         if (!isAttacking)

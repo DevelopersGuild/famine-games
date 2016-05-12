@@ -35,9 +35,8 @@ public class BowAndArrow : NetworkBehaviour
             return;
 
         // Check for bow equipment
-        if (ac.currentWeapon.transform.childCount > 0)
-            foreach (Transform t in ac.currentWeapon.transform)
-                bowEquipped = t.CompareTag("Bow");
+        if (ac.currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+            bowEquipped = true;
         else
             bowEquipped = false;
         
