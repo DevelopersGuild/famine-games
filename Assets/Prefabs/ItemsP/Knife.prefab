@@ -30,6 +30,7 @@ GameObject:
   - 23: {fileID: 2353182}
   - 114: {fileID: 11405624}
   - 114: {fileID: 11448076}
+  - 114: {fileID: 11461514}
   m_Layer: 8
   m_Name: Knife
   m_TagString: Item
@@ -44,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.254303, y: -34.45, z: 10.932842}
+  m_LocalPosition: {x: -14.254303, y: -34.36, z: 13.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440358}
@@ -125,6 +126,7 @@ MonoBehaviour:
   yRange: 1
   zRange: 1
   icon: {fileID: 0}
+  currentWeaponType: 0
 --- !u!114 &11437656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +149,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24801eb19548044499c3fd05454ac42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11461514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 184
+    i1: 110
+    i2: 167
+    i3: 138
+    i4: 141
+    i5: 224
+    i6: 191
+    i7: 164
+    i8: 170
+    i9: 70
+    i10: 226
+    i11: 117
+    i12: 220
+    i13: 229
+    i14: 211
+    i15: 188
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &13587106
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -154,7 +188,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132364}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.2020521

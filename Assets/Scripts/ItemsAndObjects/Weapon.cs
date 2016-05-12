@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class Weapon : MonoBehaviour, IItem
+public class Weapon : NetworkBehaviour, IItem
 {
 
     // Weapons
@@ -12,6 +13,14 @@ public class Weapon : MonoBehaviour, IItem
     public float yRange;
     public float zRange;
     public Sprite icon;
+
+    public enum WeaponType
+    {
+        Melee,
+        Ranged
+    };
+
+    public WeaponType currentWeaponType;
 
     public void PrimaryUse()
     {
@@ -27,8 +36,7 @@ public class Weapon : MonoBehaviour, IItem
     {
         AttackController ac = player.GetComponent<AttackController>();
         ac.PickedUpWeapon(this);
-        gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        RpcMakeInvisible();
     }
 
     public void OnDrop()
@@ -39,5 +47,13 @@ public class Weapon : MonoBehaviour, IItem
     public EItemType ItemType()
     {
         return EItemType.Weapon;
+    }
+
+    [ClientRpc]
+    public void RpcMakeInvisible()
+    {
+        if (!isServer) return;
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }

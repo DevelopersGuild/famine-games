@@ -262,7 +262,6 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-    lockCursor: 1
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -428,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
-  currentWeapon: {fileID: 11405624, guid: b86ea78a8de0bfa4aa46e275dce5d3bc, type: 2}
+  currentWeapon: {fileID: 0}
 --- !u!114 &11469244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +447,7 @@ MonoBehaviour:
   pullTime: 0.5
   falsePull: 0
   maxStrengthPullTime: 1.5
+  bowEquipped: 0
 --- !u!114 &11471054
 MonoBehaviour:
   m_ObjectHideFlags: 1
