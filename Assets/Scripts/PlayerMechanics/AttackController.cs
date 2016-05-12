@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine.Networking;
+using Kroulis.UI.MainGame;
 
 public class AttackController : NetworkBehaviour
 {
@@ -10,6 +11,7 @@ public class AttackController : NetworkBehaviour
     [SyncVar]
     public Weapon currentWeapon;
     private bool isAttacking;
+
 
     // Use this for initialization
     void Start()
@@ -77,6 +79,11 @@ public class AttackController : NetworkBehaviour
 
     IEnumerator StartAttackCoroutine(float attackCooldown)
     {
+        WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
+        if(wbc)
+        {
+            wbc.StartCooldown(attackCooldown);
+        }
         yield return new WaitForSeconds(attackCooldown);
         FinishedAttack();
     }
@@ -95,5 +102,10 @@ public class AttackController : NetworkBehaviour
     public void DropWeapon()
     {
         currentWeapon = null;
+    }
+
+    public bool GetAttackingStatus()
+    {
+        return isAttacking;
     }
 }
