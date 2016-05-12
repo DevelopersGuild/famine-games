@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2347792}
   - 114: {fileID: 11405306}
   - 114: {fileID: 11438542}
+  - 114: {fileID: 11415248}
   m_Layer: 8
   m_Name: Axe
   m_TagString: Item
@@ -125,6 +126,39 @@ MonoBehaviour:
   yRange: 2
   zRange: 2
   icon: {fileID: 0}
+  currentWeaponType: 0
+--- !u!114 &11415248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 103
+    i1: 238
+    i2: 17
+    i3: 201
+    i4: 205
+    i5: 149
+    i6: 65
+    i7: 148
+    i8: 91
+    i9: 113
+    i10: 240
+    i11: 250
+    i12: 133
+    i13: 35
+    i14: 252
+    i15: 69
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11438542
 MonoBehaviour:
   m_ObjectHideFlags: 1
