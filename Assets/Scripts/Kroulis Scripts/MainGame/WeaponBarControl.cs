@@ -10,6 +10,7 @@ namespace Kroulis.UI.MainGame
         private bool isCoolingdown = false;
         private float cooldowntime = 0;
         private float currenttime = 0;
+        private float currentcharge = 0;
         // Use this for initialization
         void Start()
         {
@@ -35,6 +36,7 @@ namespace Kroulis.UI.MainGame
             else
             {
                 CoolDownBar.fillAmount = 0;
+                ChargeBar.fillAmount = currentcharge;
             }
         }
 
@@ -44,6 +46,11 @@ namespace Kroulis.UI.MainGame
                 return;
             cooldowntime = cooldownt;
             isCoolingdown = true;
+        }
+
+        public void SetChargeAmount(float percentage)
+        {
+            currentcharge = percentage;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using Kroulis.UI.MainGame;
 
 public class BowAndArrow : NetworkBehaviour
 {
@@ -62,6 +63,13 @@ public class BowAndArrow : NetworkBehaviour
                 float timePulledBack = Time.time - pullStartTime; // this is how long the button was held
                 if (timePulledBack > maxStrengthPullTime) // this says max strength is reached 
                     timePulledBack = maxStrengthPullTime; // max strength is ArrowSpeed * maxStrengthPullTime
+
+                WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
+                if(wbc)
+                {
+                    Debug.Log(timePulledBack / maxStrengthPullTime);
+                    wbc.SetChargeAmount(timePulledBack / maxStrengthPullTime);
+                }
                 float currentArrowSpeed = arrowSpeed*timePulledBack; // adjust speed directly using pullback time
 
                 Arrow arrow =
