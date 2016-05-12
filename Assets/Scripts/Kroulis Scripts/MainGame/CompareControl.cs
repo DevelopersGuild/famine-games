@@ -76,8 +76,8 @@ namespace Kroulis.UI.MainGame
 
             //cooldown
 
-            T_Cooldown[0].text = "Unknown";
-            T_Cooldown[1].text = "Unknown";
+            T_Cooldown[0].text = current.attackCooldown.ToString()+"s";
+            T_Cooldown[1].text = compare.attackCooldown.ToString() + "s";
 
         }
     }
