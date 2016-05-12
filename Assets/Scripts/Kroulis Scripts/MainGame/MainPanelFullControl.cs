@@ -33,9 +33,18 @@ namespace Kroulis.UI.MainGame
                 //Timer
                 T_Health.text = health.currentHealth.ToString();
                 T_Sheild.text = "0";
-                T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
-                I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
-                //T_Ammo
+                if (local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon)
+                {
+                    T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
+                    I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
+                    //T_Ammo
+                }
+                else
+                {
+                    T_WeaponName.text = "Hands";
+                    I_WeaponIcon.sprite = null;
+                    T_Ammo.text = "Infinity";
+                }
             }
 
             if(rtk_list.Count!=0)
