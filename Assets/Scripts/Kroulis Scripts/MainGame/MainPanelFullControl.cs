@@ -55,10 +55,13 @@ namespace Kroulis.UI.MainGame
                 //Showing Realtime Killing Tab
                 for(int i=0;i<rtk_list.Count && i<8;i++)
                 {
-                    rtk_list[i].SetActive(true);
-                    Vector3 posi=rtk_list[i].transform.position;
-                    posi.y=285+50*i;
-                    rtk_list[i].transform.position.Set(posi.x,posi.y,posi.z);
+                    GameObject currentrtk = rtk_list[i];
+                    currentrtk.SetActive(true);
+                    Vector3 posi = currentrtk.transform.localPosition;
+                    posi.y=285-42*i;
+                    //Debug.Log(posi);
+                    currentrtk.transform.localPosition=posi;
+                    rtk_list[i] = currentrtk;
                 }
                 for(int i=8;i<rtk_list.Count;i++)
                 {
@@ -116,6 +119,7 @@ namespace Kroulis.UI.MainGame
             GameObject ptk = Instantiate<GameObject>(RTKPrefab);
             ptk.transform.parent = gameObject.transform;
             ptk.transform.position = RTKPrefab.transform.position;
+            ptk.transform.localPosition = RTKPrefab.transform.localPosition;
             ptk.transform.localScale = RTKPrefab.transform.localScale;
             Sprite icon=null;
             ptk.SetActive(true);
