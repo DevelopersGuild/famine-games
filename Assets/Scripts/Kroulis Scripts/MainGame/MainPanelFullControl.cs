@@ -37,7 +37,19 @@ namespace Kroulis.UI.MainGame
                 {
                     T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
                     I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
-                    //T_Ammo
+                    if(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.currentWeaponType==Weapon.WeaponType.Melee)
+                    {
+                        T_Ammo.text = "Infinity";
+                    }
+                    else
+                    {
+                        int currentammo=local_player.GetComponent<BowAndArrow>().currentAmmo;
+                        if (currentammo > 0)
+                            T_Ammo.text = "1 / " + currentammo.ToString();
+                        else
+                            T_Ammo.text = "<color=red>Out of Ammo</color>";
+                    }
+                    
                 }
                 else
                 {

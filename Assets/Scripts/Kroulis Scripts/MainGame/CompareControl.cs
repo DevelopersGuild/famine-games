@@ -29,55 +29,42 @@ namespace Kroulis.UI.MainGame
             //icon
             I_Icon[0].sprite = current.icon;
             I_Icon[1].sprite = compare.icon;
-            //range & ammo & damage & special
-            if(current.xRange*current.yRange*current.zRange==0)
+
+            BowAndArrow baa = new BowAndArrow();
+            //range & ammo & damage & special & cooldown
+            if(current.currentWeaponType==Weapon.WeaponType.Melee)
             {
-                T_Range[0].text = "<color=green>Long</color>";
-                T_Ammo[0].text = "?/?/?";
-                T_Damage[0].text = current.damage.ToString() + " <color=orange>(+5)</color>";
-                T_Special[0].text = "Chargable:1.5s";
-            }
-            else if(current.xRange*current.yRange*current.zRange<=4)
-            {
-                T_Range[0].text = "<color=red>Short</color>";
+                T_Range[0].text = "<color=red>Melee</color>";
                 T_Ammo[0].text = "Infinity";
                 T_Damage[0].text = current.damage.ToString() + " <color=orange>(+0)</color>";
                 T_Special[0].text = "";
+                T_Cooldown[0].text = current.attackCooldown.ToString() + "s";
             }
             else
             {
-                T_Range[0].text = "<color=yellow>Midrange</color>";
-                T_Ammo[0].text = "Infinity";
+                T_Range[0].text = "<color=green>Ranged</color>";
+                T_Ammo[0].text = "1 / Unlimited";
                 T_Damage[0].text = current.damage.ToString() + " <color=orange>(+5)</color>";
-                T_Special[0].text = "Chargable:1.5s";
+                T_Special[0].text = "Chargable:"+baa.maxStrengthPullTime.ToString()+"s";
+                T_Cooldown[0].text = baa.fireRate.ToString() + "s";
             }
 
-            if (compare.xRange * compare.yRange * compare.zRange == 0)
+            if(compare.currentWeaponType==Weapon.WeaponType.Melee)
             {
-                T_Range[1].text = "<color=green>Long</color>";
-                T_Ammo[1].text = "?/?";
-                T_Damage[1].text = compare.damage.ToString() + " <color=orange>(+5)</color>";
-                T_Special[1].text = "Chargable:1.5s";
-            }
-            else if (compare.xRange * compare.yRange * compare.zRange <= 4)
-            {
-                T_Range[1].text = "<color=red>Short</color>";
+                T_Range[1].text = "<color=red>Melee</color>";
                 T_Ammo[1].text = "Infinity";
                 T_Damage[1].text = compare.damage.ToString() + " <color=orange>(+0)</color>";
                 T_Special[1].text = "";
+                T_Cooldown[1].text = compare.attackCooldown.ToString() + "s";
             }
             else
             {
-                T_Range[1].text = "<color=yellow>Midrange</color>";
-                T_Ammo[1].text = "Infinity";
+                T_Range[1].text = "<color=green>Ranged</color>";
+                T_Ammo[1].text = "1 / Unlimited";
                 T_Damage[1].text = compare.damage.ToString() + " <color=orange>(+5)</color>";
-                T_Special[1].text = "";
+                T_Special[1].text = "Chargable:" + baa.maxStrengthPullTime.ToString() + "s";
+                T_Cooldown[1].text = baa.fireRate.ToString() + "s";
             }
-
-            //cooldown
-
-            T_Cooldown[0].text = current.attackCooldown.ToString()+"s";
-            T_Cooldown[1].text = compare.attackCooldown.ToString() + "s";
 
         }
     }
