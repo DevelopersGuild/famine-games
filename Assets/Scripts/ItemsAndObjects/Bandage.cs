@@ -3,14 +3,23 @@ using System.Collections;
 
 public class Bandage : MonoBehaviour, IItem
 {
+
+    private int healAmount;
+
+    public void Start()
+    {
+        healAmount = 50;
+    }
+
     public EItemType ItemType()
     {
         return EItemType.Health;
     }
 
-    public void PrimaryUse()
+    public void PrimaryUse(GameObject owner)
     {
-        Debug.Log("Added Health");
+        Health health = owner.GetComponent<Health>();
+        health.Heal(healAmount);
     }
 
     public void SecondaryUse()

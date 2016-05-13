@@ -6,6 +6,7 @@ public class Health : NetworkBehaviour
 {
 
     public int maxHealth;
+    public int bandagesAmount;
 
     [SyncVar]
     public int currentHealth;
@@ -14,6 +15,7 @@ public class Health : NetworkBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        bandagesAmount = 0;
     }
 
     // Returns whether the target died
@@ -34,6 +36,23 @@ public class Health : NetworkBehaviour
         }
 
         return false;
+    }
+
+    public void Heal(int amount)
+    {
+        if (!isServer)
+            return;
+
+        currentHealth += amount;
+
+        // Health cap
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+    }
+
+    public void UseBandage(int amount)
+    {
+        bandagesAmount--;
     }
 
     [ClientRpc]

@@ -22,7 +22,7 @@ public class Weapon : NetworkBehaviour, IItem
 
     public WeaponType currentWeaponType;
 
-    public void PrimaryUse()
+    public void PrimaryUse(GameObject owner)
     {
         throw new System.NotImplementedException();
     }

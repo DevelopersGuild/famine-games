@@ -4,7 +4,7 @@
 /// </summary>
 public interface IItem
 {
-    void PrimaryUse();
+    void PrimaryUse(GameObject owner);
     void SecondaryUse();
     void OnPickup(GameObject owner);
     void OnDrop();

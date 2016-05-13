@@ -42,16 +42,9 @@ public class AttackController : NetworkBehaviour
             isAttacking = true;
             AttackCollider attack;
 
-            if (currentWeapon == null)
-            {
-                attackCollider.transform.localScale = new Vector3(1,1,1);
-                attackCollider.damage = 5;
-            }
-            else
-            { 
-                attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
-                attackCollider.damage = currentWeapon.damage;
-            }
+            attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
+            attackCollider.damage = currentWeapon.damage;
+
 
             attack = (AttackCollider)Instantiate(
                     attackCollider,
@@ -62,10 +55,7 @@ public class AttackController : NetworkBehaviour
             attack.transform.parent = transform;
             Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
-            if (currentWeapon == null)
-                StartCoroutine(StartAttackCoroutine(2));
-            else
-                StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));
+            StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);

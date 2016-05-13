@@ -5,7 +5,7 @@ using System;
 
 public class Ammo : NetworkBehaviour, IItem
 {
-    public int ammoAmount;
+    private int ammoAmount;
 
     public void Start()
     {
@@ -30,7 +30,7 @@ public class Ammo : NetworkBehaviour, IItem
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    public void PrimaryUse()
+    public void PrimaryUse(GameObject owner)
     {
         return;
     }
