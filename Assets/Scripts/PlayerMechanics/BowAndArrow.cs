@@ -29,11 +29,13 @@ public class BowAndArrow : NetworkBehaviour
 
     public void Update()
     {
+
         if (ac.currentWeapon == null)
             return;
         if (!isLocalPlayer)
             return;
 
+        WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
         // Check for bow equipment
         if (ac.currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
             bowEquipped = true;
@@ -46,10 +48,20 @@ public class BowAndArrow : NetworkBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (Time.time > nextFire)
+            {
                 pullStartTime = Time.time; //store the start time
+                if (wbc)
+                {
+                    wbc.StartCharge(maxStrengthPullTime);
+                }
+            }   
             else
                 falsePull = true;
+
         }
+
+        
+        
 
         // fire arrow
         if (Input.GetMouseButtonUp(0))
@@ -63,14 +75,11 @@ public class BowAndArrow : NetworkBehaviour
                 if (timePulledBack > maxStrengthPullTime) // this says max strength is reached 
                     timePulledBack = maxStrengthPullTime; // max strength is ArrowSpeed * maxStrengthPullTime
 
-                WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
-                if(wbc)
-                {
-                    Debug.Log(timePulledBack / maxStrengthPullTime);
-                    wbc.SetChargeAmount(timePulledBack / maxStrengthPullTime);
-                }
                 float currentArrowSpeed = arrowSpeed*timePulledBack; // adjust speed directly using pullback time
-
+                if (wbc)
+                {
+                    wbc.StopCharge();
+                }
                 Arrow arrow =
                     (Arrow)
                         Instantiate(arrowPrefab, transform.position - transform.forward*-2,

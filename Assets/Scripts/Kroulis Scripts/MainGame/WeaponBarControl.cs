@@ -8,9 +8,11 @@ namespace Kroulis.UI.MainGame
     {
         public Image CoolDownBar, ChargeBar;
         private bool isCoolingdown = false;
+        private bool isCharging = false;
         private float cooldowntime = 0;
         private float currenttime = 0;
         private float currentcharge = 0;
+        private float maximumcharge = 0;
         // Use this for initialization
         void Start()
         {
@@ -36,7 +38,16 @@ namespace Kroulis.UI.MainGame
             else
             {
                 CoolDownBar.fillAmount = 0;
-                ChargeBar.fillAmount = currentcharge;
+                if(isCharging)
+                {
+                    currentcharge += Time.deltaTime;
+                    ChargeBar.fillAmount = currentcharge / maximumcharge;
+                }
+                else
+                {
+                    ChargeBar.fillAmount = 0;
+                }
+                
             }
         }
 
@@ -48,9 +59,17 @@ namespace Kroulis.UI.MainGame
             isCoolingdown = true;
         }
 
-        public void SetChargeAmount(float percentage)
+        public void StartCharge(float maximumc)
         {
-            currentcharge = percentage;
+            maximumcharge = maximumc;
+            isCharging = true;
+        }
+
+        public void StopCharge()
+        {
+            isCharging = false;
+            maximumcharge = 0;
+            currentcharge = 0;
         }
     }
 }
