@@ -36,7 +36,7 @@ public class Weapon : NetworkBehaviour, IItem
     {
         AttackController ac = player.GetComponent<AttackController>();
         ac.PickedUpWeapon(this);
-        RpcMakeInvisible();
+        CmdMakeInvisible();
     }
 
     public void OnDrop()
@@ -49,8 +49,8 @@ public class Weapon : NetworkBehaviour, IItem
         return EItemType.Weapon;
     }
 
-    [ClientRpc]
-    public void RpcMakeInvisible()
+    [Command]
+    public void CmdMakeInvisible()
     {
         if (!isServer) return;
         gameObject.GetComponent<Collider>().enabled = false;
