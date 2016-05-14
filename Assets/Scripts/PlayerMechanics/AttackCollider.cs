@@ -19,12 +19,23 @@ public class AttackCollider : NetworkBehaviour
     void OnTriggerEnter(Collider other)
     {
         Health health = other.GetComponent<Health>();
-        if (health != null)
+        Defense defense = other.GetComponent<Defense>();
+        if (health != null && defense!= null)
         {
-            if (health.TakeDamage(damage))
-            { 
+            //if (health.TakeDamage(damage))
+            //{ 
+            //        owner.AddPoints(10);
+            //};
+            int amrordamage=defense.TakeDamage(damage);
+            if(amrordamage!=-1)
+            {
+                int healthdamage = damage - amrordamage;
+                if(health.TakeDamage(healthdamage))
+                {
                     owner.AddPoints(10);
-            };
+                }
+            }
+            
         }
     }
 }

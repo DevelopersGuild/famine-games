@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 11403882}
   - 114: {fileID: 11479860}
   - 114: {fileID: 11469244}
+  - 114: {fileID: 11467996}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -359,6 +360,7 @@ MonoBehaviour:
   attackController: {fileID: 11426704}
   points: {fileID: 11484018}
   bowAndArrow: {fileID: 11469244}
+  defense: {fileID: 11467996}
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  bandagesAmount: 0
   currentHealth: 0
 --- !u!114 &11425322
 MonoBehaviour:
@@ -428,6 +431,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: 172623cbb8817a0429af865dff14f9c5, type: 2}
+--- !u!114 &11467996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe8f71a47f2166429843f0ab5638adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469244
 MonoBehaviour:
   m_ObjectHideFlags: 1

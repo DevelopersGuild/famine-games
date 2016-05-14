@@ -29,10 +29,11 @@ namespace Kroulis.UI.MainGame
             if(local_player)
             {
                 Health health = local_player.GetComponent<Health>();
-                //Sheild sheild = local_player.GetComponent<Sheild>();
+                Defense sheild = local_player.GetComponent<Defense>();
                 //Timer
                 T_Health.text = health.currentHealth.ToString();
-                T_Sheild.text = "0";
+                T_Bandage.text = health.bandagesAmount.ToString();
+                T_Sheild.text = sheild.GetCurrentAmror().ToString();
                 if (local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon)
                 {
                     T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;

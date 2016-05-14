@@ -10,6 +10,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public AttackController attackController;
     public Point points;
     public BowAndArrow bowAndArrow;
+    public Defense defense;
 
 
     public override void OnStartLocalPlayer()
@@ -20,6 +21,7 @@ public class NetworkedPlayer : NetworkBehaviour
         attackController.enabled = true;
         points.enabled = true;
         bowAndArrow.enabled = true;
+        defense.enabled = true;
 
         gameObject.name = "LOCAL Player";
         base.OnStartLocalPlayer();
