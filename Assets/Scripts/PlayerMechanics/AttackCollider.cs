@@ -20,14 +20,24 @@ public class AttackCollider : NetworkBehaviour
     {
         Health health = other.GetComponent<Health>();
         Point target = other.GetComponent<Point>();
-        if (health != null)
+        Defense defense = other.GetComponent<Defense>();
+
+
+        if (health != null && defense != null)
         {
-            if (health.TakeDamage(damage))
+
+            int armordamage = defense.TakeDamage(damage);
+            if (armordamage != -1)
             {
-                owner.AddPoints(10);
-                owner.incKills();
-                target.incDeaths();
+                int healthdamage = damage - armordamage;
+                if (health.TakeDamage(healthdamage))
+                {
+                    owner.AddPoints(10);
+                    owner.incKills();
+                    target.incDeaths();
+                }
             }
+
         }
     }
 }

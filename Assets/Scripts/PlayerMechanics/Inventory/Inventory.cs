@@ -5,7 +5,7 @@
 /// </summary>
 public class Inventory : MonoBehaviour
 {
-    private static int inventorySize = 3;
+    private static int inventorySize = 6;
     private IItem[] inventory;
     private IItem selectedItem;
 

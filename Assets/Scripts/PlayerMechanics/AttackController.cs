@@ -12,7 +12,8 @@ public class AttackController : NetworkBehaviour
     public NetworkInstanceId weaponId;
     public Weapon currentWeapon;
     private bool isAttacking;
-
+    private WeaponBarControl wbc;
+        
 
     // Use this for initialization
     void Start()
@@ -25,9 +26,21 @@ public class AttackController : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-
+        if(!wbc)
+        {
+            wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
+        }
         if (Input.GetMouseButtonDown(0)) 
         {
+            if (wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Melee)
+            {
+                Debug.Log(currentWeapon.attackCooldown);
+                wbc.StartCooldown(currentWeapon.attackCooldown);
+            }
+            else if(wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+            {
+                
+            }
             CmdAttack();
         }
     }
@@ -66,11 +79,6 @@ public class AttackController : NetworkBehaviour
 
     IEnumerator StartAttackCoroutine(float attackCooldown)
     {
-        WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
-        if(wbc)
-        {
-            wbc.StartCooldown(attackCooldown);
-        }
         yield return new WaitForSeconds(attackCooldown);
         FinishedAttack();
     }

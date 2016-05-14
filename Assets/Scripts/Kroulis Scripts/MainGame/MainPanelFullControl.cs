@@ -29,15 +29,28 @@ namespace Kroulis.UI.MainGame
             if(local_player)
             {
                 Health health = local_player.GetComponent<Health>();
-                //Sheild sheild = local_player.GetComponent<Sheild>();
+                Defense sheild = local_player.GetComponent<Defense>();
                 //Timer
                 T_Health.text = health.currentHealth.ToString();
-                T_Sheild.text = "0";
+                T_Bandage.text = health.bandagesAmount.ToString();
+                T_Sheild.text = sheild.GetCurrentAmror().ToString();
                 if (local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon)
                 {
                     T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
                     I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
-                    //T_Ammo
+                    if(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.currentWeaponType==Weapon.WeaponType.Melee)
+                    {
+                        T_Ammo.text = "Infinity";
+                    }
+                    else
+                    {
+                        int currentammo=local_player.GetComponent<BowAndArrow>().currentAmmo;
+                        if (currentammo > 0)
+                            T_Ammo.text = "1 / " + currentammo.ToString();
+                        else
+                            T_Ammo.text = "<color=red>Out of Ammo</color>";
+                    }
+                    
                 }
                 else
                 {
