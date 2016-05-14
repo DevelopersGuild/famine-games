@@ -31,7 +31,7 @@ GameObject:
   - 4: {fileID: 435088}
   - 114: {fileID: 11493838}
   - 135: {fileID: 13500190}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PickUpTipsChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: -35.02, z: 8}
+  m_LocalPosition: {x: -6.281616, y: -36.28489, z: 20.96946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435088}

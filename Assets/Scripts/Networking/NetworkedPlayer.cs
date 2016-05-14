@@ -4,7 +4,7 @@ using System.Collections;
 
 public class NetworkedPlayer : NetworkBehaviour
 {
-    public UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpsController;
+    public FirstPersonController fpsController;
     public Camera fpsCamera;
     public AudioSource audioSource;
     public AttackController attackController;

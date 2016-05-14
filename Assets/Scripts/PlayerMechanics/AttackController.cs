@@ -8,6 +8,8 @@ public class AttackController : NetworkBehaviour
 {
 
     public AttackCollider attackCollider;
+    [SyncVar]
+    public NetworkInstanceId weaponId;
     public Weapon currentWeapon;
     private bool isAttacking;
 
@@ -81,7 +83,8 @@ public class AttackController : NetworkBehaviour
 
     public void PickedUpWeapon(Weapon weapon)
     {
-        currentWeapon = weapon;
+        weaponId = weapon.netId;
+        currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
     }
 
     public void DropWeapon()

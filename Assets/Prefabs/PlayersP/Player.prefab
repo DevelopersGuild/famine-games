@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2937ad4f9206ed74a937b2fde0cfee4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArmReach: 1
+  ArmReach: 3
 --- !u!114 &11415524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  bandagesAmount: 0
   currentHealth: 0
 --- !u!114 &11425322
 MonoBehaviour:
