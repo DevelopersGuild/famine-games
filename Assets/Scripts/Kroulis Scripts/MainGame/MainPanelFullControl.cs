@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Kroulis.Components;
 
 namespace Kroulis.UI.MainGame
 {
@@ -12,6 +13,7 @@ namespace Kroulis.UI.MainGame
         public Image I_WeaponIcon;
         public GameObject G_PickUpTips, G_Compare;
         public GameObject RTKPrefab;
+        public GameObject ChatBox;
         private GameObject local_player=null;
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
@@ -57,6 +59,26 @@ namespace Kroulis.UI.MainGame
                     T_WeaponName.text = "Hands";
                     I_WeaponIcon.sprite = null;
                     T_Ammo.text = "Infinity";
+                }
+
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+                    ChatBoxFullControl cbfc= ChatBox.GetComponent<ChatBoxFullControl>();
+                    if(!cbfc)
+                    {
+                        ChatBox.SetActive(true);
+                        cbfc = ChatBox.GetComponent<ChatBoxFullControl>();
+                    }
+                    if(cbfc.InputBarOn)
+                    {
+                        cbfc.HideAll();
+                        GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = true;
+                    }
+                    else
+                    {
+                        cbfc.ShowAll();
+                        GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = false;
+                    }
                 }
             }
 

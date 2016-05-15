@@ -29,6 +29,11 @@ namespace Kroulis.Components
                 }
                     
             }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
     }
 }

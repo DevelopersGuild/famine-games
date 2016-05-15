@@ -1,0 +1,23 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.Networking;
+
+namespace Kroulis.Components
+{
+    public class UserNameTab : NetworkBehaviour
+    {
+        [SyncVar]
+        public string player_name; 
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+    }
+}
