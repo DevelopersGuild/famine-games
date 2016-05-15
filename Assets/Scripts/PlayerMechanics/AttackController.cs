@@ -48,6 +48,10 @@ public class AttackController : NetworkBehaviour
     [Command]
     void CmdAttack()
     {
+
+        if(!currentWeapon || currentWeapon.netId != weaponId)
+            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+
         if (currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
             return;
 
@@ -91,7 +95,8 @@ public class AttackController : NetworkBehaviour
 
     public void PickedUpWeapon(Weapon weapon)
     {
-        weaponId = weapon.netId;
+        //weaponId = weapon.netId;
+        CmdUpdateWeapon(weapon.netId);
         currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
     }
 
@@ -103,5 +108,13 @@ public class AttackController : NetworkBehaviour
     public bool GetAttackingStatus()
     {
         return isAttacking;
+    }
+
+    [Command]
+    public void CmdUpdateWeapon(NetworkInstanceId wid)
+    {
+        if (!isServer)
+            return;
+        weaponId = wid;
     }
 }

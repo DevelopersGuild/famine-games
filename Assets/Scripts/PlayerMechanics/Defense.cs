@@ -7,6 +7,8 @@ public class Defense : NetworkBehaviour {
     public Amror amror;
     [SyncVar]
     public int currentAmror;
+    [SyncVar]
+    public NetworkInstanceId amrorid;
 
 	// Use this for initialization
 	void Start () {
@@ -20,8 +22,18 @@ public class Defense : NetworkBehaviour {
             return -1;
 
         //No amror
-        if(!amror)
+        if (amrorid==null)
             return 0;
+
+        if(!amror || amror.netId!=amrorid)
+        {
+            amror = ClientScene.FindLocalObject(amrorid).GetComponent<Amror>();
+        }
+
+        if(!amror)
+        {
+            return 0;
+        }
 
         int baseamount = 0;
 
@@ -41,9 +53,9 @@ public class Defense : NetworkBehaviour {
         if (currentAmror <= 0)
         {
             int returnamount = baseamount + currentAmror;
-            if (amror)
+            /*if (amror)
                 Destroy(amror);
-            amror = null;
+            amror = null;*/
             currentAmror = 0;
             // called on the server, will be invoked on the clients
             return returnamount;
@@ -54,8 +66,8 @@ public class Defense : NetworkBehaviour {
     
     public void PickedUpAmror(Amror amror)
     {
+        CmdUpdateAmror(amror.netId, amror.maxDurability);
         this.amror = amror;
-        currentAmror = amror.maxDurability;
     }
 
     public int GetCurrentAmror()
@@ -68,4 +80,19 @@ public class Defense : NetworkBehaviour {
 	void Update () {
 	
 	}
+
+    [Command]
+    public void CmdUpdateAmror(NetworkInstanceId aid, int amroramount)
+    {
+        if (!isServer)
+            return;
+        amrorid = aid;
+        currentAmror = amroramount;
+    }
+
+    [Command]
+    public void CmdDeadAmrorBreak()
+    {
+        currentAmror = 0;
+    }
 }

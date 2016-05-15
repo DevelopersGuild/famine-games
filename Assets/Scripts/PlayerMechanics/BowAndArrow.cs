@@ -53,7 +53,7 @@ public class BowAndArrow : NetworkBehaviour
             if (Time.time > nextFire)
             {
                 pullStartTime = Time.time; //store the start time
-                if (wbc)
+                if (wbc && currentAmmo>0)
                 {
                     wbc.StartCharge(maxStrengthPullTime);
                 }
