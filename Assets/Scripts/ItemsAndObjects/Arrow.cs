@@ -25,14 +25,39 @@ public class Arrow : NetworkBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        //Health health = other.GetComponent<Health>();
+        //if (health != null)
+        //{
+        //    if (health.TakeDamage(damage))
+        //        owner.AddPoints(10);
+        //}
+        //else
+        //    Destroy(this.gameObject);
+
         Health health = other.GetComponent<Health>();
-        if (health != null)
+        Point target = other.GetComponent<Point>();
+        Defense defense = other.GetComponent<Defense>();
+
+
+        if (health != null && defense != null)
         {
-            if (health.TakeDamage(damage))
-                owner.AddPoints(10);
+
+            int armordamage = defense.TakeDamage(damage);
+            if (armordamage != -1)
+            {
+                int healthdamage = damage - armordamage;
+                if (health.TakeDamage(healthdamage))
+                {
+                    owner.AddPoints(10);
+                    owner.incKills();
+                    target.incDeaths();
+                }
+            }
         }
         else
+        {
             Destroy(this.gameObject);
+        }
     }
 
     public void SetDamage(int damageAmount)

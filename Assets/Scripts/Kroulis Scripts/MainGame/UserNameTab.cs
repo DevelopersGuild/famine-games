@@ -19,5 +19,13 @@ namespace Kroulis.Components
         {
 
         }
+
+        [Command]
+        public void CmdUpdatePlayerName(string playername)
+        {
+            if (!isServer)
+                return;
+            player_name = playername;
+        }
     }
 }
