@@ -12,7 +12,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public Point points;
     public BowAndArrow bowAndArrow;
     public Defense defense;
-    public UserNameTab playerinfo;
+    public ContestInfomation playerinfo;
 
     public override void OnStartLocalPlayer()
     {

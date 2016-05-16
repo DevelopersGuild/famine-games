@@ -54,7 +54,7 @@ namespace Kroulis.UI.MainGame
         public void ShowAll()
         {
             ChatInput.gameObject.SetActive(true);
-            UserTab.text = GameObject.Find("LOCAL Player").GetComponent<UserNameTab>().player_name + ":";
+            UserTab.text = GameObject.Find("LOCAL Player").GetComponent<ContestInfomation>().player_name + ":";
             InputBarOn = true;
             ChatLog.gameObject.SetActive(true);
             LogBarOn = true;
@@ -68,7 +68,7 @@ namespace Kroulis.UI.MainGame
             {
                 //GameObject.Find("ChatSystem").GetComponent<UnetChat>().SendChat(GameObject.Find("LOCAL Player").GetComponent<NetworkIdentity>().netId, ChatInput.GetComponent<InputField>().text);
                 GameObject localplayer = GameObject.Find("LOCAL Player");
-                GameObject.Find("ChatSystem").GetComponent<UnetChat>().SendChat(localplayer.GetComponent<UserNameTab>().player_name + " : " + ChatInput.GetComponent<InputField>().text);
+                GameObject.Find("ChatSystem").GetComponent<UnetChat>().SendChat(localplayer.GetComponent<ContestInfomation>().player_name + " : " + ChatInput.GetComponent<InputField>().text);
                 ChatInput.GetComponent<InputField>().text = "";
             }
             ChatInput.GetComponent<InputField>().DeactivateInputField();

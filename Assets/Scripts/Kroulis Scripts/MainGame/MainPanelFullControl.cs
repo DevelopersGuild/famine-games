@@ -17,6 +17,12 @@ namespace Kroulis.UI.MainGame
         private GameObject local_player=null;
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
+        private GameProcess gp;
+        void Awake()
+        {
+            gp = GameObject.Find("GameCoreProcess").GetComponent<GameProcess>();
+        }
+
         // Use this for initialization
         void Start()
         {
@@ -116,6 +122,10 @@ namespace Kroulis.UI.MainGame
             {
                 rtk_timer=0;
             }
+            int ts= (int)gp.timestamp;
+            int minutes=ts/60;
+            int seconds=ts%60;
+            T_Timer.text = minutes.ToString("D2")+":"+seconds.ToString("D2")+" / 15:00";
         }
 
         void OnGUI()

@@ -4,10 +4,10 @@ using UnityEngine.Networking;
 
 namespace Kroulis.Components
 {
-    public class UserNameTab : NetworkBehaviour
+    public class ContestInfomation : NetworkBehaviour
     {
         [SyncVar]
-        public string player_name; 
+        public string player_name;
         // Use this for initialization
         void Start()
         {
@@ -27,5 +27,6 @@ namespace Kroulis.Components
                 return;
             player_name = playername;
         }
+
     }
 }
