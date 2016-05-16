@@ -19,6 +19,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
     private WWWForm form;
     private string url_userinfo = "https://www.kroulisworld.com/programs/survive/ddt/get_info.php";
     private string url_matchinfo = "https://www.kroulisworld.com/programs/survive/ddt/get_recent_result.php";
+    private string processname;
 	public void GetInfo(Text name,Text level,Text EXP_text,Image EXP_image,Text Gold,Text Diamond)
     {
         this.Name = name;
@@ -59,6 +60,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
                 if (code == "143930")
                 {
                     Name.text = (string)jd["name"];
+                    processname = Name.text;
                     level.text = GetLevelText((string)jd["level"]);
                     EXP_text.text = (string)jd["exp"] + @"/1000";
                     EXP_image.fillAmount = float.Parse((string)jd["exp"]) / 1000f;
@@ -182,6 +184,9 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
 
     public string GetCharacterNameA()
     {
-        return Name.text;
+        if (Name)
+            return Name.text;
+        else
+            return processname;
     }
 }

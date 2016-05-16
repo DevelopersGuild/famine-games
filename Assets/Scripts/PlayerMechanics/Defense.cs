@@ -22,7 +22,7 @@ public class Defense : NetworkBehaviour {
             return -1;
 
         //No amror
-        if (amrorid==null)
+        if (!ClientScene.FindLocalObject(amrorid))
             return 0;
 
         if(!amror || amror.netId!=amrorid)

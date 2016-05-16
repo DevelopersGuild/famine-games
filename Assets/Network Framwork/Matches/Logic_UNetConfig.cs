@@ -125,7 +125,7 @@ public class Logic_UNetConfig : MonoBehaviour {
          if(matchResponse.success)
          {
              matchCreated = true;
-             Utility.SetAccessTokenForNetwork(matchResponse.networkId, new NetworkAccessToken(matchResponse.accessTokenString));
+             //Utility.SetAccessTokenForNetwork(matchResponse.networkId, new NetworkAccessToken(matchResponse.accessTokenString));
              minfo = new MatchInfo(matchResponse);
              //AfterJoin();
              GetComponentInParent<NetworkManager>().StartHost(minfo);
@@ -143,7 +143,7 @@ public class Logic_UNetConfig : MonoBehaviour {
         {
             isConnected = true;
             minfo = new MatchInfo(matchjoin);
-            Utility.SetAccessTokenForNetwork(matchjoin.networkId, new NetworkAccessToken(matchjoin.accessTokenString));
+            //Utility.SetAccessTokenForNetwork(matchjoin.networkId, new NetworkAccessToken(matchjoin.accessTokenString));
             //AfterJoin();
             GetComponentInParent<NetworkManager>().StartClient(minfo);
             Globe.errorid = "CONNLST";
