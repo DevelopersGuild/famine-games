@@ -61,8 +61,8 @@ public class AttackController : NetworkBehaviour
             isAttacking = true;
             AttackCollider attack;
 
-            attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
-            attackCollider.damage = currentWeapon.damage;
+            //attackCollider.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange,currentWeapon.zRange);
+            //attackCollider.damage = currentWeapon.damage;
 
 
             attack = (AttackCollider)Instantiate(
@@ -72,6 +72,8 @@ public class AttackController : NetworkBehaviour
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
+            attack.damage = currentWeapon.damage;
+            attack.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
             Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
             StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));

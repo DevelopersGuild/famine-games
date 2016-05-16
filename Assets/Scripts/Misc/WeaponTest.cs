@@ -3,18 +3,12 @@
 
 public class WeaponTest : MonoBehaviour
 {
-
     public Weapon weaponTest;
-
-
 
     public void OnTriggerEnter(Collider other)
     {
-        AttackController ac = other.GetComponent<AttackController>();
-        if (ac != null)
-        {
-            ac.PickedUpWeapon(weaponTest);
-        }
+        FirstPersonController test = other.GetComponent<FirstPersonController>();
+        //test.ToggleInput();
     }
 }
 

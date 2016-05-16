@@ -20,7 +20,6 @@ public class QT_InteractContainer : MonoBehaviour {
        // int sw = Screen.width/2;
        // int sh = Screen.height/2;
         centerScreen = new Vector3(0.5f, 0.5f, 0f);
-        Anim = ContainerTop.GetComponent<Animator>();
 	}	
 
     void OnTriggerStay()
