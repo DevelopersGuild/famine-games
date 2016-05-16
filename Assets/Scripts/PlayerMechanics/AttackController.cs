@@ -34,7 +34,7 @@ public class AttackController : NetworkBehaviour
         {
             if (wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Melee)
             {
-                Debug.Log(currentWeapon.attackCooldown);
+                //Debug.Log(currentWeapon.attackCooldown);
                 wbc.StartCooldown(currentWeapon.attackCooldown);
             }
             else if(wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
