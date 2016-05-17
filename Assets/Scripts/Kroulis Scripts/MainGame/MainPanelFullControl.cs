@@ -18,10 +18,6 @@ namespace Kroulis.UI.MainGame
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
         private GameProcess gp;
-        void Awake()
-        {
-            gp = GameObject.Find("GameCoreProcess").GetComponent<GameProcess>();
-        }
 
         // Use this for initialization
         void Start()
@@ -34,6 +30,9 @@ namespace Kroulis.UI.MainGame
         // Update is called once per frame
         void Update()
         {
+            if (!gp && GameObject.Find("GameCoreProcess"))
+                gp = GameObject.Find("GameCoreProcess").GetComponent<GameProcess>();
+
             if(local_player)
             {
                 Health health = local_player.GetComponent<Health>();
@@ -122,18 +121,26 @@ namespace Kroulis.UI.MainGame
             {
                 rtk_timer=0;
             }
-            int ts= (int)gp.timestamp;
-            int minutes=ts/60;
-            int seconds=ts%60;
-            T_Timer.text = minutes.ToString("D2")+":"+seconds.ToString("D2")+" / 15:00";
+            if(gp)
+            {
+                int ts = (int)gp.timestamp;
+                int minutes = ts / 60;
+                int seconds = ts % 60;
+                T_Timer.text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + " / 15:00";
+            }
+            else
+            {
+                T_Timer.text = "0:00 / 15:00";
+            }
         }
 
         void OnGUI()
         {
+            /*
             if(GUILayout.Button("Press to add a Killing tab."))
             {
                 AddKillingTab(0, "test1", "test2");
-            }
+            }*/
         }
 
         private void GetLocalPlayer()

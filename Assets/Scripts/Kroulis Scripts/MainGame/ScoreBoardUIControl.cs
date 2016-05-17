@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using Kroulis.Components;
+using UnityEngine.Networking;
 
 namespace Kroulis.UI.MainGame
 {
@@ -10,6 +11,7 @@ namespace Kroulis.UI.MainGame
 
         public Text Names,Scores,Kills,Deaths,Specials;
         private Point[] players;
+        private string localname;
         
         // Use this for initialization
         void Start()
@@ -21,6 +23,8 @@ namespace Kroulis.UI.MainGame
         void Update()
         {
             players = GameObject.FindObjectsOfType<Point>();
+           
+            localname = GameObject.Find("LOCAL Player").GetComponent<ContestInfomation>().player_name;
             Names.text = Scores.text = Kills.text = Deaths.text = Specials.text = "";
             for(int i=0;i<players.Length;i++)
             {
@@ -28,6 +32,15 @@ namespace Kroulis.UI.MainGame
                 Scores.text += players[i].points+"\n";
                 Kills.text += players[i].kills + "\n";
                 Deaths.text += players[i].deaths + "\n";
+                if(players[i].GetComponent<ContestInfomation>().player_name == localname)
+                {
+                    Specials.text += "<< You\n";
+                }
+                else
+                {
+                    Specials.text += "\n";
+                }
+
             }
         }
 

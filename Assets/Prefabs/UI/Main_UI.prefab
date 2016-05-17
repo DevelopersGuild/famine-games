@@ -871,7 +871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &195036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,8 +1306,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11429590}
   m_HandleRect: {fileID: 22438216}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3394,8 +3394,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80, y: -32.59999}
-  m_SizeDelta: {x: 333.3, y: 545}
+  m_AnchoredPosition: {x: -60.1, y: -32.59999}
+  m_SizeDelta: {x: 345.2, y: 545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22426838
 RectTransform:
@@ -3553,8 +3553,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -423.9, y: -32.6}
-  m_SizeDelta: {x: 352.01, y: 545}
+  m_AnchoredPosition: {x: -420.1, y: -32.6}
+  m_SizeDelta: {x: 362.9, y: 545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22447118
 RectTransform:
@@ -3707,8 +3707,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 167.5, y: -32.59999}
-  m_SizeDelta: {x: 157.6, y: 545}
+  m_AnchoredPosition: {x: 193.2, y: -32.59999}
+  m_SizeDelta: {x: 162.3, y: 545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22456868
 RectTransform:
@@ -3983,8 +3983,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 332.5, y: -32.59999}
-  m_SizeDelta: {x: 166.3, y: 545}
+  m_AnchoredPosition: {x: 362.9, y: -32.59999}
+  m_SizeDelta: {x: 172.3, y: 545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22483654
 RectTransform:
@@ -4031,8 +4031,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 509.1, y: -32.59999}
-  m_SizeDelta: {x: 180.7, y: 545}
+  m_AnchoredPosition: {x: 526.7, y: -32.59999}
+  m_SizeDelta: {x: 152.91, y: 545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22487574
 RectTransform:
@@ -4105,7 +4105,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: 0.00018310547}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 520}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22496188

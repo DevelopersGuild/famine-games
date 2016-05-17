@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using Kroulis.Components;
 
 public class Arrow : NetworkBehaviour {
 
@@ -51,6 +52,7 @@ public class Arrow : NetworkBehaviour {
                     owner.AddPoints(10);
                     owner.incKills();
                     target.incDeaths();
+                    GameObject.Find("GameCoreProcess").GetComponent<GameProcess>().CmdAddingKillingTab(owner.GetComponent<ContestInfomation>().player_name, target.GetComponent<ContestInfomation>().player_name, 2);
                 }
             }
         }

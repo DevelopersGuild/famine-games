@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using Kroulis.UI.MainGame;
 
 namespace Kroulis.Components
 {
@@ -127,6 +128,26 @@ namespace Kroulis.Components
             }
             Debug.Log("Winner is:" + point_list[winner].GetComponent<ContestInfomation>().player_name);
             GameStarted = false;
+        }
+
+        [Command]
+        public void CmdAddingKillingTab(string name1, string name2, int type)
+        {
+            if (!isServer)
+                return;
+            RpcAddingKillingTab(name1, name2, type);
+        }
+
+        [ClientRpc]
+        public void RpcAddingKillingTab(string name1,string name2 ,int type)
+        {
+            if(!GameStarted)
+                return;
+            MainPanelFullControl mainui = GameObject.Find("Main_UI").GetComponentInChildren<MainPanelFullControl>();
+            if(mainui)
+            {
+                mainui.AddKillingTab(type, name1, name2);
+            }
         }
     }
 }
