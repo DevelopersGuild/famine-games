@@ -7,4 +7,5 @@ public class Globe{
     public static bool gamestarted = false;
     public static string roomid = "";
     public static string errorid = "0";
+    public static string resultid = "";
 }

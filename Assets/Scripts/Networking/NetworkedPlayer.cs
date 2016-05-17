@@ -28,12 +28,12 @@ public class NetworkedPlayer : NetworkBehaviour
         if (GameObject.Find("Logic_Network"))
         {
             //playerinfo.player_name = GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA();
-            playerinfo.CmdUpdatePlayerName(GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA());
+            playerinfo.CmdUpdatePlayerName(GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA(),Globe.uid);
         }
         else
         {
             //playerinfo.player_name = "UnRegPlayer"+Random.Range(10000,99999).ToString();
-            playerinfo.CmdUpdatePlayerName("UnRegPlayer" + Random.Range(10000, 99999).ToString());
+            playerinfo.CmdUpdatePlayerName("UnRegPlayer" + Random.Range(10000, 99999).ToString(),"");
         }
 
         gameObject.name = "LOCAL Player";

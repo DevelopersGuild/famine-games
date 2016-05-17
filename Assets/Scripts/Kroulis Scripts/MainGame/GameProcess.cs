@@ -15,6 +15,7 @@ namespace Kroulis.Components
         [SyncVar]
         public bool GameStarted;
 
+        private string log="";
 
         private float StartGameCountDown=20f;
         // Use this for initialization
@@ -100,7 +101,9 @@ namespace Kroulis.Components
                 if (point_list[i].points >= 100)
                 {
                     CancelInvoke("CmdUpdateTimestamp");
+                    log += "[" + timestamp + "]=> Winner is: " + point_list[i].GetComponent<ContestInfomation>().player_name;
                     Debug.Log("Winner is:" + point_list[i].GetComponent<ContestInfomation>().player_name);
+                    GetComponent<Logic_ResultUpload>().UploadResult();
                     GameStarted = false;
                     return;
                 }
@@ -126,7 +129,9 @@ namespace Kroulis.Components
                     winner_pts = point_list[i].points;
                 }
             }
-            Debug.Log("Winner is:" + point_list[winner].GetComponent<ContestInfomation>().player_name);
+            log += "[TimeUp]=> Winner is: " + point_list[winner].GetComponent<ContestInfomation>().player_name;
+            Debug.Log("Winner is: " + point_list[winner].GetComponent<ContestInfomation>().player_name);
+            GetComponent<Logic_ResultUpload>().UploadResult();
             GameStarted = false;
         }
 
@@ -135,6 +140,20 @@ namespace Kroulis.Components
         {
             if (!isServer)
                 return;
+            log += "[" + timestamp + "] => Player " + name1 + "used ";
+            switch (type)
+            {
+                case 1:
+                    log += "Melee Weapon";
+                    break;
+                case 2:
+                    log += "Ranged Weapon";
+                    break;
+                default:
+                    log += "Unknown Weapon";
+                    break;
+            }
+            log += " Killed " + name2 + ".\n";
             RpcAddingKillingTab(name1, name2, type);
         }
 
@@ -148,6 +167,12 @@ namespace Kroulis.Components
             {
                 mainui.AddKillingTab(type, name1, name2);
             }
+        }
+
+        [Server]
+        public string GetLog()
+        {
+            return log;
         }
     }
 }
