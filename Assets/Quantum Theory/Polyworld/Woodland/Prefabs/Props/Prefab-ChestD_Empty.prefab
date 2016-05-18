@@ -47,6 +47,8 @@ GameObject:
   - 95: {fileID: 9500000}
   - 65: {fileID: 6500002}
   - 114: {fileID: 11488012}
+  - 114: {fileID: 11451804}
+  - 114: {fileID: 11411186}
   m_Layer: 8
   m_Name: Chest-D_Top
   m_TagString: Interactive
@@ -245,7 +247,7 @@ Animator:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7d989cd970e83a24e9f6bb5652f622e9, type: 3}
-  m_Controller: {fileID: 9100000, guid: ac05356deba9d854a91682b9ea0fab6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9f6a5805437cfb14faec6b299da088d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -270,6 +272,57 @@ MonoBehaviour:
   OpenClip: {fileID: 7400000, guid: d75aa38edae854b47ba13df95eb33750, type: 2}
   CloseClip: {fileID: 7400000, guid: e0f4d08c2fd56e64aab0dd2ecb34d06b, type: 2}
   PopUpText: {fileID: 0}
+--- !u!114 &11411186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 214
+    i1: 2
+    i2: 239
+    i3: 201
+    i4: 107
+    i5: 124
+    i6: 239
+    i7: 4
+    i8: 138
+    i9: 181
+    i10: 225
+    i11: 130
+    i12: 134
+    i13: 44
+    i14: 31
+    i15: 163
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &11451804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9500000}
+  m_ParameterSendBits: 1
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11488012
 MonoBehaviour:
   m_ObjectHideFlags: 1
