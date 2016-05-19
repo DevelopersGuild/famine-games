@@ -58,6 +58,14 @@ namespace Kroulis.UI.MainGame
 
         }
 
+        void OnGUI()
+        {
+            if(GUILayout.Button("Upload MatchData"))
+            {
+                GameObject.Find("GameCoreProcess").GetComponent<Logic_ResultUpload>().UploadResult();
+            }
+        }
+
         private void StartGameChecker()
         {
             GameObject player = GameObject.Find("LOCAL Player");

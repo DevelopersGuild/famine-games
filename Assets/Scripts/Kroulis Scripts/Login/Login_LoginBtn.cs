@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Login_LoginBtn : MonoBehaviour {
 
     public Text username;
-    public Text password;
+    public InputField password;
     public Text tips;
     public Logic_Cilent_Login login;
 	// Use this for initialization

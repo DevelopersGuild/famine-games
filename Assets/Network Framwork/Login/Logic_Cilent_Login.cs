@@ -15,8 +15,8 @@ public class Logic_Cilent_Login : MonoBehaviour {
     private string login_msg = "";
     private string uid = "";
     private Text tips;
-    private Text password;
-	public void Login(Text username, Text password, Text tips)
+    private InputField password;
+	public void Login(Text username, InputField password, Text tips)
     {
         this.password = password;
         this.tips = tips;

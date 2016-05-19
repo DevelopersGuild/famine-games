@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: {fileID: 1468875280}
-  password: {fileID: 1257282964}
+  password: {fileID: 2096093001}
   tips: {fileID: 1818083326}
   login: {fileID: 1078506571}
 --- !u!1 &873872476
@@ -2478,7 +2478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Version: 20160418'
+  m_Text: 'Version: 20160518'
 --- !u!222 &1563439892
 CanvasRenderer:
   m_ObjectHideFlags: 0

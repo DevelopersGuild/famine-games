@@ -11,7 +11,7 @@ using Kroulis.Components;
 public class Logic_ResultUpload : NetworkBehaviour {
 
     private static string uploadurl = "https://www.kroulisworld.com/programs/survive/ddt/upload_match_info.php";
-    private static string uploadkey = "d9bcdb94477e41ae1f0c60c4ea3a77b9";
+    private static string uploadkey = "8fc5b71d0fdd0c2fd4def000d26e50b6";
     private WWW www;
     private WWWForm form;
 
@@ -82,7 +82,9 @@ public class Logic_ResultUpload : NetworkBehaviour {
                 writer.WritePropertyName("timeused");
                 writer.Write(GetComponent<GameProcess>().timestamp.ToString());
         writer.WriteObjectEnd();
-        form.AddField("data", sb.ToString());
+        //form.AddField("data", sb.ToString());
+        form.AddBinaryData("data", Encoding.Default.GetBytes(sb.ToString()), "result.txt", "file");
+        //Debug.Log(sb.ToString());
         www = new WWW(uploadurl, form);
         StartCoroutine(WaitForRequestUploadData(www));
     }
@@ -94,6 +96,8 @@ public class Logic_ResultUpload : NetworkBehaviour {
         {
             Debug.Log("fail to request..." + www.error);
             RpcFailedUploading();
+
+            yield return new WaitForSeconds(2.0f);
             NetworkServer.Shutdown();
         }
         else
@@ -105,20 +109,21 @@ public class Logic_ResultUpload : NetworkBehaviour {
                 string code = (string)jd["code"];
                 if (code == "149090")
                 {
-                    RpcSuccessfullyUploaded((string)jd["rid"]);
+                    //Debug.Log("Returned Result ID:"+jd["rid"]);
+                    RpcSuccessfullyUploaded(((int)jd["rid"]).ToString());
+                    yield return new WaitForSeconds(2.0f);
                     NetworkServer.Shutdown();
                 }
                 else if (code == "150999")
                 {
-                    Debug.LogError("UserNotExist.");
+                    Debug.LogError(jd["MSG"]);
                     RpcFailedUploading();
-
+                    yield return new WaitForSeconds(2.0f);
                     NetworkServer.Shutdown();
                 }
                 else
                 {
                     Debug.LogError("Cannot Connect to the Server.");
-                    
                 }
             }
         }
@@ -129,6 +134,7 @@ public class Logic_ResultUpload : NetworkBehaviour {
     {
         Globe.errorid = "EFATAL";
         Globe.resultid = "";
+        GameObject.FindObjectOfType<NetworkManager>().client.Disconnect();
     }
 
     [ClientRpc]
@@ -136,5 +142,6 @@ public class Logic_ResultUpload : NetworkBehaviour {
     {
         Globe.resultid = rid;
         Globe.errorid = "0";
+        GameObject.FindObjectOfType<NetworkManager>().client.Disconnect();
     }
 }
