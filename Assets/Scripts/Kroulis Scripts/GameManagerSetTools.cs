@@ -12,6 +12,14 @@ public class GameManagerSetTools : MonoBehaviour {
     public bool show_connection_gui=false;
     private GameObject Launcher_UI_Root;
 
+    void Awake()
+    {
+        if(Application.platform!=RuntimePlatform.WindowsEditor)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);

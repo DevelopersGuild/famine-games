@@ -4,10 +4,13 @@ using UnityEngine.Networking;
 
 namespace Kroulis.Components
 {
-    public class UserNameTab : NetworkBehaviour
+    public class ContestInfomation : NetworkBehaviour
     {
         [SyncVar]
-        public string player_name; 
+        public string player_name;
+
+        private string pid = "";
+
         // Use this for initialization
         void Start()
         {
@@ -21,11 +24,18 @@ namespace Kroulis.Components
         }
 
         [Command]
-        public void CmdUpdatePlayerName(string playername)
+        public void CmdUpdatePlayerName(string playername,string pid)
         {
             if (!isServer)
                 return;
             player_name = playername;
+            this.pid = pid;
+        }
+
+        [Server]
+        public string GetPid()
+        {
+            return pid;
         }
     }
 }

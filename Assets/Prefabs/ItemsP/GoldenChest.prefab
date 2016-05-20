@@ -211,8 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0794394431b4e1a49a4df46e307653d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  Anim: {fileID: 9586168}
+  items: []
 --- !u!114 &11445126
 MonoBehaviour:
   m_ObjectHideFlags: 1

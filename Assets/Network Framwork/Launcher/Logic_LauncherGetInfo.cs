@@ -14,7 +14,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
     private Image EXP_image;
     private Text Gold;
     private Text Diamond;
-    private Text[] Result;
+    private RecentResult_Control Result;
     private WWW www;
     private WWWForm form;
     private string url_userinfo = "https://www.kroulisworld.com/programs/survive/ddt/get_info.php";
@@ -66,11 +66,11 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
                     EXP_image.fillAmount = float.Parse((string)jd["exp"]) / 1000f;
                     Gold.text = (string)jd["gold"];
                     Diamond.text = (string)jd["diamond"];
-                    GameObject ui_root=GameObject.Find("Launcher UI Root");
+                    /*GameObject ui_root=GameObject.Find("Launcher UI Root");
                     if(ui_root)
                     {
                         ui_root.GetComponent<UI_FunctionControl>().FinishWWWLoading();
-                    }
+                    }*/
                 }
                 else if (code == "150999")
                 {
@@ -139,7 +139,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
         }
     }
 
-    public void GetRecentMatch(Text[] Results)
+    public void GetRecentMatch(RecentResult_Control Results)
     {
         this.Result = Results;
         form = new WWWForm();
@@ -161,16 +161,86 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
             if (www.isDone)
             {
                 string result = www.text;
+                //Debug.Log(www.text);
                 JsonData jd = JsonMapper.ToObject(result);
                 string code = (string)jd["code"];
-                if (code == "143930")
+                if (code == "148652")
                 {
-                    
+                    if(jd["data"].IsArray)
+                    {
+                        for(int i=0;i<jd["data"].Count;i++)
+                        {
+                            PlayerResultInfo pri=GetResultInfo(jd["data"][i]);
+                            Result.MID[i].text = (string)jd["data"][i]["mid"];
+                            Result.Result[i].text = pri.IsWinner ? "Victory" : "Defeat";
+                            Result.Result[i].color = pri.IsWinner ? Color.green : Color.red;
+                            Result.PlayerList[i].text = "You with others";
+                            Result.Rewards[i].text = "Currently No Reward";
+                            Result.Kill[i].text = pri.kill;
+                            Result.Death[i].text = pri.death;
+                            Result.Assist[i].text = "N/A";
+                        }
+                        for(int i=jd["data"].Count;i<16;i++)
+                        {
+                            Result.MID[i].text = "";
+                            Result.Result[i].text = "";
+                            Result.PlayerList[i].text = "";
+                            Result.Rewards[i].text = "";
+                            Result.Kill[i].text ="";
+                            Result.Death[i].text = "";
+                            Result.Assist[i].text = "";
+                        }
+                    }
+                    else
+                    {
+                        PlayerResultInfo pri = GetResultInfo(jd["data"]);
+                        Result.MID[0].text = (string)jd["data"]["mid"];
+                        Result.Result[0].text = pri.IsWinner ? "Victory" : "Defeat";
+                        Result.Result[0].color = pri.IsWinner ? Color.green : Color.red;
+                        Result.PlayerList[0].text = "You with others";
+                        Result.Rewards[0].text = "Currently No Reward";
+                        Result.Kill[0].text = pri.kill;
+                        Result.Death[0].text = pri.death;
+                        Result.Assist[0].text = "N/A";
+                        for(int i=1;i<16;i++)
+                        {
+                            Result.MID[i].text = "";
+                            Result.Result[i].text = "";
+                            Result.PlayerList[i].text = "";
+                            Result.Rewards[i].text = "";
+                            Result.Kill[i].text = "";
+                            Result.Death[i].text = "";
+                            Result.Assist[i].text = "";
+                        }
+                    }
+                    GameObject ui_root = GameObject.Find("Launcher UI Root");
+                    if (ui_root)
+                    {
+                        ui_root.GetComponent<UI_FunctionControl>().FinishWWWLoading();
+                    }
                 }
                 else if (code == "150999")
                 {
                     Debug.LogError("UserNotExist.");
                     SceneManager.LoadScene("Login");
+                }
+                else if(code=="150777")
+                {
+                    for (int i = 0; i < 16; i++)
+                    {
+                        Result.MID[i].text = "";
+                        Result.Result[i].text = "";
+                        Result.PlayerList[i].text = "";
+                        Result.Rewards[i].text = "";
+                        Result.Kill[i].text = "";
+                        Result.Death[i].text = "";
+                        Result.Assist[i].text = "";
+                    }
+                    GameObject ui_root = GameObject.Find("Launcher UI Root");
+                    if (ui_root)
+                    {
+                        ui_root.GetComponent<UI_FunctionControl>().FinishWWWLoading();
+                    }
                 }
                 else
                 {
@@ -181,6 +251,55 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
         }
     }
 
+    struct PlayerResultInfo
+    {
+        public string score;
+        public string kill;
+        public string assist;
+        public string death;
+        public bool IsWinner;
+    }
+
+    private PlayerResultInfo GetResultInfo(JsonData jd)
+    {
+        PlayerResultInfo pri=new PlayerResultInfo();
+        int count=-1;
+        string userlist = (string)jd["userset"];
+        string[] userlist_u = userlist.Split(new char[1]{','});
+        for (int i = 0; i < userlist_u.Length && count==-1;i++)
+        {
+            if(userlist_u[i]==Globe.uid)
+            {
+                count = i;
+            }
+        }
+        string[] score_list = ((string)jd["score"]).Split(new char[1] { ',' });
+        string[] kill_list = ((string)jd["kill"]).Split(new char[1] { ',' });
+        string[] death_list = ((string)jd["death"]).Split(new char[1] { ',' });
+        int maxscore=0;
+        for (int i = 0; i < score_list.Length;i++)
+        {
+            if(i==count)
+            {
+                pri.score = score_list[i];
+                pri.kill = kill_list[i];
+                pri.death = death_list[i];
+            }
+            if(int.Parse(score_list[i])>maxscore)
+            {
+                maxscore = int.Parse(score_list[i]);
+            }
+        }
+        if(pri.score==maxscore.ToString())
+        {
+            pri.IsWinner = true;
+        }
+        else
+        {
+            pri.IsWinner = false;
+        }
+        return pri;
+    }
 
     public string GetCharacterNameA()
     {

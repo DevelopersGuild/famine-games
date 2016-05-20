@@ -12,7 +12,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public Point points;
     public BowAndArrow bowAndArrow;
     public Defense defense;
-    public UserNameTab playerinfo;
+    public ContestInfomation playerinfo;
 
     public override void OnStartLocalPlayer()
     {
@@ -28,12 +28,12 @@ public class NetworkedPlayer : NetworkBehaviour
         if (GameObject.Find("Logic_Network"))
         {
             //playerinfo.player_name = GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA();
-            playerinfo.CmdUpdatePlayerName(GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA());
+            playerinfo.CmdUpdatePlayerName(GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>().GetCharacterNameA(),Globe.uid);
         }
         else
         {
             //playerinfo.player_name = "UnRegPlayer"+Random.Range(10000,99999).ToString();
-            playerinfo.CmdUpdatePlayerName("UnRegPlayer" + Random.Range(10000, 99999).ToString());
+            playerinfo.CmdUpdatePlayerName("UnRegPlayer" + Random.Range(10000, 99999).ToString(),"");
         }
 
         gameObject.name = "LOCAL Player";

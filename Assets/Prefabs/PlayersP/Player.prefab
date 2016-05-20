@@ -25,7 +25,7 @@ GameObject:
   - 114: {fileID: 11479860}
   - 114: {fileID: 11469244}
   - 114: {fileID: 11467996}
-  - 114: {fileID: 11478846}
+  - 114: {fileID: 11445486}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -362,7 +362,7 @@ MonoBehaviour:
   points: {fileID: 11484018}
   bowAndArrow: {fileID: 11469244}
   defense: {fileID: 11467996}
-  playerinfo: {fileID: 11478846}
+  playerinfo: {fileID: 11445486}
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,6 +433,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: 172623cbb8817a0429af865dff14f9c5, type: 2}
+--- !u!114 &11445486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b309e8fcb06e40a4a309e638111ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_name: 
 --- !u!114 &11467996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -487,18 +499,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11478846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8b309e8fcb06e40a4a309e638111ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_name: 
 --- !u!114 &11479860
 MonoBehaviour:
   m_ObjectHideFlags: 1
