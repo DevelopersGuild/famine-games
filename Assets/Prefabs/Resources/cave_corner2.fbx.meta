@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30bf3478c3324ae4d81a23a4975fe641
+guid: 56eec1a2ba046e34fa81884241fc129c
 timeCreated: 1463173965
 licenseType: Free
 ModelImporter:
@@ -17,7 +17,7 @@ ModelImporter:
     3300000: Cube.005
     4300000: Cube.005
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
