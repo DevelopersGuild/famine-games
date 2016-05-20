@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MazeGeneration : MonoBehaviour {
 
-    const float LIMIT = 10;
+    const float LIMIT = 50;
     const float NLIMIT = -1 * LIMIT;
 
     float multx;
@@ -40,7 +40,7 @@ public class MazeGeneration : MonoBehaviour {
 
         for (int i = 0; i < contactTrace; i++)
         {
-            createpath(activePosition);
+            createpath(activePosition, multx, multy, multz);
             activePosition = gencoords();
         }
 
@@ -71,6 +71,18 @@ public class MazeGeneration : MonoBehaviour {
         MazeObjects[MazeObCount] = (GameObject)Instantiate(Resources.Load("Branch"), new Vector3(x, y, z), transform.rotation);
         PositionCount++;
         MazeObCount++;
+        int facenum = rnd.Next(1, 4);
+        int activeface = -1;
+        while (facenum!=0)
+        {
+            activeface = rnd.Next(1, 7);
+            while (activeface==activePosition)
+                activeface = rnd.Next(1, 7);
+
+            createpath(activeface, x, y, z);
+            facenum--;
+        }
+
     }
 
     void makeEnd(float x, float y, float z)
@@ -103,29 +115,45 @@ public class MazeGeneration : MonoBehaviour {
         else return -1;
     }
 
-    void createpath(int inc)
+    void createpath(int inc, float xGo, float yGo, float zGo)
     {
         int makeitem = 0;
-        while (multx< LIMIT && multx > NLIMIT && multy < LIMIT && multy > NLIMIT && multz < LIMIT && multz > NLIMIT)
+        while (xGo< LIMIT && xGo > NLIMIT && yGo < LIMIT && yGo > NLIMIT && zGo < LIMIT && zGo > NLIMIT)
         {
             makeitem = rnd.Next(0, 95);
-            if (makeitem<objectpotential[0]) makeStraight(multx, multy, multz);
-            else if (makeitem<objectpotential[1]) makeBranch(multx, multy, multz);
+            if (makeitem<objectpotential[0]) makeStraight(xGo, yGo, zGo);
+            else if (makeitem<objectpotential[1])
+            {
+                makeBranch(xGo, yGo, zGo);
+            }
             else if (makeitem<objectpotential[2])//if end
             {
-                makeEnd(multx, multy, multz);
+                makeEnd(xGo, yGo, zGo);
                 return;
             }
 
-            if (inc == 1) multx++;
-            else if (inc == 2) multx--;
-            else if (inc == 3) multy++;
+            if (inc == 1) xGo++;
+            else if (inc == 2) xGo--;
+            else if (inc == 3) yGo++;
 
-            else if (inc == 4) multy--;
-            else if (inc == 5) multz++;
-            else multz--; //inc==5
+            else if (inc == 4) yGo--;
+            else if (inc == 5) zGo++;
+            else zGo--; //inc==5
         }
 
-        makeEnd(multx, multy, multz);
+        makeEnd(xGo, yGo, zGo);
     }
+    
+    bool collissioncheck(Vector3 test)
+    //simple check, only checks based on center, not actual collission.
+    {
+        int i = 0;
+        while (i!=PositionCount)
+        {
+            if (PositionRegister[i] == test) return false;
+            i++;
+        }
+        return true;
+    }
+
 }
