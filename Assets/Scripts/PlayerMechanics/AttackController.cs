@@ -67,8 +67,8 @@ public class AttackController : NetworkBehaviour
 
             attack = (AttackCollider)Instantiate(
                     attackCollider,
-                    transform.position - transform.forward * -2,
-                    transform.rotation);
+                    transform.position - Camera.main.transform.forward * -2,
+                    Camera.main.transform.rotation);
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
