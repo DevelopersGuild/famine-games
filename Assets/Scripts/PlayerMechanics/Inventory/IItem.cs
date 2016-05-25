@@ -8,5 +8,10 @@ public interface IItem
     void SecondaryUse();
     void OnPickup(GameObject owner);
     void OnDrop();
+
+    Sprite GetIcon();
+
+    string GetDescription();
+
     EItemType ItemType();
 }

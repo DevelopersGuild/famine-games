@@ -287,5 +287,10 @@ public class FirstPersonController : MonoBehaviour
     {
         m_isEnabled = canMove;
     }
+
+    public bool GetInput()
+    {
+        return m_isEnabled;
+    }
 }
 

@@ -8,6 +8,8 @@ public class Amror : NetworkBehaviour, IItem
     public string name;
     public int defense;
     public int maxDurability;
+    public Sprite icon;
+    public string description;
     //public Sprite icon;
 
     public enum AmrorType
@@ -45,4 +47,13 @@ public class Amror : NetworkBehaviour, IItem
         return EItemType.Amror;
     }
 
+    public Sprite GetIcon() 
+    {
+        return icon;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
 }

@@ -13,6 +13,7 @@ public class Weapon : NetworkBehaviour, IItem
     public float yRange;
     public float zRange;
     public Sprite icon;
+    public string description;
 
     public enum WeaponType
     {
@@ -55,5 +56,15 @@ public class Weapon : NetworkBehaviour, IItem
         if (!isServer) return;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
+
+    public string GetDescription()
+    {
+        return description;
     }
 }

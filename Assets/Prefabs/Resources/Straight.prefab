@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478858}
   m_Layer: 0
-  m_Name: Cube.006
+  m_Name: Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,16 +14,19 @@ namespace Kroulis.UI.MainGame
         public GameObject G_PickUpTips, G_Compare;
         public GameObject RTKPrefab;
         public GameObject ChatBox;
+        public GameObject LootBox;
         private GameObject local_player=null;
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
         private GameProcess gp;
+        private bool menu_in_use = false;
 
         // Use this for initialization
         void Start()
         {
             G_PickUpTips.SetActive(false);
             G_Compare.SetActive(false);
+            LootBox.SetActive(false);
             InvokeRepeating("GetLocalPlayer", 0, 1f);
         }
 
@@ -66,7 +69,7 @@ namespace Kroulis.UI.MainGame
                     T_Ammo.text = "Infinity";
                 }
 
-                if(Input.GetKeyDown(KeyCode.Return))
+                if(!menu_in_use && Input.GetKeyDown(KeyCode.Return))
                 {
                     ChatBoxFullControl cbfc= ChatBox.GetComponent<ChatBoxFullControl>();
                     if(!cbfc)
@@ -78,11 +81,13 @@ namespace Kroulis.UI.MainGame
                     {
                         cbfc.HideAll();
                         GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = true;
+                        local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(true);
                     }
                     else
                     {
                         cbfc.ShowAll();
                         GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = false;
+                        local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
                     }
                 }
             }
@@ -187,6 +192,31 @@ namespace Kroulis.UI.MainGame
             ptk.GetComponent<RealtimeKillingTabControl>().UpdateInfo(icon, name1, name2);
             ptk.SetActive(false);
             rtk_list.Add(ptk);
+        }
+
+        public IEnumerator ShowLootWindow(Chest chest_object,float wait_time=0.1f)
+        {
+            if(ChatBox.activeInHierarchy)
+            {
+                ChatBoxFullControl cbfc = ChatBox.GetComponent<ChatBoxFullControl>();
+                cbfc.HideAll();
+            }
+            menu_in_use = true;
+            yield return new WaitForSeconds(wait_time);
+            LootBox.SetActive(true);
+            LootBox.GetComponent<LootBoxFullControl>().UpdateItems(chest_object);
+            GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = false;
+            local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
+        }
+
+        public void HideLootWindow()
+        {
+            menu_in_use = false;
+            StopCoroutine("ShowLootWindow");
+            LootBox.GetComponent<LootBoxFullControl>().ClearItems();
+            LootBox.SetActive(false);
+            GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = true;
+            local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(true);
         }
     }
 }

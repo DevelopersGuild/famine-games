@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Kroulis.UI.MainGame;
 
 public class Chest : MonoBehaviour, IInteractive
 {
@@ -19,10 +20,21 @@ public class Chest : MonoBehaviour, IInteractive
         if (!isOpen)
         {
             isOpen = true;
+            MainPanelFullControl mpfc = GameObject.Find("Main_UI").GetComponentInChildren<MainPanelFullControl>();
+            if(mpfc)
+            {
+                //mpfc.ShowLootWindow(this);
+                mpfc.StartCoroutine(mpfc.ShowLootWindow(this,0.7f));
+            }
         }
         else if (isOpen)
         {
             isOpen = false;
+            MainPanelFullControl mpfc = GameObject.Find("Main_UI").GetComponentInChildren<MainPanelFullControl>();
+            if (mpfc)
+            {
+                mpfc.HideLootWindow();
+            }
         }
 
         Anim.SetBool("IsOpen", isOpen);
@@ -36,5 +48,10 @@ public class Chest : MonoBehaviour, IInteractive
     public void addItem(GameObject item)
     {
         items.Add(item);
+    }
+
+    public void removeItem(GameObject item)
+    {
+        items.Remove(item);
     }
 }
