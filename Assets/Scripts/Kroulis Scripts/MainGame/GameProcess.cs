@@ -183,6 +183,7 @@ namespace Kroulis.Components
                 return;
             if(times<0)
                 return;
+            RpcShowStartGameTips("Game will start in " + times.ToString("F1") + "s...");
         }
 
         [ClientRpc]
