@@ -9,7 +9,7 @@ namespace Kroulis.UI.MainGame
     public class MainPanelFullControl : MonoBehaviour
     {
 
-        public Text T_Health, T_Sheild, T_WeaponName, T_Ammo, T_Bandage, T_Timer;
+        public Text T_Health, T_Sheild, T_WeaponName, T_Ammo, T_Bandage, T_Timer,T_Tips;
         public Image I_WeaponIcon;
         public GameObject G_PickUpTips, G_Compare;
         public GameObject RTKPrefab;
@@ -27,6 +27,7 @@ namespace Kroulis.UI.MainGame
             G_PickUpTips.SetActive(false);
             G_Compare.SetActive(false);
             LootBox.SetActive(false);
+            T_Tips.gameObject.SetActive(false);
             InvokeRepeating("GetLocalPlayer", 0, 1f);
         }
 
@@ -218,5 +219,19 @@ namespace Kroulis.UI.MainGame
             GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = true;
             local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(true);
         }
+
+        public void UpdateTips(string tips)
+        {
+            CancelInvoke("HideTips");
+            T_Tips.gameObject.SetActive(true);
+            T_Tips.text = tips;
+            Invoke("HideTips", 2.0f);
+        }
+
+        private void HideTips()
+        {
+            T_Tips.gameObject.SetActive(false);
+        }
+
     }
 }

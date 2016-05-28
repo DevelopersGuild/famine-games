@@ -52,6 +52,7 @@ namespace Kroulis.Components
                 else
                 {
                     StartGameCountDown -= Time.deltaTime;
+                    CmdStartGameCDShowTips(StartGameCountDown);
                     if(StartGameCountDown<=0)
                     {
                         CmdStartGame();
@@ -173,6 +174,25 @@ namespace Kroulis.Components
         public string GetLog()
         {
             return log;
+        }
+
+        [Command]
+        public void CmdStartGameCDShowTips(float times)
+        {
+            if (!isServer)
+                return;
+            if(times<0)
+                return;
+        }
+
+        [ClientRpc]
+        public void RpcShowStartGameTips(string tips)
+        {
+            MainPanelFullControl mpfc = GameObject.Find("Main_UI").GetComponentInChildren<MainPanelFullControl>();
+            if(mpfc)
+            {
+                mpfc.UpdateTips(tips);
+            }
         }
     }
 }
