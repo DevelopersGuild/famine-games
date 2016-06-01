@@ -13,6 +13,8 @@ public class AttackController : NetworkBehaviour
     public Weapon currentWeapon;
     private bool isAttacking;
     private WeaponBarControl wbc;
+    [SerializeField]
+    private Weapon defaultWeapon;
         
 
     // Use this for initialization
@@ -118,5 +120,17 @@ public class AttackController : NetworkBehaviour
         if (!isServer)
             return;
         weaponId = wid;
+    }
+
+    [Command]
+    public void CmdDeadWeaponDrop()
+    {
+        if(currentWeapon != defaultWeapon)
+        {
+            currentWeapon.CmdMoveToPoint(transform.position);
+            currentWeapon.CmdMakeVisible();
+            currentWeapon= defaultWeapon;
+            weaponId = currentWeapon.netId;
+        }
     }
 }
