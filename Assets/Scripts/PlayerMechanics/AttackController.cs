@@ -13,7 +13,8 @@ public class AttackController : NetworkBehaviour
     public Weapon currentWeapon;
     private bool isAttacking;
     private WeaponBarControl wbc;
-        
+    public GameObject weaponHolder;
+    public Shader overlayShader;
 
     // Use this for initialization
     void Start()
@@ -100,6 +101,21 @@ public class AttackController : NetworkBehaviour
         //weaponId = weapon.netId;
         CmdUpdateWeapon(weapon.netId);
         currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+
+        // Destroy current equipped weapon
+        foreach (Transform child in weaponHolder.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Instantiate the new weapon
+        Weapon equipped = (Weapon) Instantiate(currentWeapon);
+        Destroy(equipped.GetComponent<Collider>());
+        equipped.transform.SetParent(weaponHolder.transform);
+        equipped.transform.localPosition = currentWeapon.positionOffset;
+        equipped.transform.localEulerAngles = currentWeapon.rotationOffset;
+        equipped.transform.localScale = currentWeapon.scale;
+        equipped.GetComponent<Renderer>().material.shader = overlayShader;
     }
 
     public void DropWeapon()

@@ -50,22 +50,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &106300
+--- !u!1 &121718
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 481308}
-  - 33: {fileID: 3346760}
-  - 65: {fileID: 6524960}
-  - 23: {fileID: 2319616}
-  - 114: {fileID: 11417340}
-  - 114: {fileID: 11477646}
-  - 114: {fileID: 11416396}
+  - 4: {fileID: 487846}
+  - 33: {fileID: 3318450}
+  - 65: {fileID: 6599538}
+  - 23: {fileID: 2319812}
+  - 114: {fileID: 11450384}
+  - 114: {fileID: 11473846}
+  - 114: {fileID: 11480714}
   m_Layer: 8
-  m_Name: Axe (2)
+  m_Name: Rock
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.472595, y: -34.99844, z: 106.47301}
+  m_LocalPosition: {x: -41.843616, y: -35.04969, z: 11.141445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -122,18 +122,18 @@ Transform:
   m_LocalPosition: {x: -1.491951, y: -2.0733612, z: 0.8853607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 481308}
+  - {fileID: 487846}
   m_Father: {fileID: 400002}
   m_RootOrder: 0
---- !u!4 &481308
+--- !u!4 &487846
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
+  m_GameObject: {fileID: 121718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.25, y: 1, z: 1.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 428158}
   m_RootOrder: 0
@@ -171,17 +171,17 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!23 &2319616
+--- !u!23 &2319812
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
+  m_GameObject: {fileID: 121718}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 311467d304242f64484434eaf5919f18, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -223,13 +223,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3346760
+--- !u!33 &3318450
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
-  m_Mesh: {fileID: 4300000, guid: 525ed2945ef5c204c87713e765cc9a6c, type: 3}
+  m_GameObject: {fileID: 121718}
+  m_Mesh: {fileID: 4300000, guid: fdbf0bfd78d651646ab4d29befd8853b, type: 3}
 --- !u!33 &3363966
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -252,18 +252,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6524960
+--- !u!65 &6599538
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
+  m_GameObject: {fileID: 121718}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25, z: 2.09}
-  m_Center: {x: 0, y: 0, z: 1.08}
+  m_Size: {x: 1.29, y: 1.51, z: 0.95}
+  m_Center: {x: 0.05, y: 0, z: 0.48}
 --- !u!81 &8100000
 AudioListener:
   m_ObjectHideFlags: 1
@@ -470,38 +470,6 @@ MonoBehaviour:
   bowAndArrow: {fileID: 11469244}
   defense: {fileID: 11467996}
   playerinfo: {fileID: 11445486}
---- !u!114 &11416396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 94
-    i1: 158
-    i2: 133
-    i3: 28
-    i4: 14
-    i5: 20
-    i6: 40
-    i7: 20
-    i8: 218
-    i9: 192
-    i10: 38
-    i11: 162
-    i12: 86
-    i13: 186
-    i14: 42
-    i15: 192
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11416786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,26 +481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6877f5e8620329047a2aa4f3540440b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11417340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Axe
-  damage: 20
-  attackCooldown: 2
-  xRange: 2
-  yRange: 2
-  zRange: 2
-  icon: {fileID: 0}
-  description: 
-  currentWeaponType: 0
 --- !u!114 &11424144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,6 +540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: 172623cbb8817a0429af865dff14f9c5, type: 2}
+  weaponHolder: {fileID: 143728}
+  overlayShader: {fileID: 4800000, guid: c7833fa542d74e245be0caa870878095, type: 3}
 --- !u!114 &11445486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -604,6 +554,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_name: 
+--- !u!114 &11450384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Rock
+  damage: 5
+  attackCooldown: 2
+  xRange: 1
+  yRange: 1
+  zRange: 1
+  icon: {fileID: 0}
+  description: 
+  positionOffset: {x: -0.25, y: 1, z: 1.25}
+  scale: {x: 1, y: 1, z: 1}
+  currentWeaponType: 0
 --- !u!114 &11467996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,12 +630,12 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11477646
+--- !u!114 &11473846
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106300}
+  m_GameObject: {fileID: 121718}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24801eb19548044499c3fd05454ac42, type: 3}
@@ -680,6 +652,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2344e445f695214abc20d7fad21e463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11480714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 94
+    i1: 158
+    i2: 133
+    i3: 28
+    i4: 14
+    i5: 20
+    i6: 40
+    i7: 20
+    i8: 218
+    i9: 192
+    i10: 38
+    i11: 162
+    i12: 86
+    i13: 186
+    i14: 42
+    i15: 192
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11484018
 MonoBehaviour:
   m_ObjectHideFlags: 1

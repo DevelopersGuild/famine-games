@@ -158,6 +158,10 @@ MonoBehaviour:
   yRange: 0
   zRange: 0
   icon: {fileID: 0}
+  description: 
+  positionOffset: {x: 1, y: -1.25, z: 0.5}
+  rotationOffset: {x: 320, y: 0, z: 160}
+  scale: {x: 1, y: 1, z: 1}
   currentWeaponType: 1
 --- !u!114 &11437442
 MonoBehaviour:

@@ -93,6 +93,7 @@ public class BowAndArrow : NetworkBehaviour
 
 
                 Physics.IgnoreCollision(arrow.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
+                Physics.IgnoreCollision(arrow.GetComponent<Collider>(), ac.GetComponent<Collider>());
 
                 arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward*currentArrowSpeed);
                 // adjusted speed
