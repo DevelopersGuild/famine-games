@@ -16,13 +16,15 @@ public class MazeGeneration : MonoBehaviour {
     int MazeObCount;
     Hub Hubref;
     Vector3[] PositionRegister;
-    const int maxObjects = 1000;
+    public const int maxObjects =10000;
     int PositionCount;
     int activePosition;
     float[] positionmultiple = new float[4]{ .5f, -.5f, 1.5f, -1.5f };
     string[] objectpaths = new string[4] { "Straight", "Branch", "End" , "Hub"};
     int[] objectpotential = new int[4] { 75, 85, 95, 100 };
     private System.Random rnd;
+    int flip;
+    Quaternion activetransform;
 
     // Use this for initialization
     void Start () {
@@ -36,13 +38,20 @@ public class MazeGeneration : MonoBehaviour {
        // Hubref= MazeObjects[0].GetComponent<Hub>();
 
         activePosition = gencoords();
+        
         int contactTrace = rnd.Next(2, 7);
+        flip = setflip(activePosition);
+
+
 
         for (int i = 0; i < contactTrace; i++)
         {
-            createpath(activePosition);
+            createpath(activePosition, multx, multy, multz);
             activePosition = gencoords();
+            flip = setflip(activePosition);
         }
+
+        Debug.Log(MazeObCount);
 
     }
 	
@@ -60,7 +69,7 @@ public class MazeGeneration : MonoBehaviour {
     void makeStraight (float x, float y, float z)
     {
         PositionRegister[PositionCount] = new Vector3(x, y, z);
-        MazeObjects[MazeObCount] = (GameObject)Instantiate(Resources.Load("Straight"), PositionRegister[PositionCount], transform.rotation);
+        MazeObjects[MazeObCount] = (GameObject)Instantiate(Resources.Load("Straight"), PositionRegister[PositionCount], activetransform);
         PositionCount++;
         MazeObCount++;
     }
@@ -71,6 +80,18 @@ public class MazeGeneration : MonoBehaviour {
         MazeObjects[MazeObCount] = (GameObject)Instantiate(Resources.Load("Branch"), new Vector3(x, y, z), transform.rotation);
         PositionCount++;
         MazeObCount++;
+        int facenum = rnd.Next(1, 3);
+        int activeface = -1;
+        /*while (facenum!=0)
+        {
+            activeface = rnd.Next(1, 7);
+            while (activeface==flip)
+                activeface = rnd.Next(1, 7);
+
+            createpath(activeface, x, y, z);
+            facenum--;
+        }*/
+
     }
 
     void makeEnd(float x, float y, float z)
@@ -103,29 +124,77 @@ public class MazeGeneration : MonoBehaviour {
         else return -1;
     }
 
-    void createpath(int inc)
+    void createpath(int inc, float xGo, float yGo, float zGo)
     {
+        if (inc == 3 || inc == 4) //active Y
+            activetransform = Quaternion.Euler(0, 0, 90);
+
+        if (inc == 5 || inc == 6) //active Z
+            activetransform = Quaternion.Euler(0, 90, 0);
+
+
         int makeitem = 0;
-        while (multx< LIMIT && multx > NLIMIT && multy < LIMIT && multy > NLIMIT && multz < LIMIT && multz > NLIMIT)
+        while (xGo< LIMIT && xGo > NLIMIT && yGo < LIMIT && yGo > NLIMIT && zGo < LIMIT && zGo > NLIMIT)
         {
             makeitem = rnd.Next(0, 95);
-            if (makeitem<objectpotential[0]) makeStraight(multx, multy, multz);
-            else if (makeitem<objectpotential[1]) makeBranch(multx, multy, multz);
+            if (makeitem<objectpotential[0]) makeStraight(xGo, yGo, zGo);
+            else if (makeitem<objectpotential[1])
+            {
+                makeBranch(xGo, yGo, zGo);
+            }
             else if (makeitem<objectpotential[2])//if end
             {
-                makeEnd(multx, multy, multz);
+                makeEnd(xGo, yGo, zGo);
                 return;
             }
 
-            if (inc == 1) multx++;
-            else if (inc == 2) multx--;
-            else if (inc == 3) multy++;
+            if (inc == 1) xGo++;
+            else if (inc == 2) xGo--;
+            else if (inc == 3) yGo++;
 
-            else if (inc == 4) multy--;
-            else if (inc == 5) multz++;
-            else multz--; //inc==5
+            else if (inc == 4) yGo--;
+            else if (inc == 5) zGo++;
+            else zGo--; //inc==5
         }
 
-        makeEnd(multx, multy, multz);
+        makeEnd(xGo, yGo, zGo);
+        activetransform = Quaternion.Euler(0, 0, 0);
     }
+    
+    bool collissioncheck(Vector3 test)
+    //simple check, only checks based on center, not actual collission.
+    {
+        int i = 0;
+        while (i!=PositionCount)
+        {
+            if (PositionRegister[i] == test) return false;
+            i++;
+        }
+        return true;
+    }
+
+    int setflip (int face)
+    {
+        if (face == 1)
+            return 2;
+
+        if (face == 2)
+            return 1;
+
+        if (face == 3)
+            return 4;
+
+        if (face == 4)
+            return 3;
+
+        if (face == 5)
+            return 6;
+
+        if (face == 6)
+            return 5;
+
+        return -1;
+    }
+
 }
+

@@ -64,6 +64,14 @@ namespace Kroulis.UI.Launcher
                 Logic_LauncherGetInfo getinfo = GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>();
                 getinfo.GetInfo(IdxCont.name, IdxCont.level, IdxCont.expt, IdxCont.expi, IdxCont.gold, IdxCont.diamond);
                 getinfo.GetRecentMatch(GetComponentInChildren<RecentResult_Control>());
+                Globe.initeduser = true;
+            }
+            else
+            {
+                IndexPanel_FullControl IdxCont = IndexPanel.GetComponent<IndexPanel_FullControl>();
+                Logic_LauncherGetInfo getinfo = GameObject.Find("Logic_Network").GetComponentInChildren<Logic_LauncherGetInfo>();
+                getinfo.GetInfo(IdxCont.name, IdxCont.level, IdxCont.expt, IdxCont.expi, IdxCont.gold, IdxCont.diamond);
+                getinfo.GetRecentMatch(GetComponentInChildren<RecentResult_Control>());
             }
             if(Globe.roomid!="")
             {

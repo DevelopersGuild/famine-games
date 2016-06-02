@@ -38,4 +38,14 @@ public class Bandage : MonoBehaviour, IItem
     {
         Destroy(gameObject);
     }
+
+    public Sprite GetIcon()
+    {
+        return null;
+    }
+
+    public string GetDescription()
+    {
+        return "Bandage: Heal 50% of your health at anytime.";
+    }
 }

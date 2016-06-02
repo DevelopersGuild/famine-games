@@ -40,4 +40,15 @@ public class Ammo : NetworkBehaviour, IItem
         return;
     }
 
+    public Sprite GetIcon() 
+    {
+        return null;
+    }
+
+    public string GetDescription()
+    {
+        return "Ammo for Bow. After picking up, you can get ramdomly 1~10 arrows.";
+    }
+
+
 }

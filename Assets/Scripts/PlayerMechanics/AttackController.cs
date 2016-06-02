@@ -30,7 +30,7 @@ public class AttackController : NetworkBehaviour
         {
             wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
         }
-        if (Input.GetMouseButtonDown(0)) 
+        if (GetComponent<FirstPersonController>().GetInput() && Input.GetMouseButtonDown(0)) 
         {
             if (wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Melee)
             {
