@@ -38,7 +38,8 @@ public class BowAndArrow : NetworkBehaviour
             return;
         if (!isLocalPlayer)
             return;
-
+        if (!GetComponent<NetworkedPlayer>().fpsController.GetInput())
+            return;
         WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
         // Check for bow equipment
         if (ac.currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)

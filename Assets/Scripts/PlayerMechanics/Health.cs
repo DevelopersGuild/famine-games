@@ -32,6 +32,7 @@ public class Health : NetworkBehaviour
             currentHealth = maxHealth;
             // called on the server, will be invoked on the clients
             GetComponent<Defense>().CmdDeadAmrorBreak();
+            GetComponent<AttackController>().CmdDeadWeaponDrop();
             RpcRespawnZero();
             return true;
         }

@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
   currentWeapon: {fileID: 11405624, guid: 172623cbb8817a0429af865dff14f9c5, type: 2}
+  defaultWeapon: {fileID: 11405624, guid: 172623cbb8817a0429af865dff14f9c5, type: 2}
 --- !u!114 &11445486
 MonoBehaviour:
   m_ObjectHideFlags: 1
