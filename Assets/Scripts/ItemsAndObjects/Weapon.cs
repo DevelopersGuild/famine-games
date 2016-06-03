@@ -20,6 +20,8 @@ public class Weapon : NetworkBehaviour, IItem
     public Vector3 rotationOffset;
     public Vector3 scale;
 
+    public Animator animator;
+
     public enum WeaponType
     {
         Melee,
@@ -27,6 +29,11 @@ public class Weapon : NetworkBehaviour, IItem
     };
 
     public WeaponType currentWeaponType;
+
+    public void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void PrimaryUse(GameObject owner)
     {

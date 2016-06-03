@@ -11,6 +11,7 @@ public class AttackController : NetworkBehaviour
     [SyncVar]
     public NetworkInstanceId weaponId;
     public Weapon currentWeapon;
+    private Weapon equipped;
     private bool isAttacking;
     private WeaponBarControl wbc;
     public GameObject weaponHolder;
@@ -81,6 +82,8 @@ public class AttackController : NetworkBehaviour
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
+
+            equipped.animator.SetTrigger("Attack");
         }
     }
 
@@ -109,7 +112,7 @@ public class AttackController : NetworkBehaviour
         }
 
         // Instantiate the new weapon
-        Weapon equipped = (Weapon) Instantiate(currentWeapon);
+        equipped = (Weapon) Instantiate(currentWeapon);
         Destroy(equipped.GetComponent<Collider>());
         equipped.transform.SetParent(weaponHolder.transform);
         equipped.transform.localPosition = currentWeapon.positionOffset;
