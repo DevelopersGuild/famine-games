@@ -7,6 +7,7 @@ public class BowAndArrow : NetworkBehaviour
 {
     public Arrow arrowPrefab;
     public float arrowSpeed = 100.0f;
+    public bool fireOnArrow = false;
     public float fireRate = 1.5f;
     public float nextFire = 0.0f;
     [SyncVar]
@@ -37,7 +38,8 @@ public class BowAndArrow : NetworkBehaviour
             return;
         if (!isLocalPlayer)
             return;
-
+        if (!GetComponent<NetworkedPlayer>().fpsController.GetInput())
+            return;
         WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
         // Check for bow equipment
         if (ac.currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
@@ -87,6 +89,10 @@ public class BowAndArrow : NetworkBehaviour
                     (Arrow)
                         Instantiate(arrowPrefab, transform.position - transform.forward*-2,
                             Camera.main.transform.rotation);
+                if (fireOnArrow)
+                {
+                    
+                }
                 arrow.parentNetId = netId;
                 arrow.SetDamage(ac.currentWeapon.damage);
                 Destroy(arrow.gameObject, 10);
@@ -102,6 +108,16 @@ public class BowAndArrow : NetworkBehaviour
             else
                 falsePull = false;
         }
+
+        if (Input.GetKeyDown("f"))
+        {
+            AddfireToArrow();
+        }
+    }
+
+    void AddfireToArrow()
+    {
+        fireOnArrow = true;
     }
 
     [Command]

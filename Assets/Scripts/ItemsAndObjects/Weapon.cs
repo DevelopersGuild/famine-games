@@ -13,6 +13,7 @@ public class Weapon : NetworkBehaviour, IItem
     public float yRange;
     public float zRange;
     public Sprite icon;
+    public string description;
 
     public enum WeaponType
     {
@@ -56,4 +57,31 @@ public class Weapon : NetworkBehaviour, IItem
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
+
+    [Command]
+    public void CmdMakeVisible()
+    {
+        if (!isServer)
+            return;
+        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void CmdMoveToPoint(Vector3 target)
+    {
+        if (!isServer)
+            return;
+        gameObject.transform.position.Set(target.x, target.y, target.z);
+    }
+
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
 }
