@@ -70,6 +70,22 @@ public class Weapon : NetworkBehaviour, IItem
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
+    [Command]
+    public void CmdMakeVisible()
+    {
+        if (!isServer)
+            return;
+        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void CmdMoveToPoint(Vector3 target)
+    {
+        if (!isServer)
+            return;
+        gameObject.transform.position.Set(target.x, target.y, target.z);
+    }
+
     public Sprite GetIcon()
     {
         return icon;
@@ -79,4 +95,5 @@ public class Weapon : NetworkBehaviour, IItem
     {
         return description;
     }
+
 }

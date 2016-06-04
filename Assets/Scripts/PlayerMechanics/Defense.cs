@@ -93,6 +93,11 @@ public class Defense : NetworkBehaviour {
     [Command]
     public void CmdDeadAmrorBreak()
     {
+        if(amror)
+            amror.CmdSetMaxDurability(currentAmror);
         currentAmror = 0;
+        amror.CmdMoveToPoint(transform.position);
+        amror.CmdMakeVisible();
+        amrorid= new NetworkInstanceId(0);
     }
 }

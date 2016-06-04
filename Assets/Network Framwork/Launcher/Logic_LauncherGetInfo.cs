@@ -19,6 +19,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
     private WWWForm form;
     private string url_userinfo = "https://www.kroulisworld.com/programs/survive/ddt/get_info.php";
     private string url_matchinfo = "https://www.kroulisworld.com/programs/survive/ddt/get_recent_result.php";
+    private string url_getusername = "https://www.kroulisworld.com/programs/survive/ddt/get_player_name.php";
     private string processname;
 	public void GetInfo(Text name,Text level,Text EXP_text,Image EXP_image,Text Gold,Text Diamond)
     {
@@ -174,7 +175,8 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
                             Result.MID[i].text = (string)jd["data"][i]["mid"];
                             Result.Result[i].text = pri.IsWinner ? "Victory" : "Defeat";
                             Result.Result[i].color = pri.IsWinner ? Color.green : Color.red;
-                            Result.PlayerList[i].text = "You with others";
+                            //Result.PlayerList[i].text = "You with others";
+                            Result.PlayerList[i].text = pri.nameset;
                             Result.Rewards[i].text = "Currently No Reward";
                             Result.Kill[i].text = pri.kill;
                             Result.Death[i].text = pri.death;
@@ -253,6 +255,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
 
     struct PlayerResultInfo
     {
+        public string nameset;
         public string score;
         public string kill;
         public string assist;
@@ -276,6 +279,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
         string[] score_list = ((string)jd["score"]).Split(new char[1] { ',' });
         string[] kill_list = ((string)jd["kill"]).Split(new char[1] { ',' });
         string[] death_list = ((string)jd["death"]).Split(new char[1] { ',' });
+        string nameset = "";
         int maxscore=0;
         for (int i = 0; i < score_list.Length;i++)
         {
@@ -289,6 +293,28 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
             {
                 maxscore = int.Parse(score_list[i]);
             }
+            WWWForm wf = new WWWForm();
+            wf.AddField("uid", userlist_u[i]);
+            WWW unq = new WWW(url_getusername, wf);
+            while (!unq.isDone) ;
+            //Debug.Log(unq.text);
+            if(unq.error!=null)
+            {
+                nameset += "Unknown";
+
+                if(i!=score_list.Length-1)
+                {
+                    nameset += ",";
+                }
+            }
+            else
+            {
+                nameset += unq.text;
+                if (i != score_list.Length - 1)
+                {
+                    nameset += ",";
+                }
+            }
         }
         if(pri.score==maxscore.ToString())
         {
@@ -298,6 +324,7 @@ public class Logic_LauncherGetInfo : MonoBehaviour {
         {
             pri.IsWinner = false;
         }
+        pri.nameset = nameset;
         return pri;
     }
 

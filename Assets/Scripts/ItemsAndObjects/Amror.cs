@@ -33,8 +33,32 @@ public class Amror : NetworkBehaviour, IItem
     {
         Defense df = player.GetComponent<Defense>();
         df.PickedUpAmror(this);
+        CmdMakeInvisible();
+    }
+
+
+    [Command]
+    public void CmdMakeInvisible()
+    {
+        if (!isServer) return;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    [Command]
+    public void CmdMakeVisible()
+    {
+        if (!isServer)
+            return;
+        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void CmdMoveToPoint(Vector3 target)
+    {
+        if (!isServer)
+            return;
+        gameObject.transform.position.Set(target.x, target.y, target.z);
     }
 
     public void OnDrop()
@@ -55,5 +79,13 @@ public class Amror : NetworkBehaviour, IItem
     public string GetDescription()
     {
         return description;
+    }
+
+    [Command]
+    public void CmdSetMaxDurability(int amount)
+    {
+        if (!isServer)
+            return;
+        maxDurability = amount;
     }
 }
