@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 11467996}
   - 114: {fileID: 11445486}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,22 +509,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 94
-    i1: 158
-    i2: 133
-    i3: 28
-    i4: 14
-    i5: 20
-    i6: 40
+    i0: 32
+    i1: 215
+    i2: 142
+    i3: 58
+    i4: 3
+    i5: 163
+    i6: 80
     i7: 20
-    i8: 218
-    i9: 192
-    i10: 38
-    i11: 162
-    i12: 86
-    i13: 186
-    i14: 42
-    i15: 192
+    i8: 122
+    i9: 233
+    i10: 39
+    i11: 235
+    i12: 166
+    i13: 76
+    i14: 125
+    i15: 117
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
 --- !u!114 &11426704
@@ -670,22 +670,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 94
-    i1: 158
-    i2: 133
-    i3: 28
-    i4: 14
-    i5: 20
-    i6: 40
+    i0: 32
+    i1: 215
+    i2: 142
+    i3: 58
+    i4: 3
+    i5: 163
+    i6: 80
     i7: 20
-    i8: 218
-    i9: 192
-    i10: 38
-    i11: 162
-    i12: 86
-    i13: 186
-    i14: 42
-    i15: 192
+    i8: 122
+    i9: 233
+    i10: 39
+    i11: 235
+    i12: 166
+    i13: 76
+    i14: 125
+    i15: 117
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11484018

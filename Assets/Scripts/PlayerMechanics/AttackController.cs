@@ -117,9 +117,9 @@ public class AttackController : NetworkBehaviour
         equipped = (Weapon) Instantiate(currentWeapon);
         Destroy(equipped.GetComponent<Collider>());
         equipped.transform.SetParent(weaponHolder.transform);
-        equipped.transform.localPosition = currentWeapon.positionOffset;
-        equipped.transform.localEulerAngles = currentWeapon.rotationOffset;
-        equipped.transform.localScale = currentWeapon.scale;
+        //equipped.transform.localPosition = currentWeapon.positionOffset;
+        //equipped.transform.localEulerAngles = currentWeapon.rotationOffset;
+        //equipped.transform.localScale = currentWeapon.scale;
         equipped.GetComponent<Renderer>().material.shader = overlayShader;
     }
 

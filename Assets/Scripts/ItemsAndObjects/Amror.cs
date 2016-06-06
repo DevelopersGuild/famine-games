@@ -43,6 +43,8 @@ public class Amror : NetworkBehaviour, IItem
         if (!isServer) return;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            r.enabled = false;
     }
 
     [Command]
