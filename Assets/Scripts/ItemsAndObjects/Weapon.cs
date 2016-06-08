@@ -7,13 +7,16 @@ public class Weapon : NetworkBehaviour, IItem
 
     // Weapons
     public string name;
-    public int damage;
+    public int[] damage=new int[1];
+    [SyncVar]
+    public int CurrentLevel;
     public float attackCooldown;
     public float xRange;
     public float yRange;
     public float zRange;
     public Sprite icon;
     public string description;
+    
 
     //// Offsets for when the weapon is equipped
     //public Vector3 positionOffset;
@@ -30,6 +33,14 @@ public class Weapon : NetworkBehaviour, IItem
 
     public WeaponType currentWeaponType;
 
+    void Awake()
+    {
+        if(isServer)
+        {
+
+        }
+    }
+
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,12 +48,14 @@ public class Weapon : NetworkBehaviour, IItem
 
     public void PrimaryUse(GameObject owner)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        return;
     }
 
     public void SecondaryUse()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        return;
     }
 
     public void OnPickup(GameObject player)
@@ -79,6 +92,7 @@ public class Weapon : NetworkBehaviour, IItem
         gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
 
+    [Command]
     public void CmdMoveToPoint(Vector3 target)
     {
         if (!isServer)
@@ -96,4 +110,14 @@ public class Weapon : NetworkBehaviour, IItem
         return description;
     }
 
+    [Command]
+    public void CmdRandomWeaponLevel()
+    {
+        CurrentLevel = Random.Range(0, damage.Length - 1);
+    }
+
+    public int GetAttack()
+    {
+        return damage[CurrentLevel];
+    }
 }
