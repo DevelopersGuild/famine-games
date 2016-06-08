@@ -46,6 +46,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField]
     private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+    public bool m_isRunning;
+    public bool m_Jumping;
+
     private Camera m_Camera;
     private bool m_Jump;
     private float m_YRotation;
@@ -57,7 +60,6 @@ public class FirstPersonController : MonoBehaviour
     private Vector3 m_OriginalCameraPosition;
     private float m_StepCycle;
     private float m_NextStep;
-    private bool m_Jumping;
     private AudioSource m_AudioSource;
     private bool m_isEnabled;
 
@@ -243,6 +245,15 @@ public class FirstPersonController : MonoBehaviour
         if (m_Input.sqrMagnitude > 1)
         {
             m_Input.Normalize();
+        }
+
+        if(m_Input.sqrMagnitude != 0)
+        {
+            m_isRunning = true;
+        }
+        else
+        {
+            m_isRunning = false;
         }
 
         // handle speed change to give an fov kick

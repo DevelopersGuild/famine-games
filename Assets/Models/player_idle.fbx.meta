@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 49ba036047a5e814b8973b9db849f7bf
+timeCreated: 1465356517
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm IK.L
+    100002: Arm IK.L_end
+    100004: Arm IK.R
+    100006: Arm IK.R_end
+    100008: Armature
+    100010: Calf.L
+    100012: Calf.L_end
+    100014: Calf.R
+    100016: Calf.R_end
+    100018: Camera
+    100020: Chest
+    100022: Control
+    100024: Cube
+    100026: Elbow.L
+    100028: Elbow.L_end
+    100030: Elbow.R
+    100032: Elbow.R_end
+    100034: Foot IK.L
+    100036: Foot IK.R
+    100038: Foot.L
+    100040: Foot.L_end
+    100042: Foot.R
+    100044: Foot.R_end
+    100046: Forearm.L
+    100048: Forearm.L_end
+    100050: Forearm.R
+    100052: Forearm.R_end
+    100054: Head
+    100056: Head_end
+    100058: Knee.L
+    100060: Knee.L_end
+    100062: Knee.R
+    100064: Knee.R_end
+    100066: Lamp
+    100068: //RootNode
+    100070: Stomach
+    100072: Thigh.L
+    100074: Thigh.R
+    100076: Upper Arm.L
+    100078: Upper Arm.R
+    400000: Arm IK.L
+    400002: Arm IK.L_end
+    400004: Arm IK.R
+    400006: Arm IK.R_end
+    400008: Armature
+    400010: Calf.L
+    400012: Calf.L_end
+    400014: Calf.R
+    400016: Calf.R_end
+    400018: Camera
+    400020: Chest
+    400022: Control
+    400024: Cube
+    400026: Elbow.L
+    400028: Elbow.L_end
+    400030: Elbow.R
+    400032: Elbow.R_end
+    400034: Foot IK.L
+    400036: Foot IK.R
+    400038: Foot.L
+    400040: Foot.L_end
+    400042: Foot.R
+    400044: Foot.R_end
+    400046: Forearm.L
+    400048: Forearm.L_end
+    400050: Forearm.R
+    400052: Forearm.R_end
+    400054: Head
+    400056: Head_end
+    400058: Knee.L
+    400060: Knee.L_end
+    400062: Knee.R
+    400064: Knee.R_end
+    400066: Lamp
+    400068: //RootNode
+    400070: Stomach
+    400072: Thigh.L
+    400074: Thigh.R
+    400076: Upper Arm.L
+    400078: Upper Arm.R
+    4300000: Cube
+    7400000: Armature|Jump
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
