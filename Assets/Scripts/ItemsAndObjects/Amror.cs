@@ -6,11 +6,21 @@ public class Amror : NetworkBehaviour, IItem
 {
     // Amrors
     public string name;
-    public int defense;
+    public int[] defense;
+    [SyncVar]
+    public int CurrentLevel;
     public int maxDurability;
     public Sprite icon;
     public string description;
     //public Sprite icon;
+
+    void Awake()
+    {
+        if(isServer)
+        {
+            CmdRandomAmrorLevel();
+        }
+    }
 
     public enum AmrorType
     {
@@ -89,5 +99,16 @@ public class Amror : NetworkBehaviour, IItem
         if (!isServer)
             return;
         maxDurability = amount;
+    }
+
+    [Command]
+    public void CmdRandomAmrorLevel()
+    {
+        CurrentLevel = Random.Range(0, defense.Length - 1);
+    }
+
+    public int GetDefense()
+    {
+        return defense[CurrentLevel];
     }
 }

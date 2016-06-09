@@ -69,14 +69,18 @@ public class AttackController : NetworkBehaviour
             //attackCollider.damage = currentWeapon.damage;
 
 
-            attack = (AttackCollider)Instantiate(
+            /*attack = (AttackCollider)Instantiate(
                     attackCollider,
                     transform.position - Camera.main.transform.forward * -2,
-                    Camera.main.transform.rotation);
+                    Camera.main.transform.rotation);*/
+            attack = (AttackCollider)Instantiate(
+                    attackCollider,
+                    transform.position - GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.forward * -2,
+                    GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.rotation);
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
-            attack.damage = currentWeapon.damage;
+            attack.damage = currentWeapon.GetAttack();
             attack.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
             Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 

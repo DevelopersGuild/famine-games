@@ -94,7 +94,7 @@ public class BowAndArrow : NetworkBehaviour
                     
                 }
                 arrow.parentNetId = netId;
-                arrow.SetDamage(ac.currentWeapon.damage);
+                arrow.SetDamage(ac.currentWeapon.GetAttack());
                 Destroy(arrow.gameObject, 10);
 
 
@@ -133,7 +133,7 @@ public class BowAndArrow : NetworkBehaviour
 
         Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
         arrow.parentNetId = netId;
-        arrow.SetDamage(ac.currentWeapon.damage);
+        arrow.SetDamage(ac.currentWeapon.GetAttack());
         Destroy(arrow.gameObject, 10);
 
 
