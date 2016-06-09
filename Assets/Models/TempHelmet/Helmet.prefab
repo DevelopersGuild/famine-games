@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 437648}
   - 135: {fileID: 13504452}
   - 114: {fileID: 11449460}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PickUpTipsChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,8 +531,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0.1, y: 0.66, z: 0}
+  m_Size: {x: 0.48, y: 0.94, z: 0.98}
+  m_Center: {x: 0.01, y: 0.34, z: 0.47}
 --- !u!114 &11449460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -590,6 +590,8 @@ MonoBehaviour:
   name: Iron Helmet
   defense: 4
   maxDurability: 200
+  icon: {fileID: 0}
+  description: 
   currentAmrorType: 1
 --- !u!135 &13504452
 SphereCollider:

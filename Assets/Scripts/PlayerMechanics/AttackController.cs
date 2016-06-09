@@ -114,12 +114,12 @@ public class AttackController : NetworkBehaviour
         }
 
         // Instantiate the new weapon
-        equipped = (Weapon) Instantiate(currentWeapon);
+        equipped = (Weapon)Instantiate(currentWeapon);
         Destroy(equipped.GetComponent<Collider>());
         equipped.transform.SetParent(weaponHolder.transform);
-        //equipped.transform.localPosition = currentWeapon.positionOffset;
-        //equipped.transform.localEulerAngles = currentWeapon.rotationOffset;
-        //equipped.transform.localScale = currentWeapon.scale;
+        equipped.transform.position = new Vector3(0, 0, 0);
+        weaponHolder.transform.localPosition = new Vector3(-1.491f + equipped.positionOffset.x, -2.073f + equipped.positionOffset.y, 0.885f + equipped.positionOffset.z);
+        weaponHolder.transform.localEulerAngles = new Vector3(296 + currentWeapon.rotationOffset.x, 353 + currentWeapon.rotationOffset.y, 291 + currentWeapon.rotationOffset.z);
         equipped.GetComponent<Renderer>().material.shader = overlayShader;
     }
 

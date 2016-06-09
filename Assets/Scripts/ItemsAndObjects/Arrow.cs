@@ -26,15 +26,7 @@ public class Arrow : NetworkBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        //Health health = other.GetComponent<Health>();
-        //if (health != null)
-        //{
-        //    if (health.TakeDamage(damage))
-        //        owner.AddPoints(10);
-        //}
-        //else
-        //    Destroy(this.gameObject);
-
+        Debug.Log(other.gameObject.name);
         Health health = other.GetComponent<Health>();
         Point target = other.GetComponent<Point>();
         Defense defense = other.GetComponent<Defense>();
@@ -56,8 +48,11 @@ public class Arrow : NetworkBehaviour {
                 }
             }
         }
-        else
+        else if (other.gameObject.layer == LayerMask.NameToLayer("IgnoreCollision"))
         {
+            return;
+        }
+        else { 
             Destroy(this.gameObject);
         }
     }

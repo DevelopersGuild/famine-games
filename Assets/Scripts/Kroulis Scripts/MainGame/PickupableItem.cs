@@ -10,7 +10,7 @@ namespace Kroulis.UI.MainGame
         // Use this for initialization
         void Start()
         {
-
+            gameObject.layer = LayerMask.NameToLayer("IgnoreCollision");
         }
 
         // Update is called once per frame

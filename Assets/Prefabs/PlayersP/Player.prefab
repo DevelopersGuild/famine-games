@@ -712,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.41957, y: -36.28489, z: 11.240688}
+  m_LocalPosition: {x: -4.7876434, y: -36.26658, z: 4.0957413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441352}
@@ -1897,6 +1897,8 @@ MonoBehaviour:
   zRange: 1
   icon: {fileID: 0}
   description: 
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   currentWeaponType: 0
 --- !u!137 &13756404

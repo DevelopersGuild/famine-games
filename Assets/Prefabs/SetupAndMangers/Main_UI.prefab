@@ -849,7 +849,7 @@ GameObject:
   - 224: {fileID: 22438596}
   - 222: {fileID: 22265680}
   - 114: {fileID: 11427356}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: PickUpTips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4155,7 +4155,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 520}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22414698

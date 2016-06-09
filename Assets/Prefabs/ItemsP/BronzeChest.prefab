@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 412032}
   - 135: {fileID: 13562560}
   - 114: {fileID: 11431170}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: PickUpTipsChecker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

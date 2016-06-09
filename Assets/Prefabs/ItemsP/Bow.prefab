@@ -1,79 +1,108 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &159482
+--- !u!1 &126650
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 457386}
-  - 33: {fileID: 3365530}
-  - 65: {fileID: 6585604}
-  - 23: {fileID: 2330110}
-  - 114: {fileID: 11409816}
-  - 114: {fileID: 11437442}
-  - 114: {fileID: 11402808}
+  - 4: {fileID: 475452}
   m_Layer: 8
   m_Name: Bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &127050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476378}
+  - 33: {fileID: 3398152}
+  - 65: {fileID: 6543472}
+  - 23: {fileID: 2312424}
+  - 114: {fileID: 11418790}
+  - 114: {fileID: 11425886}
+  - 114: {fileID: 11479700}
+  - 95: {fileID: 9512414}
+  m_Layer: 8
+  m_Name: NewBow
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &193592
+--- !u!1 &151142
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 454864}
-  - 135: {fileID: 13589200}
-  - 114: {fileID: 11438516}
-  m_Layer: 0
+  - 4: {fileID: 448788}
+  - 114: {fileID: 11487454}
+  - 135: {fileID: 13511240}
+  m_Layer: 9
   m_Name: PickUpTipsChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &454864
+--- !u!4 &448788
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193592}
+  m_GameObject: {fileID: 151142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.34, y: 0, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 457386}
+  m_Father: {fileID: 476378}
   m_RootOrder: 0
---- !u!4 &457386
+--- !u!4 &475452
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
+  m_GameObject: {fileID: 126650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.150688, y: -35.04, z: 8.312485}
+  m_LocalPosition: {x: -14.41, y: -35.56, z: 22.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 454864}
+  - {fileID: 476378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2330110
+--- !u!4 &476378
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: -0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 448788}
+  m_Father: {fileID: 475452}
+  m_RootOrder: 0
+--- !u!23 &2312424
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
+  m_GameObject: {fileID: 127050}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7abb9697e56636d40aa254b5a3ed0ae0, type: 2}
+  - {fileID: 2100000, guid: ca7afc79f1132a5489692a58f806a390, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -89,31 +118,82 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3365530
+--- !u!33 &3398152
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
+  m_GameObject: {fileID: 127050}
   m_Mesh: {fileID: 4300000, guid: ed2b498ff748f0745b69c2a0c8826b91, type: 3}
---- !u!65 &6585604
+--- !u!65 &6543472
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
+  m_GameObject: {fileID: 127050}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.33, z: 3.44}
   m_Center: {x: -0.4, y: 0, z: -0.03}
---- !u!114 &11402808
+--- !u!95 &9512414
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 657b4cc3df5433640b3a4729e7861204, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11418790
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
+  m_GameObject: {fileID: 127050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bronze Knife
+  damage: 5
+  attackCooldown: 0.5
+  xRange: 1
+  yRange: 1
+  zRange: 1
+  icon: {fileID: 0}
+  description: 
+  positionOffset: {x: 0.5, y: 0.5, z: 0.5}
+  rotationOffset: {x: 10, y: 130, z: -100}
+  animator: {fileID: 0}
+  currentWeaponType: 1
+--- !u!114 &11425886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24801eb19548044499c3fd05454ac42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11479700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127050}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
@@ -122,80 +202,46 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 250
-    i1: 215
-    i2: 155
-    i3: 158
-    i4: 26
-    i5: 253
-    i6: 174
-    i7: 100
-    i8: 75
-    i9: 56
-    i10: 42
-    i11: 116
-    i12: 247
-    i13: 67
-    i14: 156
-    i15: 176
+    i0: 7
+    i1: 182
+    i2: 185
+    i3: 191
+    i4: 0
+    i5: 38
+    i6: 110
+    i7: 196
+    i8: 233
+    i9: 97
+    i10: 46
+    i11: 24
+    i12: 217
+    i13: 111
+    i14: 113
+    i15: 212
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &11409816
+--- !u!114 &11487454
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Bow
-  damage: 10
-  attackCooldown: 0
-  xRange: 0
-  yRange: 0
-  zRange: 0
-  icon: {fileID: 0}
-  description: 
-  positionOffset: {x: 1, y: -1.25, z: 0.5}
-  rotationOffset: {x: 320, y: 0, z: 160}
-  scale: {x: 1, y: 1, z: 1}
-  currentWeaponType: 1
---- !u!114 &11437442
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 159482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24801eb19548044499c3fd05454ac42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11438516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193592}
+  m_GameObject: {fileID: 151142}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 218c795815fb56f409d4cbe2c63f2b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13589200
+--- !u!135 &13511240
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193592}
+  m_GameObject: {fileID: 151142}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.500311
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -206,5 +252,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 159482}
+  m_RootGameObject: {fileID: 126650}
   m_IsPrefabParent: 1

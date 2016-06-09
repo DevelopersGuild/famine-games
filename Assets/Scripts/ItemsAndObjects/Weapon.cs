@@ -15,10 +15,9 @@ public class Weapon : NetworkBehaviour, IItem
     public Sprite icon;
     public string description;
 
-    //// Offsets for when the weapon is equipped
-    //public Vector3 positionOffset;
-    //public Vector3 rotationOffset;
-    //public Vector3 scale;
+    // Offsets for when the weapon is equipped
+    public Vector3 positionOffset;
+    public Vector3 rotationOffset;
 
     public Animator animator;
 
