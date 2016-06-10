@@ -21,7 +21,7 @@ public class Arrow : NetworkBehaviour {
 
     public void Update()
     {
-        transform.rotation = Quaternion.LookRotation(rb.velocity);
+        //transform.rotation = Quaternion.LookRotation(rb.velocity);
     }
 
     void OnTriggerEnter(Collider other)
