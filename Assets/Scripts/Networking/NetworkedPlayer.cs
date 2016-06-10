@@ -13,6 +13,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public BowAndArrow bowAndArrow;
     public Defense defense;
     public ContestInfomation playerinfo;
+    public GameObject playerModel;
 
     public override void OnStartLocalPlayer()
     {
@@ -24,6 +25,7 @@ public class NetworkedPlayer : NetworkBehaviour
         bowAndArrow.enabled = true;
         defense.enabled = true;
         playerinfo.enabled = true;
+        playerModel.layer = LayerMask.NameToLayer("Player");
 
         if (GameObject.Find("Logic_Network"))
         {
