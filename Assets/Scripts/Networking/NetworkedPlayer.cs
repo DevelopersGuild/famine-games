@@ -26,6 +26,8 @@ public class NetworkedPlayer : NetworkBehaviour
         defense.enabled = true;
         playerinfo.enabled = true;
         playerModel.layer = LayerMask.NameToLayer("Player");
+        GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(0, true);
+        GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(1, true);
 
         if (GameObject.Find("Logic_Network"))
         {
@@ -40,6 +42,12 @@ public class NetworkedPlayer : NetworkBehaviour
 
         gameObject.name = "LOCAL Player";
         base.OnStartLocalPlayer();
+    }
+
+    public override void PreStartClient()
+    {
+        GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(0, true);
+        GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(1, true);
     }
 
 }

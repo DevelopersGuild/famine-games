@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class AnimationController : MonoBehaviour {
+public class AnimationController : NetworkBehaviour {
 
     private Animator animator;
     private FirstPersonController fpc;
