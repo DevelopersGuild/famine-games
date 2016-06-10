@@ -11,11 +11,13 @@ public class AttackController : NetworkBehaviour
     [SyncVar]
     public NetworkInstanceId weaponId;
     public Weapon currentWeapon;
+    private Weapon equipped;
     private bool isAttacking;
     private WeaponBarControl wbc;
+    public GameObject weaponHolder;
+    public Shader overlayShader;
     [SerializeField]
     private Weapon defaultWeapon;
-        
 
     // Use this for initialization
     void Start()
@@ -67,14 +69,18 @@ public class AttackController : NetworkBehaviour
             //attackCollider.damage = currentWeapon.damage;
 
 
-            attack = (AttackCollider)Instantiate(
+            /*attack = (AttackCollider)Instantiate(
                     attackCollider,
                     transform.position - Camera.main.transform.forward * -2,
-                    Camera.main.transform.rotation);
+                    Camera.main.transform.rotation);*/
+            attack = (AttackCollider)Instantiate(
+                    attackCollider,
+                    transform.position - GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.forward * -2,
+                    GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.rotation);
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
-            attack.damage = currentWeapon.damage;
+            attack.damage = currentWeapon.GetAttack();
             attack.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
             Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
@@ -82,6 +88,8 @@ public class AttackController : NetworkBehaviour
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
+
+            equipped.animator.SetTrigger("Attack");
         }
     }
 
@@ -102,6 +110,21 @@ public class AttackController : NetworkBehaviour
         //weaponId = weapon.netId;
         CmdUpdateWeapon(weapon.netId);
         currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+
+        // Destroy current equipped weapon
+        foreach (Transform child in weaponHolder.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Instantiate the new weapon
+        equipped = (Weapon) Instantiate(currentWeapon);
+        Destroy(equipped.GetComponent<Collider>());
+        equipped.transform.SetParent(weaponHolder.transform);
+        //equipped.transform.localPosition = currentWeapon.positionOffset;
+        //equipped.transform.localEulerAngles = currentWeapon.rotationOffset;
+        //equipped.transform.localScale = currentWeapon.scale;
+        equipped.GetComponent<Renderer>().material.shader = overlayShader;
     }
 
     public void DropWeapon()

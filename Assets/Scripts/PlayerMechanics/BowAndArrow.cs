@@ -7,6 +7,7 @@ public class BowAndArrow : NetworkBehaviour
 {
     public Arrow arrowPrefab;
     public float arrowSpeed = 100.0f;
+    public bool fireOnArrow = false;
     public float fireRate = 1.5f;
     public float nextFire = 0.0f;
     [SyncVar]
@@ -88,12 +89,17 @@ public class BowAndArrow : NetworkBehaviour
                     (Arrow)
                         Instantiate(arrowPrefab, transform.position - transform.forward*-2,
                             Camera.main.transform.rotation);
+                if (fireOnArrow)
+                {
+                    
+                }
                 arrow.parentNetId = netId;
-                arrow.SetDamage(ac.currentWeapon.damage);
+                arrow.SetDamage(ac.currentWeapon.GetAttack());
                 Destroy(arrow.gameObject, 10);
 
 
                 Physics.IgnoreCollision(arrow.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
+                Physics.IgnoreCollision(arrow.GetComponent<Collider>(), ac.GetComponent<Collider>());
 
                 arrow.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward*currentArrowSpeed);
                 // adjusted speed
@@ -103,6 +109,16 @@ public class BowAndArrow : NetworkBehaviour
             else
                 falsePull = false;
         }
+
+        if (Input.GetKeyDown("f"))
+        {
+            AddfireToArrow();
+        }
+    }
+
+    void AddfireToArrow()
+    {
+        fireOnArrow = true;
     }
 
     [Command]
@@ -117,7 +133,7 @@ public class BowAndArrow : NetworkBehaviour
 
         Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
         arrow.parentNetId = netId;
-        arrow.SetDamage(ac.currentWeapon.damage);
+        arrow.SetDamage(ac.currentWeapon.GetAttack());
         Destroy(arrow.gameObject, 10);
 
 

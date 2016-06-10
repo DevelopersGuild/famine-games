@@ -38,10 +38,10 @@ public class Defense : NetworkBehaviour {
         int baseamount = 0;
 
         //amror check
-        if (amount >= amror.defense)
+        if (amount >= amror.GetDefense())
         {
-            currentAmror -= amror.defense;
-            baseamount = amror.defense;
+            currentAmror -= amror.GetDefense();
+            baseamount = amror.GetDefense();
         }
         else
         {

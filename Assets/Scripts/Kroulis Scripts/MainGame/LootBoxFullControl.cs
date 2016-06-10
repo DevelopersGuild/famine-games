@@ -40,6 +40,11 @@ namespace Kroulis.UI.MainGame
                     CurrentChestObj.removeItem(CurrentChestObj.items[CurrentSelectID]);
                 }
             }
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         public void UpdateItems(Chest chest_object)

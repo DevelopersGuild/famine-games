@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class ControlPoint : MonoBehaviour {   
-    public Point points;
+    private Point points;
     public int timer;
     private bool isactivated;
-    public int numPlayers;  
+    private int numPlayers;  
 
     // Use this for initialization
     void Start () {
