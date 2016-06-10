@@ -18,10 +18,11 @@ public class Treasure : MonoBehaviour {
         bool getTeir1 = false;
         bool getTeir2 = false;
         bool getTeir3 = false;
-        
+         
         int maxbound = Teir1.Length + Teir2.Length + Teir3.Length;
         int item = rnd.Next(1, maxbound);
         int numItems = rnd.Next(1, 3);
+
 
 
         if (item > Teir1.Length)
