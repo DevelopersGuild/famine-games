@@ -20,17 +20,17 @@ public class Treasure : MonoBehaviour {
         bool getTeir3 = false;
          
         int maxbound = Teir1.Length + Teir2.Length + Teir3.Length;
-        int item = rnd.Next(1, maxbound);
+        int item = rnd.Next(0, maxbound-1);
         int numItems = rnd.Next(1, 3);
 
 
 
-        if (item > Teir1.Length)
+        if (item >= Teir1.Length)
             item = item - Teir1.Length;
         else
             getTeir1 = true;
 
-        if (item > Teir2.Length)
+        if (item >= Teir2.Length)
             item = item - Teir2.Length;
         else
             getTeir2 = true;
