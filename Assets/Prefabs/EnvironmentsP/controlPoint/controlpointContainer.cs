@@ -8,9 +8,12 @@ public class controlpointContainer : MonoBehaviour {
     public GameObject[] arrayList = new GameObject[5];
     private float timer;
     public int interval;
+    public GameObject goldenChest;
+    private GameObject chestRef;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         timer = 0;
         int i = 0;
         foreach (Transform children in transform)
@@ -20,7 +23,9 @@ public class controlpointContainer : MonoBehaviour {
             i++;
         }
 
-        arrayList[(int)(Mathf.Floor(Random.Range(0, arrayList.GetLength(0))))].gameObject.SetActive(true);
+        int randomInt = (int)(Mathf.Floor(Random.Range(0, arrayList.GetLength(0))));
+        arrayList[randomInt].gameObject.SetActive(true);
+        chestRef = (GameObject)Instantiate(goldenChest, arrayList[randomInt].transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class controlpointContainer : MonoBehaviour {
     
     void ResetControlPoint()
     {
+        Destroy(chestRef);
         int i = 0;
         foreach (GameObject children in arrayList)
         {
@@ -45,6 +51,8 @@ public class controlpointContainer : MonoBehaviour {
             i++;
         }
 
-        arrayList[(int)(Mathf.Floor(Random.Range(0, arrayList.GetLength(0))))].gameObject.SetActive(true);
+        int randomInt = (int)(Mathf.Floor(Random.Range(0, arrayList.GetLength(0))));
+        arrayList[randomInt].gameObject.SetActive(true);
+        chestRef = (GameObject)Instantiate(goldenChest, arrayList[randomInt].transform.position, Quaternion.identity);
     }
 }

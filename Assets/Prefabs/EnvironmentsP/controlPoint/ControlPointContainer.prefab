@@ -455,6 +455,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   interval: 180
+  goldenChest: {fileID: 194926, guid: b44f9e331e1840348a16bd35567b2777, type: 2}
 --- !u!114 &11455006
 MonoBehaviour:
   m_ObjectHideFlags: 1
