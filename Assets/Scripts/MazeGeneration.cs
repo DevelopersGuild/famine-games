@@ -25,6 +25,7 @@ public class MazeGeneration : MonoBehaviour {
     private System.Random rnd;
     int flip;
     Quaternion activetransform;
+    int TreasureChestChance;
 
     // Use this for initialization
     void Start () {
