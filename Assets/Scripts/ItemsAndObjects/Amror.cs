@@ -18,7 +18,7 @@ public class Amror : NetworkBehaviour, IItem
     {
         if(isServer)
         {
-            CmdRandomAmrorLevel();
+            //CmdRandomAmrorLevel();
         }
     }
 
@@ -46,6 +46,12 @@ public class Amror : NetworkBehaviour, IItem
         CmdMakeInvisible();
     }
 
+    public void OnPickupInChest(GameObject owner)
+    {
+        Defense df = owner.GetComponent<Defense>();
+        df.CmdPickedUpAmrorInChest(this.gameObject);
+        CmdMakeInvisible();
+    }
 
     [Command]
     public void CmdMakeInvisible()

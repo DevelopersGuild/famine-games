@@ -109,7 +109,10 @@ public class AttackController : NetworkBehaviour
     {
         //weaponId = weapon.netId;
         CmdUpdateWeapon(weapon.netId);
-        currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+        if(ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+        else if(ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>())
+            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
 
         // Destroy current equipped weapon
         foreach (Transform child in weaponHolder.transform)
@@ -155,5 +158,17 @@ public class AttackController : NetworkBehaviour
             currentWeapon= defaultWeapon;
             weaponId = currentWeapon.netId;
         }
+    }
+
+    [Command]
+    public void CmdPickupWeaponsInChest(GameObject prefab)
+    {
+        if (!isServer)
+            return;
+        GameObject newitem = Instantiate(prefab);
+        if (prefab.GetComponent<Weapon>() != null)
+            PickedUpWeapon(prefab.GetComponent<Weapon>());
+        else if(prefab.GetComponentInChildren<Weapon>()!=null)
+            PickedUpWeapon(prefab.GetComponentInChildren<Weapon>());
     }
 }

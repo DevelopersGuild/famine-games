@@ -577,10 +577,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Radiant Helmet
-  defense: 5
+  defense: 
+  CurrentLevel: 0
   maxDurability: 60
   icon: {fileID: 0}
-  description: 
+  description: It's so radiant, you can't even see
   currentAmrorType: 1
 --- !u!114 &11498464
 MonoBehaviour:

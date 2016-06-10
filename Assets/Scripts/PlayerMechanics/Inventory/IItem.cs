@@ -8,6 +8,7 @@ public interface IItem
     void SecondaryUse();
     void OnPickup(GameObject owner);
     void OnDrop();
+    void OnPickupInChest(GameObject owner);
 
     Sprite GetIcon();
 

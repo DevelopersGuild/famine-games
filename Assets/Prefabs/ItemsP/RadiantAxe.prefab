@@ -229,16 +229,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Radiant Axe
-  damage: 40
+  damage: 0a000000
+  CurrentLevel: 0
   attackCooldown: 2
   xRange: 2
   yRange: 2
   zRange: 2
   icon: {fileID: 0}
   description: 
-  positionOffset: {x: 0, y: 0, z: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
-  scale: {x: 1, y: 1, z: 1}
   animator: {fileID: 0}
   currentWeaponType: 0
 --- !u!114 &11445898

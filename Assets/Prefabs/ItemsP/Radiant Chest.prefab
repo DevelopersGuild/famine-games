@@ -238,10 +238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Radiant Chest
-  defense: 9
+  defense: 05000000
+  CurrentLevel: 0
   maxDurability: 80
   icon: {fileID: 0}
-  description: 
+  description: Elven Armor, better than your stupid dwarf armor.
   currentAmrorType: 0
 --- !u!135 &13589860
 SphereCollider:

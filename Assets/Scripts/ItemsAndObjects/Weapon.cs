@@ -65,6 +65,13 @@ public class Weapon : NetworkBehaviour, IItem
         CmdMakeInvisible();
     }
 
+    public void OnPickupInChest(GameObject owner)
+    {
+        AttackController ac = owner.GetComponent<AttackController>();
+        ac.CmdPickupWeaponsInChest(this.gameObject);
+        CmdMakeInvisible();
+    }
+
     public void OnDrop()
     {
         Destroy(gameObject);
