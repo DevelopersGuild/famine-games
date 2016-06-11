@@ -182,10 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Steel Chest
-  defense: 6
+  defense: 
+  CurrentLevel: 0
   maxDurability: 60
   icon: {fileID: 0}
-  description: 
+  description: Smithed by some sassy dwarves
   currentAmrorType: 0
 --- !u!114 &11449416
 MonoBehaviour:

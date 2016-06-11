@@ -29,15 +29,23 @@ namespace Kroulis.UI.MainGame
             }
             else
             {
-                tips.text = CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>().GetDescription();
+                if (CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>() != null)
+                    tips.text = CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>().GetDescription();
+                else if (CurrentChestObj.items[CurrentSelectID].GetComponentInChildren<IItem>() != null)
+                    tips.text = CurrentChestObj.items[CurrentSelectID].GetComponentInChildren<IItem>().GetDescription();
                 tips.text += "\n Press F to pick up current Item.";
             }
             if(Input.GetKeyDown(KeyCode.F))
             {
                 if(CurrentChestObj && CurrentSelectID!=-1 && CurrentSelectID<CurrentChestObj.items.Count)
                 {
-                    CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>().OnPickup(GameObject.Find("LOCAL Player"));
+                    GameObject newitem = Instantiate(CurrentChestObj.items[CurrentSelectID]);
+                    if(CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>()!=null)
+                        CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>().OnPickupInChest(GameObject.Find("LOCAL Player"));
+                    else if(CurrentChestObj.items[CurrentSelectID].GetComponentInChildren<IItem>() != null)
+                        CurrentChestObj.items[CurrentSelectID].GetComponentInChildren<IItem>().OnPickupInChest(GameObject.Find("LOCAL Player"));
                     CurrentChestObj.removeItem(CurrentChestObj.items[CurrentSelectID]);
+
                 }
             }
 

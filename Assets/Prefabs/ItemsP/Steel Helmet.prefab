@@ -556,10 +556,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Steel Helmet
-  defense: 3
+  defense: 
+  CurrentLevel: 0
   maxDurability: 40
   icon: {fileID: 0}
-  description: 
+  description: A sassy helm made by a sassy dwarf
   currentAmrorType: 1
 --- !u!114 &11476886
 MonoBehaviour:

@@ -29,6 +29,10 @@ public class Ammo : NetworkBehaviour, IItem
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
+    public void OnPickupInChest(GameObject owner)
+    {
+        OnPickup(owner);
+    }
 
     public void PrimaryUse(GameObject owner)
     {

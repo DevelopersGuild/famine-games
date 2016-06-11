@@ -545,10 +545,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bronze Helmet
-  defense: 1
+  defense: 
+  CurrentLevel: 0
   maxDurability: 20
   icon: {fileID: 0}
-  description: 
+  description: Check out this weird, fleshy helmet
   currentAmrorType: 1
 --- !u!114 &11429114
 MonoBehaviour:

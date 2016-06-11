@@ -9,7 +9,7 @@ public class AnimationController : NetworkBehaviour {
     private bool isRunning;
     private bool isJumping;
 
-	// Use this for initialization
+	// Use this for initializationooooo
 	void Start () {
         animator = GetComponentInChildren<Animator>();
         fpc = GetComponent<FirstPersonController>();

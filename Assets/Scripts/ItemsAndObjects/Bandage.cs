@@ -48,4 +48,9 @@ public class Bandage : MonoBehaviour, IItem
     {
         return "Bandage: Heal 50% of your health at anytime.";
     }
+
+    public void OnPickupInChest(GameObject owner)
+    {
+        OnPickup(owner);
+    }
 }

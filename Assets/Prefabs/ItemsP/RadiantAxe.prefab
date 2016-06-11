@@ -229,7 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Radiant Axe
-  damage: 40
+  damage: 0a000000
+  CurrentLevel: 0
   attackCooldown: 2
   xRange: 2
   yRange: 2

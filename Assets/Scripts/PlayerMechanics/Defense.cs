@@ -70,6 +70,22 @@ public class Defense : NetworkBehaviour {
         this.amror = amror;
     }
 
+    [Command]
+    public void CmdPickedUpAmrorInChest(GameObject prefab)
+    {
+        if (!isServer)
+            return;
+        GameObject newitem = Instantiate(prefab);
+        if (newitem.GetComponent<Amror>())
+        {
+            PickedUpAmror(newitem.GetComponent<Amror>());
+        }
+        else if(newitem.GetComponentInChildren<Amror>())
+        {
+            PickedUpAmror(newitem.GetComponentInChildren<Amror>());
+        }
+    }
+
     public int GetCurrentAmror()
     {
         if(!amror)

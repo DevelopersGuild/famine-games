@@ -225,10 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bronze Chest
-  defense: 3
+  defense: 
+  CurrentLevel: 0
   maxDurability: 40
   icon: {fileID: 0}
-  description: 
+  description: Protect yourself from enemies, bronze age style
   currentAmrorType: 0
 --- !u!135 &13562560
 SphereCollider:
