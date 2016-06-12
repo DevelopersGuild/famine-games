@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.61, y: -36.1, z: 19.4}
+  m_LocalPosition: {x: -21.45, y: -36.284885, z: 27.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 418336}
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Radiant Axe
-  damage: 0a000000
+  damage: 14000000
   CurrentLevel: 0
   attackCooldown: 2
   xRange: 2
@@ -237,6 +237,8 @@ MonoBehaviour:
   zRange: 2
   icon: {fileID: 0}
   description: 
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   currentWeaponType: 0
 --- !u!114 &11445898

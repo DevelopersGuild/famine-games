@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.44, y: -36.1, z: 19.4}
+  m_LocalPosition: {x: -10.977753, y: -35.83, z: 28.342567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431564}
@@ -240,13 +240,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Bronze Axe
-  damage: 20
+  damage: 0a000000
+  CurrentLevel: 1
   attackCooldown: 2
   xRange: 2
   yRange: 2
   zRange: 2
   icon: {fileID: 0}
   description: 
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   currentWeaponType: 0
 --- !u!135 &13541258
