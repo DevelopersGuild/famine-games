@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Steel Knife
   damage: 0a000000
-  CurrentLevel: 1
+  CurrentLevel: 0
   attackCooldown: 0.5
   xRange: 1
   yRange: 1

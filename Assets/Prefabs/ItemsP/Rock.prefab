@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.3476715, y: -36.28489, z: 10.088715}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 440358}
@@ -120,14 +120,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Rock
-  damage: 5
+  damage: 03000000
+  CurrentLevel: 0
   attackCooldown: 2
   xRange: 1
   yRange: 1
   zRange: 1
   icon: {fileID: 0}
   description: 
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: 1, y: 0, z: 1.25}
   rotationOffset: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   currentWeaponType: 0

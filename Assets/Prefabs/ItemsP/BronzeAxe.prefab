@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bronze Axe
   damage: 0a000000
-  CurrentLevel: 1
+  CurrentLevel: 0
   attackCooldown: 2
   xRange: 2
   yRange: 2

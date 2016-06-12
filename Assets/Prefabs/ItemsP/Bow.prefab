@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.41, y: -35.56, z: 22.99}
+  m_LocalPosition: {x: -17.911274, y: -36.28489, z: 23.30552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 476378}
@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cef3bb7b6df4443869ef3b9dbb27b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Bronze Knife
-  damage: 5
+  name: Bow
+  damage: 05000000
+  CurrentLevel: 0
   attackCooldown: 0.5
   xRange: 1
   yRange: 1
