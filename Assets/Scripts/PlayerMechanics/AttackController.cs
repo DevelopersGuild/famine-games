@@ -23,6 +23,7 @@ public class AttackController : NetworkBehaviour
     void Start()
     {
         isAttacking = false;
+        PickedUpWeapon(defaultWeapon);
     }
 
     // Update is called once per frame
@@ -109,10 +110,13 @@ public class AttackController : NetworkBehaviour
     {
         //weaponId = weapon.netId;
         CmdUpdateWeapon(weapon.netId);
-        if(ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
-            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
-        else if(ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>())
-            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+        if (weapon != defaultWeapon)
+        {
+            if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+                currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+            else if (ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>())
+                currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+        }
 
         // Destroy current equipped weapon
         foreach (Transform child in weaponHolder.transform)
