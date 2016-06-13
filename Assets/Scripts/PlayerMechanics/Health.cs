@@ -54,7 +54,16 @@ public class Health : NetworkBehaviour
 
     public void UseBandage(int amount)
     {
-        bandagesAmount--;
+        if(bandagesAmount > 0)
+        {
+            bandagesAmount--;
+            Heal(amount);
+        }
+    }
+
+    public void pickupBandage()
+    {
+        bandagesAmount++;
     }
 
     [ClientRpc]

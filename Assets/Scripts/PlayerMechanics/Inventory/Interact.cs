@@ -10,11 +10,21 @@ public class Interact : MonoBehaviour
     private LayerMask layerMask;
     private Camera playerCamera;
     private Inventory inventory;
+    public float timeToHeal;
+    private float currentHealTimer;
+    public bool canHeal;
+    private Health health;
+    private FirstPersonController fpc;
+
     void Start()
     {
         layerMask = 1 << 8;
         playerCamera = gameObject.GetComponentInChildren<Camera>();
         inventory = gameObject.GetComponent<Inventory>();
+        health = GetComponent<Health>();
+        fpc = GetComponent<FirstPersonController>();
+
+        canHeal = true;
     }
 
     void Update()
@@ -35,13 +45,32 @@ public class Interact : MonoBehaviour
                 }
             }
         }
+
         //+++++++++++ Should probably be moved to the player script
+        if(Input.GetButton("Heal") && health.bandagesAmount > 0 && canHeal && !fpc.m_isRunning)
+        {
+            currentHealTimer += Time.deltaTime;
+            Debug.Log(currentHealTimer);
+            if(currentHealTimer > timeToHeal)
+            {
+                GetComponent<Health>().UseBandage(30);
+                currentHealTimer = 0;
+                canHeal = false;
+            }
+        }
+        else
+        {
+            currentHealTimer = 0;
+        }
 
-
+        if (Input.GetButtonUp("Heal"))
+        {
+            canHeal = true;
+        }
 
         //+++++++++++ Needs to be moved to the player script
         //TODO Move To Players Script
-        if (Input.GetButtonDown("SelectItem1"))
+            if (Input.GetButtonDown("SelectItem1"))
         {
             inventory.SelectItem(EItemType.None);
         }

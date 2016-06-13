@@ -18,8 +18,7 @@ public class Bandage : MonoBehaviour, IItem
 
     public void PrimaryUse(GameObject owner)
     {
-        Health health = owner.GetComponent<Health>();
-        health.Heal(healAmount);
+
     }
 
     public void SecondaryUse()
@@ -32,6 +31,8 @@ public class Bandage : MonoBehaviour, IItem
         gameObject.transform.parent = owner.transform;
         gameObject.GetComponent<Collider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Health health = owner.GetComponent<Health>();
+        health.pickupBandage();
     }
 
     public void OnDrop()
@@ -46,7 +47,7 @@ public class Bandage : MonoBehaviour, IItem
 
     public string GetDescription()
     {
-        return "Bandage: Heal 50% of your health at anytime.";
+        return "Bandage: Recover 30 HP after applying the bandage for 3 seconds";
     }
 
     public void OnPickupInChest(GameObject owner)
