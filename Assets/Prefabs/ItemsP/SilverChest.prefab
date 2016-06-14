@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11419062}
   - 114: {fileID: 11458354}
   - 65: {fileID: 6563306}
+  - 114: {fileID: 11412820}
   m_Layer: 8
   m_Name: Chest-A_Top
   m_TagString: Interactive
@@ -48,8 +49,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497544}
-  - 114: {fileID: 11456484}
-  - 114: {fileID: 11436730}
   m_Layer: 0
   m_Name: SilverChest
   m_TagString: Untagged
@@ -88,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7060165, y: -35.34, z: 21.65}
+  m_LocalPosition: {x: 299.94995, y: 100.22715, z: 359.6751}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 490214}
@@ -202,6 +201,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11412820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69f8d0375870cbb4399545bef557f0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Teir1:
+  - {fileID: 137842, guid: 89028cbc36d88dc49a784f53db18256b, type: 2}
+  - {fileID: 180680, guid: 5e316ebde4237a949a571817845b4592, type: 2}
+  - {fileID: 184016, guid: 463f03474ae8f3a48ae0b9fe821aca77, type: 2}
+  - {fileID: 104522, guid: cc043e4a9b6b1804c929af2194add08f, type: 2}
+  Teir2:
+  - {fileID: 0}
+  - {fileID: 164352, guid: 1b87955b36caf5a41b524b0b178fc3d6, type: 2}
+  - {fileID: 111832, guid: f89124b52d828724faca8f5b83ab48c8, type: 2}
+  - {fileID: 193888, guid: 069e3d6333ded6a499e42d50dc195e67, type: 2}
+  - {fileID: 115036, guid: aefaf3fd4967c474d9daf878ef4bcfe0, type: 2}
+  Teir3: []
 --- !u!114 &11419062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,45 +243,6 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
---- !u!114 &11436730
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0794394431b4e1a49a4df46e307653d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
---- !u!114 &11456484
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69f8d0375870cbb4399545bef557f0d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Teir1:
-  - {fileID: 137842, guid: 89028cbc36d88dc49a784f53db18256b, type: 2}
-  - {fileID: 180680, guid: 5e316ebde4237a949a571817845b4592, type: 2}
-  - {fileID: 184016, guid: 463f03474ae8f3a48ae0b9fe821aca77, type: 2}
-  - {fileID: 104522, guid: cc043e4a9b6b1804c929af2194add08f, type: 2}
-  Teir2:
-  - {fileID: 159482, guid: fad79b9e1afdae644b382a74f7439cb0, type: 2}
-  - {fileID: 164352, guid: 1b87955b36caf5a41b524b0b178fc3d6, type: 2}
-  - {fileID: 111832, guid: f89124b52d828724faca8f5b83ab48c8, type: 2}
-  - {fileID: 193888, guid: 069e3d6333ded6a499e42d50dc195e67, type: 2}
-  - {fileID: 115036, guid: aefaf3fd4967c474d9daf878ef4bcfe0, type: 2}
-  Teir3:
-  - {fileID: 181210, guid: 323c10349af9a344d9f1bd2a995427b2, type: 2}
-  - {fileID: 174404, guid: ab839c26f60caec49817210afef38c9e, type: 2}
-  - {fileID: 191772, guid: 084b61535b392764f98b0cd289c8f925, type: 2}
-  - {fileID: 161286, guid: e8ec92beaf3881240a0d2fcef005e5e5, type: 2}
 --- !u!114 &11458354
 MonoBehaviour:
   m_ObjectHideFlags: 1

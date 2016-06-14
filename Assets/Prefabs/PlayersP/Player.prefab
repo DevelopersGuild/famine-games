@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 11444960}
   - 95: {fileID: 9594334}
   - 114: {fileID: 11414116}
+  - 81: {fileID: 8125598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -743,7 +744,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.166397, y: -36.284893, z: 14.9781}
+  m_LocalPosition: {x: 151.92758, y: 96.99689, z: 362.67422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441352}
@@ -1447,6 +1448,13 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 0
+--- !u!81 &8125598
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1664,6 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArmReach: 3
   timeToHeal: 3
+  canHeal: 0
 --- !u!114 &11414116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1742,22 +1751,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 94
-    i1: 158
+    i0: 51
+    i1: 250
     i2: 133
-    i3: 28
-    i4: 14
-    i5: 20
-    i6: 40
-    i7: 20
-    i8: 218
-    i9: 192
-    i10: 38
-    i11: 162
-    i12: 86
-    i13: 186
-    i14: 42
-    i15: 192
+    i3: 246
+    i4: 68
+    i5: 189
+    i6: 38
+    i7: 68
+    i8: 122
+    i9: 229
+    i10: 178
+    i11: 143
+    i12: 78
+    i13: 79
+    i14: 151
+    i15: 160
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
 --- !u!114 &11425816
@@ -1795,7 +1804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb3f41d2e937774ea50dd49d3f5f7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCollider: {fileID: 11484968, guid: 11989123a039def4586151e94406dce9, type: 2}
+  attackCollider: {fileID: 0}
   currentWeapon: {fileID: 11425816}
   weaponHolder: {fileID: 196134}
   overlayShader: {fileID: 4800000, guid: c7833fa542d74e245be0caa870878095, type: 3}
@@ -1939,22 +1948,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 94
-    i1: 158
+    i0: 51
+    i1: 250
     i2: 133
-    i3: 28
-    i4: 14
-    i5: 20
-    i6: 40
-    i7: 20
-    i8: 218
-    i9: 192
-    i10: 38
-    i11: 162
-    i12: 86
-    i13: 186
-    i14: 42
-    i15: 192
+    i3: 246
+    i4: 68
+    i5: 189
+    i6: 38
+    i7: 68
+    i8: 122
+    i9: 229
+    i10: 178
+    i11: 143
+    i12: 78
+    i13: 79
+    i14: 151
+    i15: 160
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!135 &13564088
