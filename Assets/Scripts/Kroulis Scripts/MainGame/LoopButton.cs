@@ -28,7 +28,7 @@ namespace Kroulis.UI.MainGame
             else
             {
                 Chest chestobj=lbfc.GetCurrentChest();
-                if(chestobj.items.Count>id)
+                if(chestobj.items.Count>id && chestobj.items[id])
                 {
                     if(chestobj.items[id].GetComponent<IItem>()!=null)
                         icon.sprite = chestobj.items[id].GetComponent<IItem>().GetIcon();

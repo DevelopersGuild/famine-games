@@ -171,11 +171,13 @@ public class AttackController : NetworkBehaviour
     {
         if (!isServer)
             return;
-        GameObject newitem = Instantiate(prefab);
+        /*GameObject newitem = Instantiate(prefab);
         if (prefab.GetComponent<Weapon>() != null)
             PickedUpWeapon(prefab.GetComponent<Weapon>());
         else if(prefab.GetComponentInChildren<Weapon>()!=null)
-            PickedUpWeapon(prefab.GetComponentInChildren<Weapon>());
+            PickedUpWeapon(prefab.GetComponentInChildren<Weapon>());*/
+        CmdInstantiateNewWeapon(prefab);
+        CmdUpdateWeapon(equipped.netId);
     }
 
     [Command]
