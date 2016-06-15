@@ -185,7 +185,7 @@ MonoBehaviour:
   defense: 
   CurrentLevel: 0
   maxDurability: 60
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 75b72b2100c49484faf49f52282c7c4b, type: 3}
   description: Smithed by some sassy dwarves
   currentAmrorType: 0
 --- !u!114 &11449416

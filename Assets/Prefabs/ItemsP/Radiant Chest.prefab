@@ -228,7 +228,7 @@ MonoBehaviour:
   defense: 05000000
   CurrentLevel: 0
   maxDurability: 80
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 75b72b2100c49484faf49f52282c7c4b, type: 3}
   description: Elven Armor, better than your stupid dwarf armor.
   currentAmrorType: 0
 --- !u!135 &13589860
