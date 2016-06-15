@@ -15,6 +15,7 @@ namespace Kroulis.UI.MainGame
         public GameObject RTKPrefab;
         public GameObject ChatBox;
         public GameObject LootBox;
+        public GameObject EscPanel;
         private GameObject local_player=null;
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
@@ -28,6 +29,7 @@ namespace Kroulis.UI.MainGame
             G_Compare.SetActive(false);
             LootBox.SetActive(false);
             T_Tips.gameObject.SetActive(false);
+            EscPanel.SetActive(false);
             InvokeRepeating("GetLocalPlayer", 0, 1f);
         }
 
@@ -90,6 +92,11 @@ namespace Kroulis.UI.MainGame
                         GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = false;
                         local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
                     }
+                }
+                if(!menu_in_use && !LootBox.activeInHierarchy && !EscPanel.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+                {
+                    local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
+                    EscPanel.SetActive(true);
                 }
             }
 
@@ -231,6 +238,11 @@ namespace Kroulis.UI.MainGame
         private void HideTips()
         {
             T_Tips.gameObject.SetActive(false);
+        }
+
+        public void ContinueGaming()
+        {
+            local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(true);
         }
 
     }
