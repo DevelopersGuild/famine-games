@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 11444960}
   - 95: {fileID: 9594334}
   - 114: {fileID: 11414116}
-  - 81: {fileID: 8125598}
+  - 81: {fileID: 8163804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -744,7 +744,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 151.92758, y: 96.99689, z: 362.67422}
+  m_LocalPosition: {x: 294.2041, y: 99.88354, z: 375.3761}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441352}
@@ -1448,7 +1448,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 0
---- !u!81 &8125598
+--- !u!81 &8163804
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1804,7 +1804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb3f41d2e937774ea50dd49d3f5f7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCollider: {fileID: 0}
+  attackCollider: {fileID: 11484968, guid: e13d5c033d6dbfe4791c2b5fa275a01b, type: 2}
   currentWeapon: {fileID: 11425816}
   weaponHolder: {fileID: 196134}
   overlayShader: {fileID: 4800000, guid: c7833fa542d74e245be0caa870878095, type: 3}
