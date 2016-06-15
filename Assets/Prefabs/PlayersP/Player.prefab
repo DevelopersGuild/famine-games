@@ -1808,7 +1808,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 11425816}
   weaponHolder: {fileID: 196134}
   overlayShader: {fileID: 4800000, guid: c7833fa542d74e245be0caa870878095, type: 3}
-  defaultWeapon: {fileID: 11425816}
+  defaultWeapon: {fileID: 11448070, guid: eb1429ce471ebb349a97d13ff60c1c9d, type: 2}
 --- !u!114 &11444960
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -34,10 +34,10 @@ public class Weapon : NetworkBehaviour, IItem
 
     void Awake()
     {
-        if(isServer)
+        /*if(isServer)
         {
 
-        }
+        }*/
     }
 
     public void Start()

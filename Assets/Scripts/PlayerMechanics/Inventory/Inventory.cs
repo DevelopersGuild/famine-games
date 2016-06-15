@@ -53,7 +53,8 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void UseItemPrimary()
     {
-        selectedItem.PrimaryUse(gameObject);
+        if(selectedItem!=null)
+            selectedItem.PrimaryUse(gameObject);
     }
 
     /// <summary>
@@ -61,7 +62,8 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void UseItemSecondary()
     {
-        selectedItem.SecondaryUse();
+        if(selectedItem!=null)
+            selectedItem.SecondaryUse();
     }
 
     /// <summary>

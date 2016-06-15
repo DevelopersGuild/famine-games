@@ -45,11 +45,11 @@ namespace Kroulis.UI.MainGame
                 T_Health.text = health.currentHealth.ToString();
                 T_Bandage.text = health.bandagesAmount.ToString();
                 T_Sheild.text = sheild.GetCurrentAmror().ToString();
-                if (local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon)
+                if (local_player.GetComponent<NetworkedPlayer>().attackController.equipped)
                 {
-                    T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
-                    I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
-                    if(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.currentWeaponType==Weapon.WeaponType.Melee)
+                    T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.equipped.name;
+                    I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.equipped.icon;
+                    if (local_player.GetComponent<NetworkedPlayer>().attackController.equipped.currentWeaponType == Weapon.WeaponType.Melee)
                     {
                         T_Ammo.text = "Infinity";
                     }
@@ -173,7 +173,7 @@ namespace Kroulis.UI.MainGame
         public void ShowComparePanel(Weapon weapon)
         {
             G_Compare.SetActive(true);
-            G_Compare.GetComponent<CompareControl>().ChangeData(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon,weapon);
+            G_Compare.GetComponent<CompareControl>().ChangeData(local_player.GetComponent<NetworkedPlayer>().attackController.equipped, weapon);
         }
 
         public void HideComparePanel()
