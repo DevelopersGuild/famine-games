@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
+using UnityEngine.Networking;
 using Random = UnityEngine.Random;
 
 
@@ -292,16 +293,23 @@ public class FirstPersonController : MonoBehaviour
     public void ToggleInput()
     {
         m_isEnabled = !m_isEnabled;
+        SetRotationEnable();
     }
 
     public void SetInput(bool canMove)
     {
         m_isEnabled = canMove;
+        SetRotationEnable();
     }
 
     public bool GetInput()
     {
         return m_isEnabled;
+    }
+
+    private void SetRotationEnable()
+    {
+        m_MouseLook.Enabled = m_isEnabled;
     }
 }
 
