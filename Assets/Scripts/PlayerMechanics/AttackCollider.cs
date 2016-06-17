@@ -26,7 +26,7 @@ public class AttackCollider : NetworkBehaviour
 
         if (health != null && defense != null)
         {
-
+            Debug.Log(damage);
             int armordamage = defense.TakeDamage(damage);
             if (armordamage != -1)
             {

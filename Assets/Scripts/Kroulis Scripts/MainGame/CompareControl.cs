@@ -36,7 +36,7 @@ namespace Kroulis.UI.MainGame
             {
                 T_Range[0].text = "<color=red>Melee</color>";
                 T_Ammo[0].text = "Infinity";
-                T_Damage[0].text = current.damage.ToString() + " <color=orange>(+0)</color>";
+                T_Damage[0].text = current.GetAttack().ToString() + " <color=orange>(+0)</color>";
                 T_Special[0].text = "";
                 T_Cooldown[0].text = current.attackCooldown.ToString() + "s";
             }
@@ -53,7 +53,7 @@ namespace Kroulis.UI.MainGame
             {
                 T_Range[1].text = "<color=red>Melee</color>";
                 T_Ammo[1].text = "Infinity";
-                T_Damage[1].text = compare.damage.ToString() + " <color=orange>(+0)</color>";
+                T_Damage[1].text = compare.GetAttack().ToString() + " <color=orange>(+0)</color>";
                 T_Special[1].text = "";
                 T_Cooldown[1].text = compare.attackCooldown.ToString() + "s";
             }

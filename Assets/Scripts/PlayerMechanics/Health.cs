@@ -33,6 +33,7 @@ public class Health : NetworkBehaviour
             // called on the server, will be invoked on the clients
             GetComponent<Defense>().CmdDeadAmrorBreak();
             GetComponent<AttackController>().CmdDeadWeaponDrop();
+            Debug.Log("DEATH2!");
             RpcRespawnZero();
             return true;
         }
@@ -81,6 +82,7 @@ public class Health : NetworkBehaviour
         if (isLocalPlayer)
         {
             // move back to zero location
+            Debug.Log("DEATH!");
             transform.position = Vector3.zero;
         }
     }

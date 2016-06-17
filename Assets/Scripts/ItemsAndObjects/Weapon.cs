@@ -124,6 +124,6 @@ public class Weapon : NetworkBehaviour, IItem
 
     public int GetAttack()
     {
-        return 1;
+        return damage[CurrentLevel];
     }
 }

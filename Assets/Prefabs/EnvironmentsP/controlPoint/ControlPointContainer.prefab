@@ -83,7 +83,7 @@ GameObject:
   m_Layer: 0
   m_Name: controlPoint (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -664,12 +664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914ea0bb632a4264a82ee72e4bfd42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timer: 5
 --- !u!114 &11406714
 MonoBehaviour:
@@ -682,12 +676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914ea0bb632a4264a82ee72e4bfd42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timer: 5
 --- !u!114 &11443132
 MonoBehaviour:
@@ -700,12 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914ea0bb632a4264a82ee72e4bfd42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timer: 5
 --- !u!114 &11447360
 MonoBehaviour:
@@ -737,12 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914ea0bb632a4264a82ee72e4bfd42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   timer: 5
 --- !u!114 &11493584
 MonoBehaviour:
@@ -755,9 +731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914ea0bb632a4264a82ee72e4bfd42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
   timer: 5
 --- !u!136 &13613656
 CapsuleCollider:

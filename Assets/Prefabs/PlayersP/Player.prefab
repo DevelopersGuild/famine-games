@@ -27,7 +27,6 @@ GameObject:
   - 114: {fileID: 11444960}
   - 95: {fileID: 9594334}
   - 114: {fileID: 11414116}
-  - 81: {fileID: 8163804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -744,7 +743,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 294.2041, y: 99.88354, z: 375.3761}
+  m_LocalPosition: {x: 317.86502, y: 100.436775, z: 401.3951}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441352}
@@ -809,7 +808,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 438206}
@@ -1448,13 +1447,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 0
---- !u!81 &8163804
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1589,6 +1581,7 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
+    Enabled: 1
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -1784,9 +1777,9 @@ MonoBehaviour:
   damage: 03000000
   CurrentLevel: 0
   attackCooldown: 2
-  xRange: 1
-  yRange: 1
-  zRange: 1
+  xRange: 5
+  yRange: 5
+  zRange: 5
   icon: {fileID: 0}
   description: 
   positionOffset: {x: 2, y: 3.5, z: -0.5}
@@ -1805,7 +1798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 11484968, guid: e13d5c033d6dbfe4791c2b5fa275a01b, type: 2}
-  currentWeapon: {fileID: 11425816}
+  equipped: {fileID: 11425816}
   weaponHolder: {fileID: 196134}
   overlayShader: {fileID: 4800000, guid: c7833fa542d74e245be0caa870878095, type: 3}
   defaultWeapon: {fileID: 11448070, guid: eb1429ce471ebb349a97d13ff60c1c9d, type: 2}
