@@ -39,7 +39,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192046}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -112,22 +112,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 17
-    i1: 152
-    i2: 145
-    i3: 35
-    i4: 160
-    i5: 57
-    i6: 222
-    i7: 244
-    i8: 88
-    i9: 97
-    i10: 81
-    i11: 233
-    i12: 68
-    i13: 6
-    i14: 220
-    i15: 233
+    i0: 225
+    i1: 61
+    i2: 92
+    i3: 3
+    i4: 61
+    i5: 109
+    i6: 191
+    i7: 228
+    i8: 121
+    i9: 28
+    i10: 43
+    i11: 95
+    i12: 162
+    i13: 117
+    i14: 160
+    i15: 27
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11484968
