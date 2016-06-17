@@ -15,6 +15,7 @@ public class AttackController : NetworkBehaviour
     private bool isAttacking;
     private WeaponBarControl wbc;
     public GameObject weaponHolder;
+    public Weapon holdObject;
     public Shader overlayShader;
     [SerializeField]
     private Weapon defaultWeapon;
@@ -99,6 +100,7 @@ public class AttackController : NetworkBehaviour
             Destroy(attack.gameObject, 1f);
 
             equipped.animator.SetTrigger("Attack");
+            holdObject.animator.SetTrigger("Attack");
         }
     }
 
@@ -140,7 +142,7 @@ public class AttackController : NetworkBehaviour
 
     public void CreateWeaponHold()
     {
-        Weapon holdObject = (Weapon) Instantiate(equipped);
+        holdObject = (Weapon) Instantiate(equipped);
 
         Destroy(holdObject.GetComponent<Collider>());
         holdObject.transform.SetParent(weaponHolder.transform);
