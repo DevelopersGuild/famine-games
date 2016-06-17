@@ -6,6 +6,7 @@ using System;
 public class Ammo : NetworkBehaviour, IItem
 {
     private int ammoAmount;
+    public Sprite sprite;
 
     public void Start()
     {
@@ -46,7 +47,7 @@ public class Ammo : NetworkBehaviour, IItem
 
     public Sprite GetIcon() 
     {
-        return null;
+        return sprite;
     }
 
     public string GetDescription()

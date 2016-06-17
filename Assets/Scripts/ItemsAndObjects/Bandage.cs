@@ -5,6 +5,7 @@ public class Bandage : MonoBehaviour, IItem
 {
 
     private int healAmount;
+    public Sprite icon;
 
     public void Start()
     {
@@ -42,7 +43,7 @@ public class Bandage : MonoBehaviour, IItem
 
     public Sprite GetIcon()
     {
-        return null;
+        return icon;
     }
 
     public string GetDescription()
