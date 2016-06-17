@@ -34,7 +34,7 @@ public class BowAndArrow : NetworkBehaviour
     public void Update()
     {
 
-        if (ac.currentWeapon == null)
+        if (ac.equipped == null)
             return;
         if (!isLocalPlayer)
             return;
@@ -42,7 +42,7 @@ public class BowAndArrow : NetworkBehaviour
             return;
         WeaponBarControl wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
         // Check for bow equipment
-        if (ac.currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+        if (ac.equipped.currentWeaponType == Weapon.WeaponType.Ranged)
             bowEquipped = true;
         else
             bowEquipped = false;
@@ -94,7 +94,7 @@ public class BowAndArrow : NetworkBehaviour
                     
                 }
                 arrow.parentNetId = netId;
-                arrow.SetDamage(ac.currentWeapon.GetAttack());
+                arrow.SetDamage(ac.equipped.GetAttack());
                 Destroy(arrow.gameObject, 10);
 
 
@@ -133,7 +133,7 @@ public class BowAndArrow : NetworkBehaviour
 
         Arrow arrow = (Arrow)Instantiate(arrowPrefab, transform.position - transform.forward * -2, Camera.main.transform.rotation);
         arrow.parentNetId = netId;
-        arrow.SetDamage(ac.currentWeapon.GetAttack());
+        arrow.SetDamage(ac.equipped.GetAttack());
         Destroy(arrow.gameObject, 10);
 
 

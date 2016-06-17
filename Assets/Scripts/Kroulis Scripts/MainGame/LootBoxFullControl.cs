@@ -23,7 +23,7 @@ namespace Kroulis.UI.MainGame
             {
                 tips.text = "Click on one item to show information.";
             }
-            else if(CurrentSelectID>=CurrentChestObj.items.Count)
+            else if(CurrentSelectID>=CurrentChestObj.items.Count || !CurrentChestObj.items[CurrentSelectID])
             {
                 tips.text = "This slot is empty";
             }
@@ -37,7 +37,7 @@ namespace Kroulis.UI.MainGame
             }
             if(Input.GetKeyDown(KeyCode.F))
             {
-                if(CurrentChestObj && CurrentSelectID!=-1 && CurrentSelectID<CurrentChestObj.items.Count)
+                if (CurrentChestObj && CurrentSelectID != -1 && CurrentSelectID < CurrentChestObj.items.Count && CurrentChestObj.items[CurrentSelectID])
                 {
                     GameObject newitem = Instantiate(CurrentChestObj.items[CurrentSelectID]);
                     if(CurrentChestObj.items[CurrentSelectID].GetComponent<IItem>()!=null)

@@ -228,7 +228,7 @@ MonoBehaviour:
   defense: 
   CurrentLevel: 0
   maxDurability: 40
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 75b72b2100c49484faf49f52282c7c4b, type: 3}
   description: Protect yourself from enemies, bronze age style
   currentAmrorType: 0
 --- !u!135 &13562560

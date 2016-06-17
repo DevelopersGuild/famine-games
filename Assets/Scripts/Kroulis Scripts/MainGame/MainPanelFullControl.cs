@@ -15,6 +15,7 @@ namespace Kroulis.UI.MainGame
         public GameObject RTKPrefab;
         public GameObject ChatBox;
         public GameObject LootBox;
+        public GameObject EscPanel;
         private GameObject local_player=null;
         private List<GameObject> rtk_list=new List<GameObject>();
         private float rtk_timer=0;
@@ -28,6 +29,7 @@ namespace Kroulis.UI.MainGame
             G_Compare.SetActive(false);
             LootBox.SetActive(false);
             T_Tips.gameObject.SetActive(false);
+            EscPanel.SetActive(false);
             InvokeRepeating("GetLocalPlayer", 0, 1f);
         }
 
@@ -45,11 +47,11 @@ namespace Kroulis.UI.MainGame
                 T_Health.text = health.currentHealth.ToString();
                 T_Bandage.text = health.bandagesAmount.ToString();
                 T_Sheild.text = sheild.GetCurrentAmror().ToString();
-                if (local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon)
+                if (local_player.GetComponent<NetworkedPlayer>().attackController.equipped)
                 {
-                    T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.name;
-                    I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.icon;
-                    if(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon.currentWeaponType==Weapon.WeaponType.Melee)
+                    T_WeaponName.text = local_player.GetComponent<NetworkedPlayer>().attackController.equipped.name;
+                    I_WeaponIcon.sprite = local_player.GetComponent<NetworkedPlayer>().attackController.equipped.icon;
+                    if (local_player.GetComponent<NetworkedPlayer>().attackController.equipped.currentWeaponType == Weapon.WeaponType.Melee)
                     {
                         T_Ammo.text = "Infinity";
                     }
@@ -90,6 +92,11 @@ namespace Kroulis.UI.MainGame
                         GameObject.Find("CursorLocker").GetComponent<InGameCursorLocker>().LockMouse = false;
                         local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
                     }
+                }
+                if(!menu_in_use && !LootBox.activeInHierarchy && !EscPanel.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+                {
+                    local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(false);
+                    EscPanel.SetActive(true);
                 }
             }
 
@@ -173,7 +180,7 @@ namespace Kroulis.UI.MainGame
         public void ShowComparePanel(Weapon weapon)
         {
             G_Compare.SetActive(true);
-            G_Compare.GetComponent<CompareControl>().ChangeData(local_player.GetComponent<NetworkedPlayer>().attackController.currentWeapon,weapon);
+            G_Compare.GetComponent<CompareControl>().ChangeData(local_player.GetComponent<NetworkedPlayer>().attackController.equipped, weapon);
         }
 
         public void HideComparePanel()
@@ -231,6 +238,11 @@ namespace Kroulis.UI.MainGame
         private void HideTips()
         {
             T_Tips.gameObject.SetActive(false);
+        }
+
+        public void ContinueGaming()
+        {
+            local_player.GetComponent<NetworkedPlayer>().fpsController.SetInput(true);
         }
 
     }

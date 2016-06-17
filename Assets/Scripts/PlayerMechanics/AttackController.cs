@@ -10,8 +10,8 @@ public class AttackController : NetworkBehaviour
     public AttackCollider attackCollider;
     [SyncVar]
     public NetworkInstanceId weaponId;
-    public Weapon currentWeapon;
-    private Weapon equipped;
+    //public Weapon currentWeapon;
+    public Weapon equipped;
     private bool isAttacking;
     private WeaponBarControl wbc;
     public GameObject weaponHolder;
@@ -38,12 +38,12 @@ public class AttackController : NetworkBehaviour
 
         if (GetComponent<FirstPersonController>().GetInput() && Input.GetMouseButtonDown(0)) 
         {
-            if (wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Melee)
+            if (wbc && equipped.currentWeaponType == Weapon.WeaponType.Melee)
             {
                 //Debug.Log(currentWeapon.attackCooldown);
-                wbc.StartCooldown(currentWeapon.attackCooldown);
+                wbc.StartCooldown(equipped.attackCooldown);
             }
-            else if(wbc && currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+            else if (wbc && equipped.currentWeaponType == Weapon.WeaponType.Ranged)
             {
                 
             }
@@ -55,10 +55,17 @@ public class AttackController : NetworkBehaviour
     void CmdAttack()
     {
 
-        if(!currentWeapon || currentWeapon.netId != weaponId)
-            currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+        if (!equipped || equipped.netId != weaponId)
+        {
+            //Debug.Log()
+            if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+            else
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+        }
 
-        if (currentWeapon.currentWeaponType == Weapon.WeaponType.Ranged)
+
+        if (equipped.currentWeaponType == Weapon.WeaponType.Ranged)
             return;
 
           // create the bullet object from the bullet prefab
@@ -82,11 +89,11 @@ public class AttackController : NetworkBehaviour
 
             attack.parentNetId = netId;
             attack.transform.parent = transform;
-            attack.damage = currentWeapon.GetAttack();
-            attack.transform.localScale = new Vector3(currentWeapon.xRange, currentWeapon.yRange, currentWeapon.zRange);
+            attack.damage = equipped.GetAttack();
+            attack.transform.localScale = new Vector3(equipped.xRange, equipped.yRange, equipped.zRange);
             Physics.IgnoreCollision(attack.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
 
-            StartCoroutine(StartAttackCoroutine(currentWeapon.attackCooldown));
+            StartCoroutine(StartAttackCoroutine(equipped.attackCooldown));
 
             NetworkServer.Spawn(attack.gameObject);
             Destroy(attack.gameObject, .1f);
@@ -114,9 +121,9 @@ public class AttackController : NetworkBehaviour
         if (weapon != defaultWeapon)
         {
             if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
-                currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
             else if (ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>())
-                currentWeapon = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
         }
 
         // Destroy current equipped weapon
@@ -126,18 +133,12 @@ public class AttackController : NetworkBehaviour
         }
 
         // Instantiate the new weapon
-        equipped = (Weapon)Instantiate(currentWeapon);
-        Destroy(equipped.GetComponent<Collider>());
-        equipped.transform.SetParent(weaponHolder.transform);
-        equipped.transform.position = new Vector3(0, 0, 0);
-        weaponHolder.transform.localPosition = new Vector3(-1.491f + equipped.positionOffset.x, -2.073f + equipped.positionOffset.y, 0.885f + equipped.positionOffset.z);
-        weaponHolder.transform.localEulerAngles = new Vector3(296 + currentWeapon.rotationOffset.x, 353 + currentWeapon.rotationOffset.y, 291 + currentWeapon.rotationOffset.z);
-        equipped.GetComponent<Renderer>().material.shader = overlayShader;
+        CmdInstantiateNewWeapon(weapon.gameObject);
     }
 
     public void DropWeapon()
     {
-        currentWeapon = null;
+        equipped = null;
     }
 
     public bool GetAttackingStatus()
@@ -156,12 +157,12 @@ public class AttackController : NetworkBehaviour
     [Command]
     public void CmdDeadWeaponDrop()
     {
-        if(currentWeapon != defaultWeapon)
+        if (equipped != defaultWeapon)
         {
-            currentWeapon.CmdMoveToPoint(transform.position);
-            currentWeapon.CmdMakeVisible();
-            currentWeapon= defaultWeapon;
-            weaponId = currentWeapon.netId;
+            equipped.CmdMoveToPoint(transform.position);
+            equipped.CmdMakeVisible();
+            equipped = defaultWeapon;
+            weaponId = equipped.netId;
         }
     }
 
@@ -170,10 +171,30 @@ public class AttackController : NetworkBehaviour
     {
         if (!isServer)
             return;
-        GameObject newitem = Instantiate(prefab);
+        /*GameObject newitem = Instantiate(prefab);
         if (prefab.GetComponent<Weapon>() != null)
             PickedUpWeapon(prefab.GetComponent<Weapon>());
         else if(prefab.GetComponentInChildren<Weapon>()!=null)
-            PickedUpWeapon(prefab.GetComponentInChildren<Weapon>());
+            PickedUpWeapon(prefab.GetComponentInChildren<Weapon>());*/
+        CmdInstantiateNewWeapon(prefab);
+        CmdUpdateWeapon(equipped.netId);
+    }
+
+    [Command]
+    public void CmdInstantiateNewWeapon(GameObject prefab)
+    {
+        if (!isServer)
+            return;
+        GameObject newobject=Instantiate(prefab);
+        if (newobject.GetComponent<Weapon>())
+            equipped = newobject.GetComponent<Weapon>();
+        else
+            equipped = newobject.GetComponentInChildren<Weapon>();
+        Destroy(equipped.GetComponent<Collider>());
+        equipped.transform.SetParent(weaponHolder.transform);
+        equipped.transform.position = new Vector3(0, 0, 0);
+        weaponHolder.transform.localPosition = new Vector3(-1.491f + equipped.positionOffset.x, -2.073f + equipped.positionOffset.y, 0.885f + equipped.positionOffset.z);
+        weaponHolder.transform.localEulerAngles = new Vector3(296 + equipped.rotationOffset.x, 353 + equipped.rotationOffset.y, 291 + equipped.rotationOffset.z);
+        equipped.GetComponent<Renderer>().material.shader = overlayShader;
     }
 }

@@ -580,7 +580,7 @@ MonoBehaviour:
   defense: 
   CurrentLevel: 0
   maxDurability: 60
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4ed681ca076b85d4397f6a866b166bf4, type: 3}
   description: It's so radiant, you can't even see
   currentAmrorType: 1
 --- !u!114 &11498464

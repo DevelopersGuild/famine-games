@@ -184,7 +184,7 @@ MonoBehaviour:
   xRange: 2
   yRange: 2
   zRange: 2
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9b522c5c09f7fc243a2be3ea3b2f50c3, type: 3}
   description: 
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
