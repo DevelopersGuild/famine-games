@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.45, y: -36.284885, z: 27.27}
+  m_LocalPosition: {x: 313.71457, y: 103.65, z: 397.22284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 418336}
@@ -232,9 +232,9 @@ MonoBehaviour:
   damage: 14000000
   CurrentLevel: 0
   attackCooldown: 2
-  xRange: 2
-  yRange: 2
-  zRange: 2
+  xRange: 3.5
+  yRange: 3.5
+  zRange: 3.5
   icon: {fileID: 21300000, guid: db8f962b8b9ddcf47a43c0810f58c595, type: 3}
   description: 
   positionOffset: {x: 0, y: 0, z: 0}

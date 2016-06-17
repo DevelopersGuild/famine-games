@@ -100,7 +100,7 @@ public class AttackController : NetworkBehaviour
                     Camera.main.transform.rotation);*/
             attack = (AttackCollider)Instantiate(
                     attackCollider,
-                    transform.position - GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.forward * -2,
+                    transform.position + GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.forward * equipped.yRange,
                     GetComponentInParent<NetworkedPlayer>().fpsCamera.transform.rotation);
 
             attack.parentNetId = netId;
@@ -112,7 +112,7 @@ public class AttackController : NetworkBehaviour
             StartCoroutine(StartAttackCoroutine(equipped.attackCooldown));
 
             NetworkServer.Spawn(attack.gameObject);
-            Destroy(attack.gameObject, .1f);
+            Destroy(attack.gameObject, 1f);
 
             equipped.animator.SetTrigger("Attack");
         }

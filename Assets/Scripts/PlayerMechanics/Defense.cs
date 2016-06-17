@@ -117,6 +117,5 @@ public class Defense : NetworkBehaviour {
             return;
         amror.CmdMoveToPoint(transform.position);
         amror.CmdMakeVisible();
-        
     }
 }

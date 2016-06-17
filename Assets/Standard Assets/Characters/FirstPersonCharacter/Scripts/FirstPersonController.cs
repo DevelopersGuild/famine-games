@@ -117,8 +117,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_isEnabled)
-        {
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -154,7 +152,7 @@ public class FirstPersonController : MonoBehaviour
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
-        }
+        
     }
 
 
@@ -230,6 +228,11 @@ public class FirstPersonController : MonoBehaviour
         // Read input
         float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
         float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+        if(!m_isEnabled)
+        {
+            horizontal = 0;
+            vertical = 0;
+        }
 
         bool waswalking = m_IsWalking;
 
