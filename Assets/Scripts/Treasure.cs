@@ -41,12 +41,15 @@ public class Treasure : MonoBehaviour {
                 for (int i = 0; i < 6; i++)
                 {
                     if (registry[i] == item)
+                    {
                         testfail = true;
+                        item = rnd.Next(0, maxbound - 1);
+                    }
 
-                    if (!testfail)
+                        if (!testfail)
                         notdupe = true;
                 }
-                item = rnd.Next(0, maxbound - 1);
+  
                 testfail = false;
                 //notdupe = true;
 

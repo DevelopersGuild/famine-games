@@ -182,7 +182,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3477079, y: 1.32, z: 0.61}
+  m_Size: {x: 1.3477079, y: 2, z: 1}
   m_Center: {x: 0.0010764112, y: -0.34105006, z: -0.07}
 --- !u!95 &9577480
 Animator:
@@ -217,8 +217,6 @@ MonoBehaviour:
   - {fileID: 180680, guid: 5e316ebde4237a949a571817845b4592, type: 2}
   - {fileID: 184016, guid: 463f03474ae8f3a48ae0b9fe821aca77, type: 2}
   - {fileID: 104522, guid: cc043e4a9b6b1804c929af2194add08f, type: 2}
-  - {fileID: 124690, guid: 1f54db9e76938da4590ce0286d4cdc30, type: 2}
-  - {fileID: 126650, guid: 07b6b9bf00266ec4e9612e18d96f71d4, type: 2}
   Teir2: []
   Teir3: []
 --- !u!114 &11437062

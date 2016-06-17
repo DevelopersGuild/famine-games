@@ -153,7 +153,7 @@ public class AttackController : NetworkBehaviour
         // Instantiate the new weapon
         CmdInstantiateNewWeapon(weapon.gameObject);
 
-        CreateWeaponHold();
+        //CreateWeaponHold();
     }
 
     public void CreateWeaponHold()
