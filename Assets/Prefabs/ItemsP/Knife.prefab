@@ -138,13 +138,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Knife
-  damage: 5
+  damage: 05000000
+  CurrentLevel: 0
   attackCooldown: 0.5
   xRange: 1
   yRange: 1
   zRange: 1
   icon: {fileID: 0}
   description: 
+  positionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   currentWeaponType: 0
 --- !u!114 &11437656

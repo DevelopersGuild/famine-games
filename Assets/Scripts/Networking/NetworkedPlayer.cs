@@ -14,6 +14,7 @@ public class NetworkedPlayer : NetworkBehaviour
     public Defense defense;
     public ContestInfomation playerinfo;
     public GameObject playerModel;
+    public WeaponHolder weaponHolder;
 
     public override void OnStartLocalPlayer()
     {

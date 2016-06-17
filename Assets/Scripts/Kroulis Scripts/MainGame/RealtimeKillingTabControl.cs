@@ -8,6 +8,7 @@ namespace Kroulis.UI.MainGame
     {
         public Image KillingType;
         public Text[] PlayerName = new Text[2];
+        public Sprite[] weapontype = new Sprite[2];
         
         void Awake()
         {
@@ -52,9 +53,9 @@ namespace Kroulis.UI.MainGame
 
         }
 
-        public void UpdateInfo(Sprite type,string name1,string name2)
+        public void UpdateInfo(int type,string name1,string name2)
         {
-            KillingType.sprite = type;
+            KillingType.sprite = weapontype[type-1];
             PlayerName[0].text = name1;
             PlayerName[1].text = name2;
         }
