@@ -7946,7 +7946,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!1 &250354399
 GameObject:
   m_ObjectHideFlags: 0
@@ -24087,7 +24087,7 @@ Transform:
   m_Children:
   - {fileID: 901083385}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!114 &797402643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27130,12 +27130,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 541487247}
-  - {fileID: 409068766}
   - {fileID: 1012589438}
   - {fileID: 519467165}
   - {fileID: 161888890}
   - {fileID: 61072509}
   - {fileID: 2126223010}
+  - {fileID: 409068766}
   - {fileID: 1015464241}
   m_Father: {fileID: 0}
   m_RootOrder: 24
@@ -48547,7 +48547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &1594582492
 GameObject:
   m_ObjectHideFlags: 0
@@ -59898,23 +59898,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22489196, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22489196, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22489196, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 22495130, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22495130, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 11462988, guid: f614d5df2df7ad141ab3b1a6509103bf, type: 2}
       propertyPath: m_Size
