@@ -134,6 +134,20 @@ public class AttackController : NetworkBehaviour
 
         // Instantiate the new weapon
         CmdInstantiateNewWeapon(weapon.gameObject);
+
+        CreateWeaponHold();
+    }
+
+    public void CreateWeaponHold()
+    {
+        Weapon holdObject = (Weapon) Instantiate(equipped);
+
+        Destroy(holdObject.GetComponent<Collider>());
+        holdObject.transform.SetParent(weaponHolder.transform);
+        holdObject.transform.position = new Vector3(0, 0, 0);
+        weaponHolder.transform.localPosition = new Vector3(-1.491f + holdObject.positionOffset.x, -2.073f + holdObject.positionOffset.y, 0.885f + holdObject.positionOffset.z);
+        weaponHolder.transform.localEulerAngles = new Vector3(296 + holdObject.rotationOffset.x, 353 + holdObject.rotationOffset.y, 291 + holdObject.rotationOffset.z);
+        holdObject.GetComponent<Renderer>().material.shader = overlayShader;
     }
 
     public void DropWeapon()
