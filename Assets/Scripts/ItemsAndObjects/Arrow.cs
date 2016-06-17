@@ -48,7 +48,7 @@ public class Arrow : NetworkBehaviour {
                 }
             }
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("IgnoreCollision"))
+        else if (other.gameObject.layer == LayerMask.NameToLayer("IgnoreCollision") || (other.gameObject.layer == LayerMask.NameToLayer("Interact")))
         {
             return;
         }

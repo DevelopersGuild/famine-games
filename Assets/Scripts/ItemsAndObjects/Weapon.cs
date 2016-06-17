@@ -45,18 +45,18 @@ public class Weapon : NetworkBehaviour, IItem
     void Update()
     {
         //Debug.Log("WeaponName: " + name + " ParentID" + parentid.Value);
-        if(ClientScene.FindLocalObject(parentid))
-        {
-            if(transform.parent!=ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform)
-            {
-                transform.parent = ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform;
-                ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().attackController.equipped = this;
-            }
-        }
-        else
-        {
-            transform.parent = null;
-        }
+        //if(ClientScene.FindLocalObject(parentid))
+        //{
+        //    if(transform.parent!=ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform)
+        //    {
+        //        transform.parent = ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform;
+        //        ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().attackController.equipped = this;
+        //    }
+        //}
+        //else
+        //{
+        //    transform.parent = null;
+        //}
     }
 
     public void Start()
