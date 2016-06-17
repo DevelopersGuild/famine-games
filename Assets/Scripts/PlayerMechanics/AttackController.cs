@@ -24,7 +24,11 @@ public class AttackController : NetworkBehaviour
     void Start()
     {
         isAttacking = false;
-        PickedUpWeapon(defaultWeapon);
+        if(!defaultWeapon)
+        {
+            Debug.LogError("Failed to load default weapon...");
+        }
+        CmdInstantiateDefaultWeapon();
     }
 
     // Update is called once per frame
@@ -35,6 +39,15 @@ public class AttackController : NetworkBehaviour
         if(!wbc)
         {
             wbc = GameObject.Find("Main_UI").GetComponentInChildren<WeaponBarControl>();
+        }
+
+        if ((!equipped || equipped.netId != weaponId) && ClientScene.FindLocalObject(weaponId))
+        {
+            //Debug.Log()
+            if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+            else
+                equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
         }
 
         if (GetComponent<FirstPersonController>().GetInput() && Input.GetMouseButtonDown(0)) 
@@ -58,11 +71,14 @@ public class AttackController : NetworkBehaviour
 
         if (!equipped || equipped.netId != weaponId)
         {
-            //Debug.Log()
-            if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
-                equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
-            else
-                equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+            if (ClientScene.FindLocalObject(weaponId))
+            {
+                //Debug.Log()
+                if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+                    equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
+                else
+                    equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
+            }
         }
 
 
@@ -119,12 +135,12 @@ public class AttackController : NetworkBehaviour
     public void PickedUpWeapon(Weapon weapon)
     {
         //weaponId = weapon.netId;
-        CmdUpdateWeapon(weapon.netId);
-        if (weapon != defaultWeapon)
+        
+        /*if (weapon != defaultWeapon)
         {
-            if (ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>())
+            if (ClientScene.FindLocalObject(weapon.netId).GetComponent<Weapon>())
                 equipped = ClientScene.FindLocalObject(weaponId).GetComponent<Weapon>();
-            else if (ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>())
+            else if (ClientScene.FindLocalObject(weapon.netId).GetComponentInChildren<Weapon>())
                 equipped = ClientScene.FindLocalObject(weaponId).GetComponentInChildren<Weapon>();
         }
 
@@ -132,7 +148,7 @@ public class AttackController : NetworkBehaviour
         foreach (Transform child in weaponHolder.transform)
         {
             Destroy(child.gameObject);
-        }
+        }*/
 
         // Instantiate the new weapon
         CmdInstantiateNewWeapon(weapon.gameObject);
@@ -150,6 +166,9 @@ public class AttackController : NetworkBehaviour
         weaponHolder.transform.localPosition = new Vector3(-1.491f + holdObject.positionOffset.x, -2.073f + holdObject.positionOffset.y, 0.885f + holdObject.positionOffset.z);
         weaponHolder.transform.localEulerAngles = new Vector3(296 + holdObject.rotationOffset.x, 353 + holdObject.rotationOffset.y, 291 + holdObject.rotationOffset.z);
         holdObject.GetComponent<Renderer>().material.shader = overlayShader;
+
+        CmdUpdateWeapon(equipped.netId);
+
     }
 
     public void DropWeapon()
@@ -173,11 +192,12 @@ public class AttackController : NetworkBehaviour
     [Command]
     public void CmdDeadWeaponDrop()
     {
-        if (equipped != defaultWeapon)
+        if (equipped.name != "Rock")
         {
             equipped.CmdMoveToPoint(transform.position);
             equipped.CmdMakeVisible();
-            equipped = defaultWeapon;
+            equipped.CmdSetWeaponParent(new NetworkInstanceId(0));
+            CmdInstantiateDefaultWeapon();
             weaponId = equipped.netId;
         }
     }
@@ -212,5 +232,27 @@ public class AttackController : NetworkBehaviour
         weaponHolder.transform.localPosition = new Vector3(-1.491f + equipped.positionOffset.x, -2.073f + equipped.positionOffset.y, 0.885f + equipped.positionOffset.z);
         weaponHolder.transform.localEulerAngles = new Vector3(296 + equipped.rotationOffset.x, 353 + equipped.rotationOffset.y, 291 + equipped.rotationOffset.z);
         equipped.GetComponent<Renderer>().material.shader = overlayShader;
+        NetworkServer.Spawn(newobject);
+        equipped.CmdSetWeaponParent(netId);
+    }
+
+    [Command]
+    public void CmdInstantiateDefaultWeapon()
+    {
+        if (!isServer)
+            return;
+        GameObject newobject = Instantiate(defaultWeapon.gameObject);
+        if (newobject.GetComponent<Weapon>())
+            equipped = newobject.GetComponent<Weapon>();
+        else
+            equipped = newobject.GetComponentInChildren<Weapon>();
+        Destroy(equipped.GetComponent<Collider>());
+        newobject.transform.SetParent(weaponHolder.transform);
+        newobject.transform.position = new Vector3(0, 0, 0);
+        weaponHolder.transform.localPosition = new Vector3(-1.491f + equipped.positionOffset.x, -2.073f + equipped.positionOffset.y, 0.885f + equipped.positionOffset.z);
+        weaponHolder.transform.localEulerAngles = new Vector3(296 + equipped.rotationOffset.x, 353 + equipped.rotationOffset.y, 291 + equipped.rotationOffset.z);
+        equipped.GetComponent<Renderer>().material.shader = overlayShader;
+        NetworkServer.Spawn(newobject);
+        equipped.CmdSetWeaponParent(netId);
     }
 }

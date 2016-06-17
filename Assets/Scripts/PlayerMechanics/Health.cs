@@ -7,6 +7,7 @@ public class Health : NetworkBehaviour
 
     public int maxHealth;
     public int bandagesAmount;
+    private NetworkStartPosition[] spawnPoints = new NetworkStartPosition[8];
 
     [SyncVar]
     public int currentHealth;
@@ -16,6 +17,7 @@ public class Health : NetworkBehaviour
     {
         currentHealth = maxHealth;
         bandagesAmount = 0;
+        spawnPoints = FindObjectsOfType<NetworkStartPosition>();
     }
 
     // Returns whether the target died
@@ -33,8 +35,7 @@ public class Health : NetworkBehaviour
             // called on the server, will be invoked on the clients
             GetComponent<Defense>().CmdDeadAmrorBreak();
             GetComponent<AttackController>().CmdDeadWeaponDrop();
-            Debug.Log("DEATH2!");
-            RpcRespawnZero();
+            RpcRespawnRandom();
             return true;
         }
 
@@ -82,9 +83,20 @@ public class Health : NetworkBehaviour
         if (isLocalPlayer)
         {
             // move back to zero location
-            Debug.Log("DEATH!");
             transform.position = Vector3.zero;
         }
     }
+
+    [ClientRpc]
+    void RpcRespawnRandom()
+    {
+        if (isLocalPlayer)
+        {
+            // move back to zero location
+            int randomInt = (int)(Mathf.Floor(Random.Range(0, spawnPoints.GetLength(0))));
+            transform.position = spawnPoints[randomInt].transform.position;
+        }
+    }
+
 
 }

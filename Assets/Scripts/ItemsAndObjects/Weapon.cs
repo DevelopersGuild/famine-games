@@ -16,6 +16,8 @@ public class Weapon : NetworkBehaviour, IItem
     public float zRange;
     public Sprite icon;
     public string description;
+    [SyncVar]
+    public NetworkInstanceId parentid;
     
 
     // Offsets for when the weapon is equipped
@@ -38,6 +40,23 @@ public class Weapon : NetworkBehaviour, IItem
         {
 
         }*/
+    }
+
+    void Update()
+    {
+        //Debug.Log("WeaponName: " + name + " ParentID" + parentid.Value);
+        if(ClientScene.FindLocalObject(parentid))
+        {
+            if(transform.parent!=ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform)
+            {
+                transform.parent = ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().weaponHolder.transform;
+                ClientScene.FindLocalObject(parentid).GetComponent<NetworkedPlayer>().attackController.equipped = this;
+            }
+        }
+        else
+        {
+            transform.parent = null;
+        }
     }
 
     public void Start()
@@ -124,6 +143,14 @@ public class Weapon : NetworkBehaviour, IItem
 
     public int GetAttack()
     {
-        return damage[CurrentLevel];
+        return damage[0];
+    }
+
+    [Command]
+    public void CmdSetWeaponParent(NetworkInstanceId nid)
+    {
+        if (!isServer)
+            return;
+        parentid = nid;
     }
 }

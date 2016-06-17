@@ -195,9 +195,8 @@ namespace Kroulis.UI.MainGame
             ptk.transform.position = RTKPrefab.transform.position;
             ptk.transform.localPosition = RTKPrefab.transform.localPosition;
             ptk.transform.localScale = RTKPrefab.transform.localScale;
-            Sprite icon=null;
             ptk.SetActive(true);
-            ptk.GetComponent<RealtimeKillingTabControl>().UpdateInfo(icon, name1, name2);
+            ptk.GetComponent<RealtimeKillingTabControl>().UpdateInfo(weapontype, name1, name2);
             ptk.SetActive(false);
             rtk_list.Add(ptk);
         }

@@ -14,6 +14,8 @@ public class NetworkedPlayer : NetworkBehaviour
     public Defense defense;
     public ContestInfomation playerinfo;
     public GameObject playerModel;
+    public WeaponHolder weaponHolder;
+    public AudioListener audiolistener;
 
     public override void OnStartLocalPlayer()
     {
@@ -25,6 +27,7 @@ public class NetworkedPlayer : NetworkBehaviour
         bowAndArrow.enabled = true;
         defense.enabled = true;
         playerinfo.enabled = true;
+        audiolistener.enabled = true;
         playerModel.layer = LayerMask.NameToLayer("Player");
         GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(0, true);
         GetComponentInChildren<NetworkAnimator>().SetParameterAutoSend(1, true);

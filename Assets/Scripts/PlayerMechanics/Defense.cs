@@ -112,13 +112,10 @@ public class Defense : NetworkBehaviour {
         if(amror)
             amror.CmdSetMaxDurability(currentAmror);
         currentAmror = 0;
-
-        if(amror != null)
-        {
-            amror.CmdMoveToPoint(transform.position);
-            amror.CmdMakeVisible();
-        }
-
         amrorid= new NetworkInstanceId(0);
+        if (!amror)
+            return;
+        amror.CmdMoveToPoint(transform.position);
+        amror.CmdMakeVisible();
     }
 }
